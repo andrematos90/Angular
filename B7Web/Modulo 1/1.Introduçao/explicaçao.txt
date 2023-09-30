@@ -1,0 +1,25 @@
+Angular é um popular framework de desenvolvimento web front-end, criado e mantido pelo Google. Ele é usado para criar aplicativos web dinâmicos e ricos em recursos. Angular é uma ferramenta poderosa que simplifica o desenvolvimento de aplicativos web complexos, fornecendo estrutura, funcionalidades e ferramentas que facilitam a criação de aplicativos interativos e escaláveis.
+
+Aqui estão algumas das principais características e funcionalidades do Angular:
+
+Component-Based Architecture: Angular é baseado em uma arquitetura de componentes. Os aplicativos Angular são construídos a partir de componentes reutilizáveis, o que facilita a manutenção e a expansão do código.
+
+Two-Way Data Binding: Angular oferece vinculação de dados bidirecional, o que significa que as alterações em elementos da interface do usuário são refletidas automaticamente no modelo de dados e vice-versa, sem a necessidade de escrever muito código personalizado.
+
+Diretivas: O Angular fornece diretivas personalizadas que permitem estender o HTML com comportamentos personalizados. Diretivas como ngFor e ngIf são amplamente utilizadas para manipular a exibição condicional e a repetição de elementos.
+
+Injeção de Dependência: O Angular possui um sistema de injeção de dependência embutido que facilita a gestão de dependências e a manutenção de componentes independentes e facilmente testáveis.
+
+Roteamento: O Angular oferece um sistema de roteamento que permite a criação de aplicativos de página única (SPA) com navegação baseada em URLs. Isso é crucial para a criação de aplicativos da web complexos.
+
+Comunicação HTTP: O Angular facilita a realização de chamadas HTTP para interagir com serviços web, obtendo e enviando dados do servidor de forma assíncrona.
+
+Testabilidade: O Angular foi projetado com testabilidade em mente. Ele é compatível com frameworks de teste populares, como Jasmine e Karma, permitindo a fácil criação de testes unitários e de integração.
+
+Módulos: Os módulos Angular ajudam a organizar o código do aplicativo em unidades lógicas separadas, tornando-o mais modular e manutenível.
+
+Ecossistema Abundante: Angular possui uma ampla gama de bibliotecas, ferramentas e recursos de terceiros disponíveis para melhorar o desenvolvimento e a produtividade, como o Angular CLI, que simplifica a criação e a compilação de projetos Angular.
+
+Suporte a TypeScript: Angular é escrito em TypeScript, o que significa que oferece recursos de tipagem estática, permitindo a detecção de erros em tempo de compilação e fornecendo uma experiência de desenvolvimento mais robusta.
+
+Em resumo, o Angular é uma estrutura que torna o desenvolvimento de aplicativos web complexos mais organizado, eficiente e manutenível. Ele é amplamente usado para criar aplicativos empresariais, aplicativos de página única, aplicativos móveis e várias outras aplicações web interativas. É uma escolha popular para desenvolvedores que desejam criar aplicativos web modernos e poderosos.
