@@ -1,0 +1,2 @@
+para instalar
+abrir terminal e dar o comando "npm install -g @angular/cli"
