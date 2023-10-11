@@ -1,2 +1,7 @@
 para instalar
 abrir terminal e dar o comando "npm install -g @angular/cli"
+
+para criar projeto 
+"ng new nomedoprojeto" e y, CSS
+
+para rodar o projeto "ng serve" ou  "ng serve -o" para abrir navegador
