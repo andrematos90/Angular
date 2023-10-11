@@ -1,0 +1,31 @@
+No contexto do Angular, um "template" refere-se ao HTML associado a um componente que define a estrutura e a aparência da interface do usuário. Os templates são uma parte fundamental do desenvolvimento Angular, pois permitem que você crie a camada de apresentação de sua aplicação. Aqui estão alguns pontos-chave sobre templates no Angular:
+
+Estrutura HTML: Um template no Angular é uma estrutura HTML que define a aparência da interface do usuário. Ele pode conter elementos HTML, diretivas Angular e referências a variáveis ​​do componente.
+
+Diretivas Angular: No template, você pode usar diretivas Angular, como ngFor, ngIf, ngSwitch, etc., para controlar a renderização condicional e a iteração sobre os elementos do DOM com base nos dados do componente.
+
+Ligação de Dados: Os templates permitem a ligação de dados bidirecional, o que significa que você pode vincular elementos no template a propriedades do modelo do componente. Isso permite que as alterações no modelo sejam refletidas automaticamente na interface do usuário e vice-versa.
+
+Aqui está um exemplo simples de um template em Angular:
+
+
+<!-- template.component.html -->
+<div>
+  <h1>{{ titulo }}</h1>
+  <p>{{ descricao }}</p>
+</div>
+
+No exemplo acima, {{ titulo }} e {{ descricao }} são expressões de ligação de dados que exibem os valores das propriedades titulo e descricao do componente correspondente.
+
+Em relação às "variáveis" no Angular, você pode criar variáveis locais no template para se referir a elementos do DOM ou diretivas e simplificar a manipulação do template. Para criar uma variável local em um template, você usa o # seguido por um nome, como este:
+
+
+<!-- template.component.html -->
+<div>
+  <input #nomeInput type="text">
+  <button (click)="mostrarNome(nomeInput.value)">Mostrar Nome</button>
+</div>
+
+Neste exemplo, #nomeInput é uma variável local que referencia o elemento input. A função (click)="mostrarNome(nomeInput.value)" usa essa variável local para obter o valor do campo de entrada quando o botão é clicado.
+
+Variáveis locais podem ser úteis para referenciar elementos do DOM, como inputs, botões ou diretivas, e são úteis para interações entre o template e o componente. Tenha em mente que essas variáveis são locais para o escopo do template e não estão disponíveis no código do componente.
