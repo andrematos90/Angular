@@ -4,4 +4,5 @@ abrir terminal e dar o comando "npm install -g @angular/cli"
 para criar projeto 
 "ng new nomedoprojeto" e y, CSS
 
-para rodar o projeto "ng serve" ou  "ng serve -o" para abrir navegador
+para rodar o projeto comandos "ng serve" ou  "ng serve -o" 
+dentro da pasta da projeto onde esta o arquivo "angular.json" para abrir navegador
