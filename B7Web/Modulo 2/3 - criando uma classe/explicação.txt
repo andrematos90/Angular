@@ -1,0 +1,1 @@
+pode se criar o arquivo da classe ou com o comando "ng generate class"
