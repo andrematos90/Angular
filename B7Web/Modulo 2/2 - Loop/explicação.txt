@@ -1,0 +1,33 @@
+No Angular, você pode usar a diretiva *ngFor para criar loops e iterar sobre elementos em uma coleção, como um array ou uma lista, e renderizar o conteúdo dinamicamente no seu modelo HTML. Aqui está um exemplo de como fazer um loop for no Angular:
+
+Suponhamos que você tenha um componente TypeScript que exporta uma variável chamada itens contendo uma matriz de elementos que você deseja percorrer:
+
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-seu-componente',
+  templateUrl: './seu-componente.component.html',
+})
+export class SeuComponenteComponent {
+  itens: string[] = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+}
+
+Agora, no seu arquivo de modelo HTML (seu-componente.component.html), você pode usar a diretiva *ngFor para iterar sobre a matriz itens e exibir seus valores:
+
+
+<div>
+  <ul>
+    <li *ngFor="let item of itens">{{ item }}</li>
+  </ul>
+</div>
+Neste exemplo, usamos a diretiva *ngFor para percorrer a matriz itens. A variável item contém o valor do elemento atual da iteração, e o Angular renderizará um elemento <li> para cada item na matriz.
+
+Você também pode adicionar índices, se necessário:
+
+<div>
+  <ul>
+    <li *ngFor="let item of itens; let i = index">{{ i + 1 }}. {{ item }}</li>
+  </ul>
+</div>
+Isso irá renderizar os itens da matriz junto com seus índices. O Angular lida com a renderização e atualização automática à medida que os dados mudam, tornando a construção de loops em modelos HTML uma tarefa muito conveniente.
