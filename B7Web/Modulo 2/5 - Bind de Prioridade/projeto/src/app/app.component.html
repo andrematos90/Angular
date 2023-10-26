@@ -1,0 +1,42 @@
+<!--
+  Nesta linha, você está usando interpolação para definir o valor do atributo "value" do elemento input. O valor será definido como o conteúdo da propriedade nome da variável nomePrincipal.
+-->
+<input type="text" value="{{nomePrincipal.nome}}"/>
+
+
+<!--
+  o uso de [value] indica que o valor do campo de entrada será vinculado a uma variável ou propriedade no componente Angular. 
+-->
+<input type="text" [value]="nomePrincipal.nome"/>
+
+
+<!--
+  
+-->
+<input type="text" bind-value="nomePrincipal.nome"/>
+
+
+<!--
+  
+-->
+<input type="text" [disable]=hideInput />
+
+<br>
+
+
+<!--
+  primeira forma de inserir imagem
+-->
+<img src="{{imagem}}"/>
+
+
+<!--
+  segunda forma de inserir imagem
+-->
+<img [src]="imagem" />
+
+
+<!--
+  terceira forma de inserir imagem
+-->
+<img bind-src="imagem" >

@@ -1,0 +1,32 @@
+Em Angular, o "bind de prioridade" não é um conceito oficial. O que você pode estar se referindo é ao "sistema de avaliação de expressão", que determina a ordem de avaliação das expressões vinculadas nos templates do Angular.
+
+O Angular segue uma ordem de prioridade definida para avaliar as expressões e vinculações no template. Esta ordem é chamada de sistema de avaliação de expressão e é importante para entender como as expressões são processadas. Aqui está uma visão geral dessa ordem de prioridade:
+
+Event Binding: As vinculações de eventos têm a mais alta prioridade. Elas são avaliadas primeiro e podem desencadear funções ou métodos quando um evento ocorre. Por exemplo:
+<button (click)="minhaFuncao()">Clique em mim</button>
+
+
+
+Two-Way Data Binding (ngModel): As vinculações bidirecionais, como [(ngModel)], têm a segunda prioridade mais alta. Elas atualizam a propriedade do componente e o DOM ao mesmo tempo.
+<input [(ngModel)]="nome">
+
+
+
+Property Binding (ngStyle, ngClass, etc.): As vinculações de propriedade têm a próxima prioridade na fila. Elas atualizam as propriedades de elementos do DOM com base em expressões no componente.
+<div [ngClass]="{'classe-ativa': ativo, 'classe-inativa': !ativo}">Elemento com classe condicional</div>
+
+
+Interpolação: A interpolação (usando {{ }}) é a próxima na ordem de prioridade. Ela insere valores dinâmicos nas partes do template.
+<p>Olá, {{ nome }}</p>
+
+
+Structural Directives: As diretivas estruturais, como *ngIf, *ngFor, *ngSwitch, são avaliadas por último. Elas afetam a estrutura do DOM, como adicionar ou remover elementos do DOM com base em condições.
+<div *ngIf="mostrarElemento">Este elemento será exibido se mostrarElemento for verdadeiro.</div>
+
+Portanto, é importante entender essa ordem de prioridade para evitar comportamentos inesperados em suas expressões e vinculações no Angular. Por exemplo, você pode encontrar problemas se tentar usar interpolação dentro de um atributo onde as vinculações de propriedade são esperadas.
+
+Lembre-se de que essas regras de avaliação de expressão e prioridade são parte fundamental do ciclo de detecção de alterações do Angular, que é responsável por atualizar a exibição quando os dados no componente são modificados.
+
+
+
+
