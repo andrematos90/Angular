@@ -1,0 +1,33 @@
+para criar toolbar, no site do angular em components na aba "toolbar"
+em "api"  copiar e adicionar o módulo: lar/material/toolbar' em app/app.module.ts
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { MatToolbarModule } from '@angular/material/toolbar';  <<<<<<<<< adicionado
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule   <<<<<<<<< adicionado
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+no site do angular material, em examples
+escolher uma toolbar e copiar o codigo para app.component.html 
+ex: 
+<mat-toolbar>
+  <span>Crud Angular + Spring</span>
+</mat-toolbar>
