@@ -1,0 +1,64 @@
+*na pasta nodule_modules estão todas as dependencias instaladas
+essas dependecias estao no arquivo package.json
+
+"@angular/animations": "^16.2.0": Esta dependência se refere ao módulo de animações do Angular. O símbolo ^ indica que as versões compatíveis incluem a versão 16.2.0 e qualquer atualização de versão menor (por exemplo, 16.2.1, 16.3.0, etc.).
+
+"@angular/common": "^16.2.0": Este é o módulo comum do Angular, que contém funcionalidades comuns usadas em aplicativos Angular. Novamente, a notação ^ permite atualizações de versão menor.
+
+"@angular/compiler": "^16.2.0": Este é o compilador do Angular, responsável por transformar templates Angular em código JavaScript executável.
+
+"@angular/core": "^16.2.0": O módulo central do Angular, que fornece funcionalidades essenciais para a estrutura do aplicativo.
+
+"@angular/forms": "^16.2.0": Este é o módulo de formulários do Angular, que permite a criação e manipulação de formulários em aplicativos Angular.
+
+"@angular/platform-browser": "^16.2.0": O módulo de plataforma do navegador Angular, que contém funcionalidades relacionadas à renderização em navegadores.
+
+"@angular/platform-browser-dynamic": "^16.2.0": Este módulo dinâmico da plataforma do navegador é usado para iniciar a aplicação Angular no navegador.
+
+"@angular/router": "^16.2.0": O módulo de roteamento do Angular, que permite a criação de rotas e a navegação em aplicativos Angular.
+
+"rxjs": "~7.8.0": O Reactive Extensions for JavaScript (RxJS), uma biblioteca para programação reativa. O símbolo ~ significa que apenas atualizações de patch (por exemplo, de 7.8.0 para 7.8.1) são permitidas.
+
+"tslib": "^2.3.0": A biblioteca tslib é uma dependência do TypeScript que fornece funcionalidades auxiliares, como a função __awaiter. O símbolo ^ indica que atualizações de versão menor são permitidas.
+
+"zone.js": "~0.13.0": O Zone.js é uma biblioteca para gerenciamento de zona, que é usada para rastrear a execução de código assíncrono no Angular. O símbolo ~ permite apenas atualizações de patch.
+
+todas essas dependencias sao necesarias na hora de rodar o projeto em produção 
+
+
+*em devDependencies estao as bibliotecas que serao usadas em tempo de desenvivimento,
+  essas dependecias não adicionadas no pacote que vai para a produção
+
+ "@angular-devkit/build-angular": "^16.2.9": Este pacote contém ferramentas do Angular DevKit para compilar e construir projetos Angular. O símbolo ^ permite atualizações de versão menor.
+
+"@angular/cli": "^16.2.9": O Angular CLI (Command Line Interface) é uma ferramenta usada para gerenciar projetos Angular, executar tarefas de desenvolvimento, compilação, teste e implantação. O símbolo ^ permite atualizações de versão menor.
+
+"@angular/compiler-cli": "^16.2.0": O Angular Compiler CLI é uma ferramenta usada para compilar código TypeScript em código JavaScript, específico para o Angular. Ele é usado no processo de construção do projeto.
+
+"@types/jasmine": "~4.3.0": Este pacote contém definições de tipos TypeScript para o framework de teste Jasmine. O símbolo ~ permite apenas atualizações de patch.
+
+"jasmine-core": "~4.6.0": O Jasmine é um framework de teste para JavaScript e é usado para escrever e executar testes de unidade em aplicativos Angular. O símbolo ~ permite apenas atualizações de patch.
+
+"karma": "~6.4.0": O Karma é um test runner que é frequentemente usado para executar testes de unidade em aplicativos Angular. O símbolo ~ permite apenas atualizações de patch.
+
+"karma-chrome-launcher": "~3.2.0": Este pacote permite a execução de testes no navegador Google Chrome através do Karma. O símbolo ~ permite apenas atualizações de patch.
+
+"karma-coverage": "~2.2.0": O Karma Coverage é uma extensão do Karma usada para coletar informações sobre a cobertura de código durante a execução de testes.
+
+"karma-jasmine": "~5.1.0": O Karma Jasmine é uma extensão do Karma que permite a integração do framework Jasmine com o Karma para execução de testes.
+
+"karma-jasmine-html-reporter": "~2.1.0": Esta extensão do Karma é usada para gerar relatórios HTML a partir dos resultados dos testes executados com o Jasmine no Karma.
+
+"typescript": "~5.1.3": O TypeScript é um superset do JavaScript usado para escrever código Angular. O símbolo ~ permite apenas atualizações de patch.
+
+
+*Angular material
+
+Angular Material é um conjunto de componentes de interface de usuário (UI) desenvolvido pela equipe do Angular para criar aplicativos web modernos com uma aparência agradável e consistente. Ele é projetado especificamente para aplicativos Angular e é uma biblioteca de código aberto que oferece uma ampla variedade de componentes prontos para uso, como botões, caixas de diálogo, barras de navegação, tabelas, formulários, listas e muitos outros elementos de interface de usuário.
+
+Angular Material segue as diretrizes do Material Design, que é uma filosofia de design criada pelo Google para criar interfaces de usuário limpas, atraentes e funcionais. Isso significa que os componentes do Angular Material têm uma aparência moderna, consistentemente projetada e podem ser facilmente personalizados para se adequarem ao estilo do seu aplicativo.
+
+Usar o Angular Material em um projeto Angular simplifica o processo de criação de uma interface de usuário atraente e funcional, economizando tempo e esforço, pois você pode aproveitar os componentes pré-construídos e as diretrizes de design do Material Design. Isso é particularmente útil quando se deseja criar aplicativos web de alta qualidade com uma experiência do usuário consistente e visualmente agradável.
+
+
+comando para instalar:  ng add @angular/material
