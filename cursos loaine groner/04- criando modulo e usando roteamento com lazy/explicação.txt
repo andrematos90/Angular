@@ -1,0 +1,69 @@
+o que é lazy loading?
+
+Lazy loading é uma técnica de programação utilizada para melhorar o desempenho e a eficiência de um sistema, especialmente em relação ao carregamento de recursos, como imagens, scripts, dados ou componentes, em um aplicativo ou site da web. A ideia por trás do lazy loading é adiar o carregamento de recursos não essenciais até que sejam realmente necessários, em vez de carregá-los todos de uma vez.
+
+Isso é particularmente útil em situações em que os recursos podem ser pesados e demorados para carregar, o que pode afetar negativamente a velocidade de carregamento da página ou a responsividade do aplicativo. Ao adiar o carregamento de recursos não essenciais, o usuário obtém uma experiência mais rápida e eficiente, pois só os recursos necessários para a exibição inicial são carregados.
+
+Lazy loading é comumente usado para imagens em páginas da web. Em vez de carregar todas as imagens em uma página de uma só vez, as imagens são carregadas apenas quando o usuário rola a página e as imagens estão prestes a ficar visíveis na tela. Isso ajuda a reduzir o tempo de carregamento inicial da página e economiza largura de banda.
+
+Além disso, o lazy loading pode ser aplicado a outros tipos de recursos, como carregamento de componentes em aplicativos da web ou carregamento de dados à medida que são necessários. Essa técnica é uma parte importante da otimização de desempenho em desenvolvimento web e aplicativos, pois contribui para uma experiência mais rápida e agradável para os usuários.
+
+
+*para criar um modulo:
+
+comando "ng g m courses --routing"
+ng 
+g generate
+m model
+courses nomedomodulo
+--routing cria roteamento e importa roteamento no módulo
+
+*para criar componente dentro do módulo
+
+"ng g c courses/courses"
+
+*criar rota em "courses-routing.module.ts"
+
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { CoursesComponent } from './courses/courses.component';  <<<<<<
+
+const routes: Routes = [
+  {path: '', component: CoursesComponent}   <<<<<<<<
+];
+
+*criar rota global:
+
+criar rota de lazy loading, no site do angular pesquisar por "lazy loading"
+em "Lazy-loading feature modules" copiar: 
+
+const routes: Routes = [
+  {
+    path: 'items',
+    loadChildren: () => import('./items/items.module').then(m => m.ItemsModule)
+  }
+];
+
+e colar em "app-routing-module" 
+
+exemplo:
+
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {path:'', pathMatch: 'full', redirectTo: 'courses'},
+  {
+    path: 'courses',
+    loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule)
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+*em app.component adicionar <router-outlet></router-outlet>
+
