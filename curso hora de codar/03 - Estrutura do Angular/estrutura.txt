@@ -1,0 +1,50 @@
+Estrutura do angular
+
+- node_modules: dependencias do projeto
+
+- src: onde é feita a aplicação
+
+- src/app: pasta principal para componentes, services e etc..
+
+- os componentes são divididos em partes: TypeScript, HTML, CSS e Testes.
+
+- pastas que tem "ponto" na frente como .vscode por 
+exemplo são pastas de meta condiguração.
+
+-node_modules contem as dependencias do angular
+
+-.gitgnore: ignora arquivos da aplicação
+
+-angular.json: arquivos de configuração do angular
+
+-package-lock.json:
+
+-package.json: são exibidas as dependencias do projeto
+
+-README.md: como o projeto funciona
+
+No src:
+
+-app: onde é programada a aplicação, onde ficam os compoponentes.
+
+dentro dela:
+
+-app.component.ts: fica configuração do componente e sua lógica
+-app.componente.spec.ts: arquivo de teste
+-app.component.html: arquivo de template, é a view
+-app.component.css: css do componente
+
+--------
+
+-assets: ficam as imagens estaticas 
+
+- enviroments: são os ambientes onde o angular vai poder rodar
+
+-index.html: arquivo acessado quando entra na aplicação.
+
+dentro dele a tag <app-root></app-root> é onde o 
+angular é inserido na aplicação
+
+-main.ts: é o arquivo principal da aplicação, da inicio ao projeto.
+
+-style.css: ficam os estilos globais da apliciação
