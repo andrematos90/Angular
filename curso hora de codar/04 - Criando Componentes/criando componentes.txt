@@ -1,0 +1,13 @@
+criando componentes
+
+-para criar um componente podemos utilizar o CLI;
+
+- comando: "ng generate component componentes/first-component" criará a pasta "components" e dentro "first-component"
+
+-para importar o componente basta utilizar o seu selector em um HTML de outro componente;
+
+- ao criar um componente "app.module.ts" gera a importação do componente criado automaticamente e coloca em decclarations, para a aplicação saber que o componente existe.
+
+- para rodar o que foi criado em "first-componente.html"
+é necessaria a tag "<app-first-componente></app-first-componente>" em "app.component.html"
+isso gera a importação do componente criado
