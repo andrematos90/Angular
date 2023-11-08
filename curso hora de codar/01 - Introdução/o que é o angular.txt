@@ -1,0 +1,20 @@
+O que é angular?
+
+Angular é um popular framework de código aberto desenvolvido pelo Google para a criação de aplicativos da web dinâmicos e interativos.
+
+Ele se baseia em TypeScript, uma linguagem superset do JavaScript, e utiliza uma abordagem orientada a componentes para a construção de interfaces. O Angular oferece uma estrutura sólida para desenvolvimento, incluindo suporte a gerenciamento de estado, roteamento, validação de formulários e muito mais.
+
+-utilizado para a criação de SPAs(Single Page Aplication)
+-Arquitetura baseada em componentes
+-Utilizado em aplicações de grande porte.
+-compoe a stack mean
+
+
+Porque Angular?
+
+- Estrutura de organização do projeto bem definida, promove simplicidade e reaproveitamento de codigo
+
+- sistema de tooling muito rico: CLI, módulo de HTTP, router e outros;
+
+- Integração nativa com Typescript;
+- Mantido pelo Google
