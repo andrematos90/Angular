@@ -1,0 +1,5 @@
+comando de instalação: npm install -g @angular/cli
+
+comando para criar projeto: ng new nomedoprojeto
+
+comando para subir aplicação: ng serve ou ng serve -o
