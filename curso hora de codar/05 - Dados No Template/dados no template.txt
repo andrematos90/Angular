@@ -1,0 +1,20 @@
+A interpolação de dados é um recurso que ensina a trabalhar com os componentes do angular.
+
+- vamos criar nossas variáveis no arquivo .ts dentro da classe, ou seja estas variáveis são propriedades da classe, e então teremos acesso a estes dados no arquivo .html, o template;
+a impressão é feita através de: {{nomedavariável}}
+
+
+passos:
+- primeiro criar as propriedades no arquivo first-component.ts
+
+ex: criação da propriedade "name"
+
+export class FistComponentComponent {
+
+  name:string = "André Rosa de Matos"
+
+}
+
+- depois ela pode ser usada no template:
+
+<p>nome: {{name}}</p>
