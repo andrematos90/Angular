@@ -1,0 +1,7 @@
+css no angular
+
+Os estilos em aplicações angular podem ser feitos de duas maneiras:
+
+- Global: utilizando o arquivo style.css, que fica em src;
+
+- Scoped: estilos a nível de componente, criamos quando damos um generate.
