@@ -1,0 +1,49 @@
+Compartilhando dados
+Em angular podemos compartilhar dados do componente pai com o filho.
+Para isso, vamos disponibilizar na chamada do componente o nome do dado recebido com a seguinte sintaxe : [dado];
+E no código .ts do componente filho vamos utilizar o decorador @input, que tem como papel entregar o dado para o template.
+
+passos:
+
+para compartilhar dados entre componentes:
+
+- definir a váriavel no componente pai:
+
+export class AppComponent {
+  variavelDoComponentePrincipal:string = 'Variável do componente principal';
+}
+
+- no tamplate pai sinalizar que o dado esta sendo compartilhado:
+
+<app-parent-data [variavel]="variavelDoComponentePrincipal"></app-parent-data>
+
+- criar a váriavel no componente filho:
+
+importar o Input
+import { Component, Input } from '@angular/core';
+
+export class ParentDataComponent {
+  @Input() variavel:string ='';  (variável tem que ser   iniciada vazia, para receber o valor que foi definido na variável do componente pai)
+
+
+}
+
+Obs: essa váriavel pode ou não ter o mesmo nome da 
+váriável do componente pai, nesse caso não tem.
+
+- utilizar o dado no tamplate do componente filho:
+
+<h1>{{variavel}}</h1>
+
+
+
+Compartilhando um objeto:
+
+segue os mesmo passos mas o objeto precisa ser tipado 
+no elemento filho:
+
+  @Input() carro! :{marca:string, modelo:string, ano:number}
+
+
+
+
