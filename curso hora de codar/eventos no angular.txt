@@ -1,0 +1,4 @@
+- Podemos ativar eventos nos componentes para disparar algum método;
+- Um evento clássico que utilizamos muitoo é o click.
+- A sintaxe é: (click)="algumaFuncao()"
+- Os métodos ficam na clase
