@@ -1,0 +1,13 @@
+<h1 [ngStyle]="{'color': 'red'}">testando diretiva de estilo</h1>
+
+
+<p [ngStyle]="{'color':'blue', 'font-size': '12px'}">Usa-se a diretiva "[ngStyle]" que recebe um objeto de estilos CSS separados por virgular
+</p>
+
+<p [ngStyle]="{'color': color, 'font': font, 'font-size': size}">estilo aplicado através do arquivo .ts</p>
+
+<h1 [ngClass]="classes">Testando diretiva de um array de classes</h1>
+
+<p [ngClass]="classes">outro elemento utilizando as mesmsa classes</p>
+
+<p [ngClass]="underline">elemento utilizando classe de uma classe unica</p>

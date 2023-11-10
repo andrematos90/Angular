@@ -1,3 +1,65 @@
 - No angular temos temos um recurso chamdo "diretivas";
 - Que podem realizar diversars funções no sistema, como palicar estilos a um elemento.
 - Elas começam sempre com ng. Exemplo: ngAlgumaCoisa.
+
+
+
+Diretivass de Estilo [ngStyle]
+
+Passos:
+
+em compponent.component.html:
+
+<h1 [ngStyle]="{'color': 'red'}">testando diretiva de estilo</h1>
+
+
+<p [ngStyle]="{'color':'blue', 'font-size': '12px'}">Usa-se a diretiva "[ngStyle]" que recebe um objeto de estilos CSS separados por virgular
+</p>
+
+
+Os estilos podem ser aplicados por meio de propriedades no arquivo .ts
+exemplo:
+
+export class DirectivesComponent {
+  color = 'yellow';
+  font = 'Arial'
+  size = '60px'
+
+
+ em compponent.component.html:
+
+<p [ngStyle]="{'color': color, 'font': font, 'font-size': size}">estilo aplicado através do arquivo .ts</
+
+
+Diretivas de Classe [ngClass]
+
+passos:
+
+através de um array com varias classes :
+em compponent.component.html
+<h1 [ngClass]="classes">Testando diretiva de classe</h1>
+
+no arquivo .ts:
+
+classes = ['green-titles', 'small-title']
+
+
+em componente.component.css
+
+.small-title {
+  font-size: 10px;
+}
+
+.green-title{
+  color: darkgreen;
+}
+
+
+através de uma classe unica:
+
+no arquivo .html
+
+<p [ngClass]="underline">elemento utilizando classe de uma classe unica</p>
+
+no arquivo .ts
+ underline = 'underline-title'

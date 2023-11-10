@@ -1,0 +1,44 @@
+Renderização Condicional
+
+- É a quando algo será impresso no tamplate baseado em determinada condição.
+- É possível exibir determinado conteúdo por meio de uma condicional;
+- Utilizando a diretiva ngIf para isso.
+- OS valores podem ser dinâmicos (propriedades), mas podemos realizar outros tipos de comparações;
+- Há a possibilidade também de imprimir um cenário para validação de falso, com o else
+
+
+Explicações:
+
+
+Primeira Div (canShow):
+
+<div class="exemplo">
+  <div *ngIf="canShow">Quando a variável "canShow" tiver o valor "true" o conteúdo dessa div aparece</div>
+</div>
+
+Aqui, há uma condição usando *ngIf="canShow". Isso significa que o conteúdo dentro da div só será exibido se a variável canShow for avaliada como verdadeira (true).
+
+
+Segunda Div (name):
+
+<div class="exemplo">
+  <div *ngIf="name === 'André Rosa de Matos'">se o Nome for "André Rosa de Matos" esse conteúdo aparece.</div>
+</div>
+
+Novamente, é uma condição com *ngIf, mas desta vez verifica se a variável name é igual a "André Rosa de Matos". Se for verdadeiro, o conteúdo dentro da div será exibido.
+
+
+Terceira Div (animal):
+
+<div class="exemplo">
+  <div *ngIf="animal === 'Simba'; else nameNotFound">o nome do animal é simba</div>
+  <ng-template #nameNotFound>
+    <p>nome diferente de "Simba"</p>
+  </ng-template>
+</div>
+
+Aqui, há uma condição semelhante, mas com uma estrutura um pouco mais complexa. Se a variável animal for igual a "Simba", o conteúdo dentro da primeira div será exibido. Caso contrário, o conteúdo definido dentro da tag <ng-template #nameNotFound> será exibido. O else é representado por #nameNotFound. Portanto, se animal não for "Simba", o parágrafo dentro do template será exibido.
+
+
+
+

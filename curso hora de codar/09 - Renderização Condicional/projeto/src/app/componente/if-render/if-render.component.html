@@ -1,0 +1,17 @@
+<div class="exemplo">
+  <div *ngIf="canShow">Quando a variável "canShow" tiver o  valor "true" o coteúdo dessa div aparece</div>
+</div>
+
+<div class="exemplo">
+  <div *ngIf="name === 'André Rosa de Matos'">se o Nome for "André Rosa de Matos" esse conteudo aparece.</div>
+
+<div class="exemmplo">
+<div *ngIf="animal === 'Simba'; else nameNotFound">o nome do animal é simba</div>
+<ng-template #nameNotFound>
+  <p>nome diferente de "Simba"</p>
+</ng-template>
+
+</div>
+</div>
+
+
