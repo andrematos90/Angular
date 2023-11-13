@@ -1,1 +1,8 @@
-<p>list-render works!</p>
+<h3>Animais:</h3>
+<ul>
+    <li *ngFor="let animal of animais">
+        {{animal.nome}}
+        <button (click)="showDetails(animal)">Mostrar Resumo</button>
+    </li>
+</ul>
+<h2>{{animalDetails}}</h2>
