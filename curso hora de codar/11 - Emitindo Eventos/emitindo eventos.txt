@@ -1,6 +1,54 @@
 Emitindo eventos
 
--Podemos comunicar eventos de um componente filho para o pai.
--Para isso vamos precisar o @Output, que vai fazer a saída do evento do componente filho;
-- na tag e invocação do componente no template, escolhmos um método para executar quando o evento for emitido.
+-Podemos comunicar eventos de um componente filho para o pai, por que as vezes a lógica se concentra nos componentes pais, pq os componentes filhos são reutilizáveis.
+-Para isso vamos precisar o @Output, que vai fazer a saída do evento do componente filho.
+- na tag e invocação do componente no template, escolhemos um método para executar quando o evento for emitido.
 -Exemplo: (emit)_="onEmit()"
+
+Exemplo:
+
+Para emissão de um número aleatório baseado no evento emitido do componente filho 
+
+O componente "Emiter" vai ter o evento que vai ser emitido do componente filho
+
+- O componente "change-number" é  componente filho que vai emitir o evento para o componente pai "Emiter"
+
+
+Resumo: o componente "change-number" é o componente filho que  contém o evento, "Emiter", contem a lógica no arquivo .ts, e a chamada  para o componente "change-number" no arquivo .html
+
+Para fazer a emissão do evento:
+
+- em "change-number".ts é preciso importar o "Output", que serve para enviar algo, como esse algo é um evento também é necessário o "EventEmitter", se fosse apenas um dado seria só Output
+
+import { Component, Output, EventEmitter } from '@angular/core';
+
+dentro da classe:
+
+@Output() com qual evento está sendo enviado
+
+changeNumber é o nome do evento
+
+EventEmitter tipo do evento
+<any> tipa o evento como "any" é o tipo que aceita, como é um evento pode ser usado any
+ new = EventEmitter();  instanciação
+
+
+
+no componente "emitter".ts a lógica:
+
+
+export class EmitterComponent {
+
+  myNumber : number = 0;
+
+  onChangeNumber(){
+    this.myNumber = Math.random();
+  }
+
+}
+
+no componente "emitter".html a chamada:
+
+<app-change-number (changeNumber)="onChangeNumber()"></app-change-number>
+
+
