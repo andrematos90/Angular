@@ -1,0 +1,9 @@
+Requisições http
+
+- Vamos realizar requisições Http no service;
+- Precisamos importar dois pacotes: HttpClient e HttpHeaders no app.module.ts;
+- Neste exemplo utilizaremos uma API local para simular as request, com o json-server com o comando "npm install json-server" na pasta principal do projeto;
+- criar o arquivo "db.json" na pasta src
+- em "package.json" criar scipt >>> "server":"json-server --watch db.json" para rodar como se fosse um AP
+- "npm run server" para rodar o servidor
+- Por último, é necessário inicializar o módulo HttpClientModule em app.module.ts;
