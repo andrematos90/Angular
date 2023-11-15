@@ -1,0 +1,11 @@
+<p>two-way-binding works!</p>
+<form>
+  <input type="text" [(ngModel)] = "name"
+  [(ngModel)] = "name"
+  name="name"
+  placeholder="Digite seu nome"
+  />
+  <input type="submit" value="Enviar"/>
+</form>
+
+<p>O valor de nome "{{name}}" é mapeado e atribuido automaticamente através do ngModule, esse é o conceito de two way data binding, "Altero em um lugar e ele é refletido em outro</p>

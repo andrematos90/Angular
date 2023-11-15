@@ -1,0 +1,8 @@
+Two way data binding
+
+- O two way data binding é um recurso muito interessante para o trabalho com formulários
+- Basicamente conseguimos alterar props e o template com o preenchimento de inputs
+- Ou seja tendo uma propriedade que esta ligada a um input e eu consigo ao preencher um formulário, automaticamente colocar esse dado no tamplate automaticamente, sem a necessidade de adicionar eventos ou funções
+- É necessário importar o FormsModule do componente principal "app.module.ts".
+- E também declarar o ngModel no input, além de preencher também p atributo name, todos com o mesmo valor;
+
