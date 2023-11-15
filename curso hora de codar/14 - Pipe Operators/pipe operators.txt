@@ -1,0 +1,6 @@
+Pipe Operators
+
+- Os pipe são recursos par atrabahlar com strings nos templates
+- Podemos realizar diversas funções, como deixar o texto em caixa alta
+- A sintaze é :{{dado | algumPipeOperator}}
+- Desta maneira nos poupamos de regras de CSS ou manipulação de strings com  lógica Js
