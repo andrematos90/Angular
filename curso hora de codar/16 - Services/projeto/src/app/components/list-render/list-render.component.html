@@ -1,0 +1,7 @@
+<h4>Espécie       -     Nome</h4>
+<p *ngFor="let animal of animais">
+  {{animal.especie}}      - {{animal.nome}}
+  <button (click)="removerAnimal(animal)">Remover animal</button>
+</p>
+
+

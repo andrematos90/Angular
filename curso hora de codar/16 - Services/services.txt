@@ -1,0 +1,8 @@
+Services
+
+- O service é outra parte fundamental da arquitetura do Angular;
+- Geralmente ficas as requisições para as APIs que utilizamos no projeto
+- Precisamos criar o service com: ng gnerate service <nome>
+- Importar no componente e iniciar o construtor
+- Depois é possível acessar os métodos dele
+
