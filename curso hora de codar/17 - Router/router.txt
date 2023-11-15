@@ -1,0 +1,8 @@
+Router
+
+- Serve para fazer a navegação entre as páginas
+- Usamos o usar o arquivo"app-routing-module"  para delclarar nossas rotas;
+- Nele vamos importar os módulos RouterModule e Routes
+- Após a definição estas rotas precisam ser importadas em app.module.ts
+- E por fim no template principal criamos as rotas
+- E Substituimos os componentes por: <router-outlet>
