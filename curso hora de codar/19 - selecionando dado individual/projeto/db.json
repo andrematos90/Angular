@@ -1,0 +1,7 @@
+{
+  "animais": [
+  {"especie": "cachorro", "nome":"simba", "idade": 3},
+  {"especie": "gato", "nome": "gatão", "idade":4},
+  {"especie": "cachorro", "nome": "milu", "idade": 7}
+  ]
+}
