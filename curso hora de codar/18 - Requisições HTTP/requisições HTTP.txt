@@ -7,3 +7,69 @@ Requisições http
 - em "package.json" criar script >>> "server":"json-server --watch db.json" para rodar como se fosse um API
 - "npm run server" para rodar o servidor
 - Por último, é necessário inicializar o módulo HttpClientModule(diz ao angullar que o projeto esta apto a fazer requisições http) em app.module.ts;
+
+Passos:
+
+1 - configurar API:
+
+- comando "npm install json-server" 
+- criar o arquivo "db.json" com um array de objetos na raiz da aplicação para simular os dados do banco
+- em "package.json" criar script >>> "server":"json-server --watch db.json" para rodar como se fosse um API
+- "npm run server" para rodar o servidor
+
+
+2 - Importações:
+
+- importar  HttpClient(faz requisição) e HttpHeaders(configura o cabeçalho) no app.module.ts;
+
+
+3 - No componente:
+
+import { Component } from '@angular/core';
+import { Animal } from '../Animal';
+import { ListService } from '../services/list.service';
+
+@Component({
+  selector: 'app-list-render',
+  templateUrl: './list-render.component.html',
+  styleUrls: ['./list-render.component.css']
+})
+export class ListRenderComponent {
+  constructor(private listService: ListService){
+    this.getAnimais()
+  }
+
+  animais : Animal[] = []  //Começa com
+
+
+
+ ACESSA O MÉTODO DO SERVICE
+  getAnimais():void{
+    this.listService.getAll().subscribe((animais) =>(this.animais = animais));
+  }
+
+}
+
+
+4 - no service:
+
+
+import { Injectable } from '@angular/core';
+IMPORTAR "HttpClient, HttpHeaders"
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs'; //
+import { Animal } from '../Animal';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ListService {
+    DECLARAR URL DA API (NORMALMENTE É PEGO DE UM ARQUIVO DE CONFIGURAÇÃO)
+  private apiUrl = 'http://localhost:3000/animais'
+
+  constructor(private http: HttpClient) { }
+
+  getAll():Observable<Animal[]>{
+    return this.http.get<Animal[]>(this.apiUrl)
+  }
+}
