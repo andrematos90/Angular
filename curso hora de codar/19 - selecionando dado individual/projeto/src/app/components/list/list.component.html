@@ -1,5 +1,9 @@
-<p *ngFor="let animal of animais">
-<b>Espécie</b> : {{animal.especie}}
-<b>Nome</b> : {{animal.nome}}
-<b>Idade</b> : {{animal.idade}}
-</p>
+<h1>Animais do beco:</h1>
+
+<ul>
+  <li *ngFor="let animal of animais">
+    Nome: {{animal.nome}}
+   <a routerLink="/list/{{ animal.id }}" class="button">Detalhes</a>
+
+  </li>
+</ul>

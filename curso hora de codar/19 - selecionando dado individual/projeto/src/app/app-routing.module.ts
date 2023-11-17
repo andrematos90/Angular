@@ -7,7 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'list', component: ListComponent},
-  {path: 'list/id', component: ItemDetailsComponent}
+  //rota dinamica para a pagína de detalhes
+  {path: 'list/:id', component: ItemDetailsComponent}
 
 ];
 

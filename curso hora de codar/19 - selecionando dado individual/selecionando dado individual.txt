@@ -1,8 +1,37 @@
 Selecionando dado individual
 
-- Para resgatar um dado do banco vamps precisar criar uma rota dinâmica no nosso router;
+- Para resgatar um dado do banco vamos precisar criar uma rota dinâmica no nosso router;
 - Baseado no id do item teremos a seleção de dado no banco, geralmente o id vem pela URL
 - Para resgatar parâmetros da URL vamos utilizar o ActivatedRoute, um módulo de Angular.
 - A lógica para requisição HTTP ficará no service
 
 passos:
+
+- criar o componente item-detail que será a página individual com informação do animal
+
+- criar a roda no "app-routing-module.ts"
+- em "item-details-component" importar a interface Animal, ActivatedRoute e ListService
+- criar prop de aniaml >>  animais? : Animal[] = []
+- inicializar o constructor  >> constructor(private listeService: ListService, private route:ActivatedRoute) e chamar o método getAnimal()
+
+- criar o método getAnimal() que extrai o id e chama o método getItem() no service >> getAnimal(){
+    //extrai o id
+    const id = Number(this.route.snapshot.paramMap.get("id"));
+    //acessa o dado no service
+    this.listeService.getItem();
+  }
+
+  - criar o método getItem() no service >>
+getItem(id:number):Observable<Animal>{
+    return this.http.get<Animal>(`${this.apiUrl}/${id}`)
+  }
+
+  - terminar o método getAnimal() >>
+
+   getAnimal(){
+    //extrai o id
+    const id = Number(this.route.snapshot.paramMap.get("id"));
+    //acessa o dado no service
+
+    this.listService.getItem(id).subscribe((animal) =>(this.animal = animal));
+  }

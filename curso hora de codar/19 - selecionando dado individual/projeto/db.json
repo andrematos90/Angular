@@ -1,7 +1,7 @@
 {
   "animais": [
-  {"especie": "cachorro", "nome":"simba", "idade": 3},
-  {"especie": "gato", "nome": "gatão", "idade":4},
-  {"especie": "cachorro", "nome": "milu", "idade": 7}
+  {"id":1,"especie": "cachorro", "nome":"simba", "idade": 3},
+  {"id":2,"especie": "gato", "nome": "gatão", "idade":4},
+  {"id":3,"especie": "cachorro", "nome": "milu", "idade": 7}
   ]
 }
