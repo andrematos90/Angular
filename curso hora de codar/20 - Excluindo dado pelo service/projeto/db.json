@@ -1,0 +1,10 @@
+{
+  "animais": [
+    {
+      "id": 2,
+      "especie": "gato",
+      "nome": "gatão",
+      "idade": 4
+    }
+  ]
+}

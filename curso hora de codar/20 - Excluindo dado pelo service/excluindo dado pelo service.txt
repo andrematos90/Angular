@@ -1,0 +1,5 @@
+Deletando Registro
+
+- Agora vamos refatrar nossa ação de remover registro com a execução HTTP;
+- Criaremos outro método service;
+- E ajustaremos a maneira que o método da classe do componente é executado
