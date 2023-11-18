@@ -21,3 +21,25 @@ nav{
 .brands:hover > h2{
   color: #A52A2A
 }
+.links li {
+  margin-right: 1em;
+  list-style: none;
+
+}
+
+#add a {
+  color: #A52A2A;
+
+}
+
+#add a:hover{
+  background-color: #ab2020;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.links li:hover {
+  background-color: #ab2020;
+  color: #fff;
+  border-radius: 10px;
+}
