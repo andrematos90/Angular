@@ -7,4 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class MomentFormComponent {
   @Input() btnText! : string;
+
+  submit(){
+    console.log("enviou formulário")
+  }
 }
