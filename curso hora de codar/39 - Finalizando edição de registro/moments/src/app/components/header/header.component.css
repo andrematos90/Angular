@@ -1,0 +1,45 @@
+nav{
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  border-bottom: 1px solid #777;
+}
+.brands,
+.links{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brands img {
+  width: 40px;
+  margin-right: 0.6em;
+}
+.brands h2{
+  transition: .4s;
+}
+.brands:hover > h2{
+  color: #A52A2A
+}
+.links li {
+  margin-right: 1em;
+  list-style: none;
+
+}
+
+#add a {
+  color: #A52A2A;
+
+}
+
+#add a:hover{
+  background-color: #ab2020;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.links li:hover {
+  background-color: #ab2020;
+  color: #fff;
+  border-radius: 10px;
+}
