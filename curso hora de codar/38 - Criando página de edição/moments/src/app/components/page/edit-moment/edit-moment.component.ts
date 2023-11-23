@@ -1,4 +1,4 @@
-import { MomentService } from './../../../../../../../37 - Excluindo Registro/moments/src/app/services/moment.service';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Moment } from 'src/app/Moment';
@@ -12,7 +12,7 @@ import { MomentService } from 'src/app/services/moment.service';
 export class EditMomentComponent implements OnInit{
 
     moment!:Moment;
-    btnText:String = 'Editar';
+    btnText:string = 'Editar';
 
   constructor(private momentService:MomentService, private route:ActivatedRoute){}
 
