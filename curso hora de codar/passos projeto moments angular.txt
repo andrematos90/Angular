@@ -1,0 +1,1674 @@
+ESTRUTURANDO O PROJETO
+
+1 - criar projeto
+2 - criar componentes header e footer
+3 - criar página "about" e "home" 
+
+4 - em app.component.html:
+
+<app-header></app-header>
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>
+
+5 - em header.component.html:
+
+<h2>Header</h2>
+
+6 - em footer.component.html:
+
+<h2>Footer</h2>
+
+7 - em about.component.html:
+
+<h2>Página de about</h2>
+
+8 - em home.component.html:
+
+<h2>Página Home</h2>
+
+
+
+9 -  em app-routing.module.ts alterar configurações de rotas:
+
+- colocar os paths:
+
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path:'about', component: AboutComponent}
+];
+
+10 - em header.component.html:
+
+<h2>Header</h2>
+<nav>
+  <ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/about">Sobre</a></li>
+  </ul>
+</nav>
+
+11 - adicionar css geral no arquivo global style.css
+
+
+CSS NOS COMPONENTES DE LOYOUT
+
+12 - criar componente "new-moment" que será a página de adição de moments:
+
+colocar a rota do componente no app-routing-module.ts:
+
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'moments/new', component: NewMomentComponent}
+];
+
+13 - no header.component.html:
+
+adicionar routerlink: 
+
+     <h2>Moments</h2>
+ <nav>
+  <a class="brand" routerLink="/">
+    <img src="/assets/icon.png" alt="icon-moments">
+ </a>
+  <ul class="links">
+    <li><a routerLink="/">Home</a></li>
+    <li id="add"><a routerLink="/moments/new">Compartilhar</a></li>
+    <li><a routerLink="/about">Sobre</a></li>
+  </ul>
+</nav>
+
+
+14 -  em index.html colocar favicon: 
+
+<link rel="icon" type="image/x-icon" href="asset/favico.png">
+
+15 - no footer.component.html:
+
+<footer>
+  <h3>Compartilhe seu mellhores momentos!</h3>
+  <p><span>Moments</span>&copy; 2023</p>
+</footer>
+
+16 - no header.component.css:
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  border-bottom: 1px solid #777;
+}
+.brands,
+.links{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brands img {
+  width: 40px;
+  margin-right: 0.6em;
+}
+.brands h2{
+  transition: .4s;
+}
+.brands:hover > h2{
+  color: #A52A2A
+}
+.links li {
+  margin-right: 1em;
+  list-style: none;
+
+}
+
+#add a {
+  color: #A52A2A;
+
+}
+
+
+
+
+#add a:hover{
+  background-color: #ab2020;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.links li:hover {
+  background-color: #ab2020;
+  color: #fff;
+  border-radius: 10px;
+}
+
+
+
+17 - no footer.component.css:
+
+footer {
+  border-top: 1px solid #777;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+footer h3{
+  margin-top: 1.2em;
+}
+
+footer span{
+  font-weight: bold;
+  color: #A52A2A
+}
+
+
+
+CRIAÇÂO PÁGINA DE FORMULÁRO:
+
+
+ - criar o componente "moment-form"
+
+ - em new "new-moment.component":
+
+<h2>Compartilh o seu <span>Momento</span>!</h2>
+<app-moment-form></app-moment-form>
+
+20 - em "moment-form.component.htmml":
+
+<form>
+  <div class="form-group">
+    <label for="title">Titulo:</label>
+    <input type="text" placeholder="Coloque um titulo" required />
+  </div>
+  <div class="form-group">
+    <label for="discription">Descrição:</label>
+    <textarea placeholder="O que aconteceu nesse momento?" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="image">Coloque a foto que mais marcou..</label>
+    <input type="file">
+  </div>
+  <input type="submit" value="{{ btnText }}">
+</form>
+
+- no arquivo .ts do componente:
+
+export class MomentFormComponent {
+  @Input() btnText! : string;
+}
+
+- ir no html do componente pai que é  o "new-momemnt" e colocar o texto no botao:
+
+<app-moment-form [btnText]="btnText"></app-moment-form>
+
+no arquivo .ts:
+
+export class NewMomentComponent {
+  btnText = 'Compartilhar!';
+
+}
+
+
+- Criar o CSS do formulário no css
+global pq vai ser usado para diversos formulários:
+
+/*FORM*/
+
+form {
+  width: 450px;
+  margin: 0 auto;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.form-group label {
+  font-weight: bold;
+  font-size: .9em;
+  margin-bottom: .4em;
+}
+
+.form-group input, .form-group textarea {
+  padding: 0.6em;
+  color: #777;
+  font-size: 0.8em;
+}
+
+input[type="submit"]{
+  background-color: #efefef;
+  border: 2px solid transparent;
+  padding: 0.6em 1em;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+input[type="submit"]:hover{
+  background-color: transparent;
+  color: #A52A2A;
+  border-color: #A52A2A;
+
+}
+
+- no CSS do componente new-moment:
+
+h2{
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 2.2em;
+}
+
+h2 span {
+  color: #A52A2A;
+}
+
+
+
+CRIANDO INTERFACES
+
+
+21 - no app.module importar:
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
+
+declarar nos imports:
+
+ imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
+
+
+22 - criar interface "Moment.ts" na pasta app, de ser igual a entidade do banco de dados:
+
+export interface Moment{
+    id?: number,
+    title: string,
+    description: string,
+    image: string,
+    created_at?: string,
+    updated_at?: string,
+    comments? :[{ text: string; username:string}];
+}
+
+ - criar service de moment, para interações com o banco de dados:
+
+- comando "ng generate service services/moment"
+
+
+ - criar outras interfaces e services que serão usadas ao longo do projeto:
+
+- criar service "comments" e "messages"
+
+- criar interface de comentarios "Comments.ts" e "Response.ts"
+
+
+
+
+
+
+VALIDAÇÃO DE FOMULÁRIO:
+
+
+ - em moment-form.html:
+
+ativar qual método será utilizado para o envio do formulário criando a diretiva (ngSubmit) que dispara o método submit()
+
+<form (ngSubmit)="submit()">
+
+
+
+- criar método no moment-form.component.ts
+
+submit(){
+    console.log("enviou formulário")
+  }
+
+
+- declarar um grupo de formulário, para o angular conseguir mapear os inputs
+e poder disparar as validações:
+
+ [formGroup]="momentForm">
+
+momentForm é o nome do formulário
+
+<form (ngSubmit)="submit()" [formGroup]="momentForm">
+
+
+- declarar na classe  no arquivo.ts:
+
+ momentForm!: FormGroup;
+
+- no arquivo .html  com "formDir="ngForm"" é declarado aonde é o formulário: 
+
+formDir="ngForm"
+
+faz ele entender que é um formulário
+
+ficará assim:
+
+<form (ngSubmit)="submit()" [formGroup]="momentForm" #formDir="ngForm">
+
+
+26 - criar validações em .html:
+
+- criar o atributo formControlName,
+que vai ser linkado com o formulário 
+que sera criado no componente:
+
+<input type="text" placeholder="Coloque um titulo" formControlName="" required/>
+
+- colocar div de validação:
+
+<div *ngIf="title.invalid && formDir.submitted" class="validation-error">
+      <p>o título é obrigatório.</p>
+    </div>
+
+faz com que a div seja exibida se não houver título e quando o formulário é enviado.
+
+- para resolver o erro em "title",
+no arquivo .ts:
+
+ inicializar o formulário e declarar os campos e declarar validators:
+:
+
+  ngOnInit():void{
+    this.momentForm = new FormGroup({
+      id: new FormControl(''),
+      title: new FormControl('',[Validators.required]),
+      description: new FormControl('',[Validators.required]),
+      image: new FormControl(''),
+    });
+  }
+
+- inicializar as propriedades: 
+
+get title(){
+    return this.momentForm.get('ttile')!;
+  }
+
+  get description(){
+    return this.momentForm.get('description')!;
+  }
+
+- para melhorar a validação:
+
+ <p *ngIf="title.errors?.['required']">o título é obrigatório.</p>
+
+
+
+- criar trava de formulário invalido 
+pq mesmo com a  validação, pode acabar enviando o formulário:
+
+- no arquivo .ts:
+
+submit(){
+    if(this.momentForm.invalid){
+      return;
+    }
+    console.log("enviou formulário")
+  }
+
+
+- criar validação para descrição:
+
+ <div class="form-group">
+      <label for="discription">Descrição:</label>
+      <textarea placeholder="O que aconteceu nesse momento?"
+      formControlName="description"
+      required></textarea>
+      <div *ngIf="description.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="description.errors?.['required']">A descrição é obrigatória.</p>
+      </div>
+  </div>
+
+
+
+- criar CSS da validação
+no arquivo CSS global 
+
+.validation-error p {
+  color: #dc3545;
+  margin-top: 0.4em;
+  border-left: 3px solid #dc3545;
+  padding-left: 0.2em;
+}
+
+
+INSERINDO DADOS NO SISTEMA
+
+
+- para colocar uma imagem no moment form:
+
+- em moment-form.component.html
+
+  <input type="file" (change)="onFileSelected($event)">
+
+para que sempre que seja alterado algo, esse evento seja mapeado
+
+no arquivo .ts criar o método,
+ele jogará a imagem no formulário
+ 
+  onFileSelected(event: any){
+    const file: File = event.target.files[0];
+
+    this.momentForm.patchValue({image: file});
+  }
+
+- alterar o método submit() para ver 
+como esta o fomulário:
+
+submit(){
+    if(this.momentForm.invalid){
+      return;
+    }
+    console.log(this.momentForm.value);
+  }
+
+- rodar preencher o formulário e ver no console se esta ok
+
+
+
+- emitir evento para o componente pai:
+
+
+- no .html do new-moment receber o evento:
+
+<h2>Compartilhe o seu <span>Momento</span>!</h2>
+<app-moment-form [btnText]="btnText" (onSubmit)="createHandler($event)"></app-moment-form>
+
+(onSubmit) é o nome do evento
+createHandler($event) é método que 
+é chamado no componente new-moment.ts com o evento como parametro
+
+
+- no componente filho "moment-form" no
+arquivo .ts importar o  Output para enviar o evento com os dados do formulário e 
+importar EventEmitter 
+
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+
+tambem importar a interface Moment:
+
+import { Moment } from 'src/app/Moment';
+
+
+e na classe: 
+
+export class MomentFormComponent implements OnInit{
+  @Output() onSubmit = new EventEmitter<Moment>()
+
+
+e no método submit(), para enviar os dados para o compomente pai:
+
+
+
+ submit(){
+    if(this.momentForm.invalid){
+      return;
+    }
+    console.log(this.momentForm.value);
+    this.onSubmit.emit(this.momentForm.value);
+  }
+
+
+
+
+- em .ts criar o méetodo createHandler() para tratar os dados que chegam e poder fazer a inserção no sistema pelo service (sera feito depois)
+
+
+- importa interface Moment
+
+export class NewMomentComponent {
+  btnText = 'Compartilhar!';
+
+
+  /*será um método assincrono pq terá interação com a API e esperará "algo" */
+  async createHandler(moment: Moment){
+   /*transforma fomulário angular em form data, para ser enviado para API, poderia ser um json,
+  mas no caso será FormData*/
+
+   const formData = new FormData
+
+   formData.append('title', moment.title);
+   formData.append('description', moment.description);
+
+   if(moment.image){
+    formData.append('image', moment.image);
+   }
+
+   //todo
+
+   //enviar para o service
+
+   //exibir msg
+
+   //redirect
+  }
+
+
+
+
+para usar a URl da api em varios locais, deixar ela em um arquivo que pode ser acessado de  qualquer local
+para isso criar a pasta me"environments" em src com o arquivo enviroment.ts
+
+export const environment = {
+  production: false,
+  baseApiUrl: "http://localhost:3333/",
+}
+
+
+
+- No moment.service criar o método que vai fazer a inserção(createMoment):
+
+importar a environment
+import { environment } from 'src/environments/environment';
+
+importar HttpClient que será usado depois para fazer a requisição Http
+
+import { HttpClient } from '@angular/common/http';
+
+importar o Observable
+import { Observable } from 'rxjs
+
+importar a interface de Moment
+import { Moment } from '../Moment';
+
+- criar propriedades e iniciar construtor:
+
+export class MomentService {
+  private baseAPiUrl = environment.baseApiUrl;
+  private apiUrl = `${this.baseAPiUrl}api/moments`
+
+  constructor(private http:HttpClient){}
+
+ 
+}
+
+  createMoment(formData: FormData):Observable<FormData>{
+    return this.http.post<FormData>(this.apiUrl, formData);
+
+  }
+
+
+- no createHandler enviar para o service
+
+importar MomentSerive
+import { MomentService } from 'src/app/services/moment.service';
+
+no construtor inicializar ele:
+
+export class NewMomentComponent {
+  btnText = 'Compartilhar!';
+
+  constructor(private momentService: MomentService){}
+
+em: 
+
+  //todo
+   await this.momentService.createMoment(formData).subscribe()
+
+
+INICIANDO COMPONENTE DE MENSAGEM
+
+-ng generate component components/messages
+
+- utilizar icone da biblioteca fortawesome
+
+- ng add @fortawesome/angular-fontawesome
+
+- instalar os 3 free
+
+
+- no .html do component messages
+
+<div class="message">
+  <div class="message-header">
+    <h2>Mensagem do Sistema:</h2>
+    <button class="clear">
+      <fa-icon [icon]="faTimes"></fa-icon>
+    </button>
+  </div>
+  <p>Está mensagem virá dinamicamente!</p>
+</div>
+ 
+
+
+- no .ts importar o icone e iniciar a propriedade
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
+export class MessagesComponent {
+  faTimes = faTimes;
+
+}
+
+- no app.component.html declarar o componente de mensagem
+
+<app-messages></app-messages>
+<app-header></app-header>
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>
+
+
+- fazer o CSS do componente de msg:
+
+.message{
+  position: fixed;
+  top: 3em;
+  width: 50%;
+  margin-left: 50%;
+  left: -25%;
+  z-index: 10;
+  background-color: #FFF;
+  border: 3px solid #dc3545;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-header{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.message-header button{
+  padding:  0.5em;
+  cursor: pointer;
+}
+
+.message p {
+  font-size: 1.2em;
+}
+
+- no arquivo .ts do componente de msg importar o serviço de mensagem:
+
+import { MessagesService } from 'src/app/services/messages.service';
+
+passar como paracometro no construtor:
+
+ constructor(public messageService: MessagesService){}
+
+- no message.service.ts criar a propriedade message:
+
+export class MessagesService {
+  message:string = '';
+
+- em message.component.html colocar uma diretiva *ngIf para se houver mensagem ele exibir se nao nao
+
+<div class="message" *ngIf="messageService.message">
+  <div class="message-header">
+
+
+FINALIZANDO SISTEMA DE MENSAGENS
+
+
+em messages.service.ts:
+
+- criação método para adicionar mensagem e étodo para limpar mensagens:
+
+export class MessagesService {
+  message:string = '';
+
+  constructor() { }
+
+  add(message:string){
+    this.message = message
+
+    setTimeout(()=>{
+      this.clear();
+    }, 4000)
+  }
+
+  clear(){
+    this.message = '';
+  }
+}
+
+
+- no componente de momentos "new-moment".ts:
+
+- importar o MessageService
+import { MessagesService } from 'src/app/services/
+
+- passar como parametro do método construtor: 
+
+  constructor(private momentService: MomentService, private messageService:MessagesService){}
+
+
+na classe: 
+
+ //exibir msg
+   this.messageService.add('Momento adicionado com sucesso!');
+
+
+- no arquivo.html, fazer com que o click, tambem chame  clearMessage qeu chama o método clear:
+
+    <button class="clear" (click)="clearMessage()">
+
+
+para redireciobar a página:
+
+em new-moment.ts
+importar router 
+import { Router } from '@angular/router';
+
+- passar no construtor
+
+constructor(
+    private momentService: MomentService,
+    private messageService:MessagesService,
+    private router: Router){}
+
+na classe:
+
+     //redirect, redireciona a página para home depois de adicionar momento
+
+
+- fazer página de "sobre"
+
+- em about.component.html:
+
+<div class="about">
+  <h2>Sobre o Moments</h2>
+  <p>Compartilhe seus momentos, e receba comentários de quem você mais gosta!</p>
+  <a routerLink="/moments/new">Quero compartilhar meu momento!</a>
+</div>
+
+
+- CSS
+
+.about{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+
+h2, p{
+  margin-bottom: 1em;
+}
+
+.about a {
+  text-decoration: underline;
+}
+
+h2 span {
+  color: #A52A2A;
+}
+
+
+
+RESGATANDO DADOS NO BANCO
+
+no arquivo .ts do home
+
+importações:
+
+import { MomentService } from 'src/app/services/moment.service';
+import { environment } from 'src/environments/environment';
+import { Moment } from './../../../../../../../31 - Finalizando sistema de mensgens/moments/src/app/Moment';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+
+-trazer o momentos
+
+criar as propriedades 
+allMoments que traz os momentos do banco e moments que vai trazer o filtro que será exibido depois da busca.
+baseApiUrl vai buscar dados da api
+
+
+export class HomeComponent {
+
+  allMoments: Moment[] = []
+  moments: Moment[] = []
+baseApiUrl = environment.baseApiUrl
+
+}
+
+inicializar construtor:
+constructor(private momenteService: MomentService){}
+
+implentar a classe com OnInit
+export class HomeComponent implements OnInit
+
+- no método ngOnInit sera feita a inicialização dos momentos buscando o service, ngOnInit terá um método de recepção de dados
+no moment.service, criar o método getMoments() que será responsável por trazer todos os momentos 
+
+para isso em moment.service
+
+importar a interface Response
+import { Response } from '../Response';
+
+
+criar o método
+getMoments():Observable<Response<Moment[]>>{
+    return this.http.get<Response<Moment[]>>(this.apiUrl)
+  }
+
+
+novamente no componente home no arquivo .ts utilizar esse método criado
+
+ngOnInit(): void {
+    this.momenteService.getMoments().subscribe((items)=>{
+      const data = items.data
+
+      data.map((item)=> {
+        item.created_at = new Date(item.created_at!).toLocaleDateString('pt-BR');
+
+      });
+
+      this.allMoments = data;
+      this.moments = data;
+    });
+  }
+
+
+testar e ver no console se tras o dados
+
+
+no arquivo .html do home:
+
+<div class="home-container">
+  <h1>Veja o que estão compartilhando</h1>
+  <div *ngFor="let moment of moments">
+  <h2>{{moment.title}}</h2>
+</div>
+</div>
+
+
+FINALIZANDO A HOME
+
+
+tranformar titulos em cards e depois linkar para página individuais
+
+- no home.component.html colocar uma diretiva if para que quando não houver nada cadastrado ainda, ao invés de aparecer uma página em branco aparecer outra coisa 
+
+html finalizado: 
+
+<div class="home-container">
+  <h1>Veja o que estão compartilhando</h1>
+  <div *ngIf="moments.length > 0; else noMoments">
+    <div class="moments-container">
+      <div class="moment" *ngFor="let moment of moments">
+        <img src="{{baseApiUrl}}uploads/{{moment.image}}" alt="{{moment.title}}">
+        <h3>{{moment.title}}</h3>
+        <p class="date">Em: {{moment.created_at}}</p>
+        <p>Comentários: {{moment.comments!.length}}</p>
+        <p><a routerLink="moments/{{moment.id}}">Detalhes</a></p>
+      </div>
+    </div>
+  </div>
+  <ng-template #noMoments>
+    <h1>Não há momentos cadastrados!</h1>
+  </ng-template>
+</div>
+
+
+
+- CSS:
+
+.home-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.home-container h1{
+  margin-bottom: 0.5em;
+}
+
+.moments-container{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.moment{
+  width: 32%;
+  margin-bottom:  1em;
+
+  text-align: center;
+}
+
+.moment img{
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.moment h3, .moment p{
+  margin-bottom: 1em;
+}
+
+.moment .date{
+  font-size: .7em;
+  font-style: italic;
+}
+
+a{
+  color: #A52A2A;
+  padding: .3em;
+}
+
+a:hover{
+  background-color: #ab2020;
+  border-radius: 10px;
+  color: #efefef;
+}
+
+
+BUSCA DE DADOS NO ANGULAR:
+
+- no home.component.ts definir o icone, criando a proporiedade faSerch e a propriedade searchTerm na classe 
+
+faSearch = faSearch
+ searchTerm: string = '';
+
+
+- no .html
+em baixo no titulo adicionar a div com o formulário para a busca:
+
+
+
+<div class="home-container">
+  <h1>Veja o que estão compartilhando</h1>
+  <div class="search-container">
+    <form>
+      <fa-icon [icon]="faSearch"></fa-icon>
+      <input type="text" placeholder="Ou busque por um momento.." (input)="search($event)">
+    </form>
+  </div>
+
+
+
+
+- criar o método search no arquivo .ts
+
+ search(event:Event):void{
+    const target = event.target as HTMLInputElement;
+    const value = target.value;
+
+    this.moments = this.allMoments.filter((moment) =>{
+       return moment.title.toLowerCase().includes(value);
+    });
+  }
+
+
+
+
+
+
+- fazer o css do formular de search
+
+.search-container{
+  margin-bottom:  2em;
+  width: 100%;
+}
+
+.search-container form{
+  width: 30%;
+  position: relative;
+}
+.search-container fa-icon{
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+.search-container input{
+  padding: .5em;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+PÁGINA INDIVIDUAL DE MOMENTO
+
+
+-criar componente que vai representar página individual de cada momento, comando "ng generate component components/page/moment"
+
+-no app-routing.module.ts criar o caminho para essa página
+
+const routes: Routes = [
+  
+  {path: 'moments/:id', component: MomentComponent}
+];
+
+
+- no .ts do componente moment chamar quando a página iniciar 
+
+implementar a classe com OnInit:
+export class MomentComponent implements OnInit{
+
+
+importações: serivice e interface de Moment
+
+import { Moment } from 'src/app/Moment'
+
+import { MomentService } from 'src/app/services/moment.service';
+
+delcarar na classe a propriedade:
+
+Moment?: Moment;
+
+inicicalizar o construtor com os parametro:
+
+constructor(private momentService: MomentService){}
+}
+
+- no método ngOnInit() trazer o dado:
+
+importar o ActivatedRoute
+import { ActivatedRoute } from '@angular/router';
+
+
+passar como parametro do contrutor:
+
+constructor(private momentService: MomentService, private route: ActivatedRoute){}
+
+
+método ngOnInit() como ficará:
+
+ngOnInit(): void {
+    //id qe esta na url
+    const id = Number(this.route.snapshot.paramMap.get("id"))
+
+}
+
+
+- no serviço moment.service.ts, criar o método getMoment()
+
+  getMoment(id: number): Observable<Response<Moment>>{
+
+
+
+- no moment.component.ts fazer o carregamento do dado
+
+ngOnInit(): void {
+    //id qe esta na url
+    const id = Number(this.route.snapshot.paramMap.get("id"))
+
+    this.momentService.getMoment(id).subscribe((item) => this.moment = item.data)
+
+}
+
+- no moment.component.html:
+
+
+<div class="moment" *ngIf="moment">
+  <h1>{{moment.title}}</h1>
+</div>
+
+
+
+
+AÇÕES DE EXCLUIR E EDITAR
+
+
+- em moment.component.ts
+
+importar:
+
+import { environment } from 'src/environments/environment';
+
+import { faTimes, faEdit } from '@fortawesome/free-solid-svg-icons'
+
+
+declarara propriedade na classe:
+
+baseApiUrl = environment.baseApiUrl;
+faTimes = faTimes;
+faEdit = faEdit;
+
+
+- em .html:
+
+<div class="moment" *ngIf="moment">
+  <h1>{{moment.title}}</h1>
+  <img src="{{baseApiUrl}}uploads/{{moment.image}}" alt="{{moment.title}}">
+  <div class="about-moment">
+    <h3>Sobre este momento:</h3>
+    <p>{{moment.description}}</p>
+  </div>
+  <div class="actions">
+    <h3>Ações:</h3>
+    <a routerLink="moments/edit/{{moment.id}}" class="edit-btn"><fa-icon [icon]="faEdit"></fa-icon> Editar
+  </a>
+    <button class="remove-btn">
+      <fa-icon [icon]="faTimes"></fa-icon>Excluir
+    </button>
+  </div>
+<!--comentarios-->
+</div>
+
+
+- CSS:
+
+.moment{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+h1{
+  margin-bottom: 1em;
+}
+
+img{
+  max-width: 500px;
+  margin-bottom: 0 auto 1em;
+}
+
+.about-monment, .actions{
+  border-bottom: 1px solid #CCC;
+  padding: 1.2em;
+  width: 100%;
+}
+
+.actions{
+  background-color: #eee;
+}
+
+.comments{
+  margin-bottom: 1em;
+  padding: 1.5em 0;
+}
+
+.about-moment h3,
+.actions h3,
+.comments h3{
+  margin-bottom: 1em;
+}
+
+
+
+- Estilizar os botoes no arquivo de estilo global:
+
+/*BUTTONS*/
+
+.edit-btn,
+.remove-btn{
+  border:1px solid #EFEFEF;
+  padding: .4em 1em;
+  font-size: 1em;
+  margin: 0 0.5em;
+  cursor: pointer;
+  background-color: #FFF;
+  transition: 0.4s;
+}
+
+
+button fa-icon,
+a fa-icon{
+  margin-right: 0.2em;
+}
+
+.edit-btn,
+.edit-btn path{
+  border-color: #007BFF;
+  color: #007BFF;
+}
+
+.edit-btn:hover,
+.edit-btn:hover path{
+  border-color: #007bff;
+  color: #FFF;
+  background-color: #007BFF;
+}
+
+.remove-btn,
+.remove-btn path{
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.remove-btn:hover,
+.remove-btn:hover path{
+  border-color: #dc3545;
+  color: #FFF;
+  background-color: #dc3545;
+}
+
+
+
+
+
+
+
+EXCLUINDO REGISTRO 
+
+
+- atrelar função ao clicar no botao de excluir
+
+  <button class="remove-btn"  (click)="removeHandler(moment.id!)">
+      <fa-icon [icon]="faTimes" ></fa-icon>Excluir
+    </button>
+
+
+em .ts criar a função na classe do componente para isso:
+
+importar:
+import { MessagesService } from 'src/app/services/messages.service';
+
+import { ActivatedRoute, Router } from '@angular/router';
+removeHandler(id:number){
+  console.log("testando")
+}
+
+
+- passar no construtor:
+
+constructor(
+  private momentService: MomentService,
+  private route: ActivatedRoute,
+  private messageService: MessagesService,
+  private router: Router){}
+
+
+- criar o método:
+
+async removeHandler(id:number){
+  //chama o método no service para exluir e espera resposta da api voltar
+  await this.momentService.removeMoment(id).subscribe()
+
+  //mostra mensagem após
+  this.messageService.add("Momento Excluido com sucesso!")
+
+  //redireciona a págin após excluir
+  this.router.navigate(['/'])
+}
+
+
+
+- criar o método no service de moment:
+
+removeMoment(id:number){
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete(url);
+  }
+
+
+
+
+CRIANDO TELA DE EDIÇÃO
+
+
+- criar componente que será a página
+de edição:
+
+ng generate component components/page/edit-moment
+
+- passar rota em "app-routing-module", deve ser passada
+em antes da rota de ver o momento,
+para o /edit/id não servir como id
+e entrar na rota de MomentComponent
+
+
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'moments/new', component: NewMomentComponent},
+  {path: 'moments/edit/:id', component: EditMomentComponent},
+  {path: 'moments/:id', component: MomentComponent}
+];
+
+
+
+em edit-moment.component trazer os dados
+
+importar:
+
+import { ActivatedRoute, Router } from '@angular/router';
+import { Moment } from 'src/app/Moment';
+import { MomentService } from 'src/app/services/moment.service';
+
+
+- passar o serviço e route no construtor  e declarar moment:
+
+
+export class EditMomentComponent {
+
+    moment!:Moment;
+    btnText:string = 'Editar';
+
+  constructor(private momentService:MomentService, private route:ActivatedRoute){}
+
+- implementar a classe com OnInit e implmentar o método ngInit()
+
+
+ngOnInit(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.momentService.getMoment(id).subscribe((item) =>{this.moment = item.data;
+    });
+  }
+
+
+
+- criar a propriedade momentData no moment-form.ts:
+
+ @Input() momentData : Moment | null = null;
+
+
+- Fazer CSS:
+
+h2{
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 2.2em;
+}
+
+h2 span{
+  color: #ab2020;;
+}
+
+
+
+FINALIZANDO EDIÇÃO DO REGISTRO:
+
+
+- pra preecher o formulário quando abrir a página de edição, 
+fazer condicional para saber quando vai vir os dados pelo momentData,
+e se vierem ira inicialos o FormControl, para isso no moment-form.component:
+
+ngOnInit():void{
+    this.momentForm = new FormGroup({
+      id: new FormControl(this.momentData ? this.momentData.id : ''),
+      title: new FormControl(this.momentData ? this.momentData.title : '',
+      [Validators.required]),
+      description: new FormControl(this.momentData ? this.momentData.description : '', [Validators.required]),
+      image: new FormControl(''),
+    });
+  }
+
+
+- Inserir id no template :
+
+<form (ngSubmit)="submit()" [formGroup]="momentForm" #formDir="ngForm">
+  <input type="hidden" formControlName="id">
+
+
+- Para fazer a edição, que será um evento que será enviado para o componente pai:
+
+
+em edit-moment.component.html:
+
+<app-moment-form (onSubmit)="editHandler($event)" [momentData]="moment" [btnText]="btnText"></app-moment-form>
+
+
+em .ts criar o método editHandler():
+
+importar:
+import { MomentService } from 'src/app/services/moment.service';
+import { Router } from '@angular/router';
+
+passar no construtor:
+
+constructor(private momentService:MomentService, 
+    private route:ActivatedRoute, 
+    private messageService : MessagesService,
+private router: Router){}
+
+
+-criação do método:
+
+ editHandler(evente:any){
+    console.log("teste")
+  }
+
+
+- fazer atingir o service mandandos os dados pra fazer a edição:
+
+
+
+no service de moment:
+
+ updateMoment(id:number, formData:FormData): Observable<FormData>{
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<FormData>(url, formData);
+  }
+
+
+continuar o método editHandler():
+
+async editHandler(momentData : Moment){
+    const id = this.moment.id
+    const formData = new FormData
+
+    formData.append('title', momentData.title);
+    formData.append('description', momentData.description);
+
+    if(momentData.image){
+      formData.append ('image', momentData.image);
+    }
+
+    await this.momentService.updateMoment(id!, formData).subscribe()
+
+    this.messageService.add('Momento Atualizado com sucesso!')
+
+this.router.navigate(['/']);
+  }
+
+
+
+
+FOMULÁRIO DE COMENTÁRIOS
+
+
+em moment.html, fazer um if ternario para se a quantidade de comentários for maior do que 0 mostrar, se não nao:
+
+<!--comentarios-->
+<div class="comments">
+  <h3>Commentários: {{moment.comments!.length > 0 ? moment.comments!.length : 0}}</h3>
+  <div *ngIf="moment.comments!.length > 0; else noComments">
+    <div class="comment-container" *ngFor="let comment of moment.comments">
+    <p class="comment">{{comment.text}}</p>
+    <p class="author"><span>por:</span> {{comment.username}}</p>
+  </div>
+  </div>
+  <ng-template #noComments>
+    não há comentários!
+  </ng-template>
+</div>
+<div class="comment-form">
+  <h3>Deixe um comentário:</h3>
+  <form>
+    <div class="form-group">
+      <label for="text">Commentário:</label>
+      <textarea placeholder="O que você quer comentar?" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="username">Nome:</label>
+     <input type="text" placeholder="Digite seu nome" required>
+    </div>
+    <input type="submit" value="Comentar!">
+  </form>
+</div>
+</div>
+
+
+- CSS:
+
+
+.comments{
+  margin-bottom: 1em;
+  padding: 1.5em 0;
+}
+
+.about-moment h3,
+.actions h3,
+.comments h3{
+  margin-bottom: 1em;
+}
+
+.comment-container{
+  text-align: left;
+  border-bottom: 1px solid #efefef;
+  padding: 1em 0;
+}
+
+.comment{
+  font-size:  .9em;
+  width: 100%;
+}
+
+.author{
+  font-size: 0.9em;
+}
+
+.comment-form{
+  margin-bottom: 3em;
+}
+
+.comment-form form {
+  margin-top: 1em;
+  text-align: left;
+  max-width: 300px;
+  margin-left: 0;
+}
+
+.author span{
+  font-weight: bold;
+}
+
+
+
+
+
+INSERINDO COMENTÁRIOS:
+
+
+no serviço de comment "comment-service":
+
+importar:
+
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Comments } from '../Comments';
+import { Response } from '../Response';
+
+- declarar: 
+
+ private baseApiUrl = environment.baseApiUrl;
+  private apiUrl = `${this.baseApiUrl}api/moments/comments`
+
+
+- passar no construtor:
+
+constructor(private http:HttpClient) { }
+
+- criar o método createComment():
+
+
+  createComment(data:Comment): Observable<Response<Comment>>{
+
+
+
+- em moment.component.ts:
+
+importar:
+
+import { Comments } from 'src/app/Comments';
+
+import { FormGroup, FormControl, Validators, FormGroupDirective } from '@angular/forms';
+
+import { CommentsService } from 'src/app/services/comments.service';
+
+
+
+declarar:
+
+commentForm!: FormGroup
+
+
+passar como parametro do construtor:
+
+constructor(
+  
+  private commentService: CommentsService,){},
+
+
+- no método ngOnInit() fazer a inicialização do formulario, que é onde ele pega o moment:
+
+this.commentForm = new FormGroup({
+      text: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required]),
+
+
+- fazer getters:
+
+get text(){
+  return this.commentForm.get('text')!;
+}
+
+get userName(){
+  return this.commentForm.get('username')!;
+}
+
+
+
+- iniciar essa estrutura no front:
+
+
+no tamplate do componente de moment:
+
+dar nome aos campos e fazer validações:
+------------------------
+<h3>Deixe um comentário:</h3>
+  <form [formGroup]="commentForm" #formDir="ngForm" (ngSubmit)="onSubmit(formDir)">
+----------------------
+      <textarea formControlName="text" placeholder="O que você quer comentar?" required></textarea>
+
+
+----------------------
+<div class="form-group">
+      <label for="username">Nome:</label>
+     <input formControlName="username" type="text" placeholder="Digite seu nome" required>
+    </div>
+
+
+- div de validação:
+
+
+ <label for="text">Commentário:</label>
+      <textarea formControlName="text" placeholder="O que você quer comentar?" required></textarea>
+      <div *ngIf="text.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="text.errors?.['required']">É nessário comentar algo para postar.</p>
+      </div>
+
+
+------------------------------
+
+
+  <label for="username">Nome:</label>
+     <input formControlName="username" type="text" placeholder="Digite seu nome" required>
+     <div *ngIf="userName.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="userName.errors?.['required']">O nome do usuário é obrigatório.</p>
+    </div>
+
+
