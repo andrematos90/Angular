@@ -1,0 +1,76 @@
+PÁGINA INDIVIDUAL DE MOMENTO
+
+
+-criar componente que vai representar página individual de cada momento, comando "ng generate component components/page/moment"
+
+-no app-routing.module.ts criar o caminho para essa página
+
+const routes: Routes = [
+  
+  {path: 'moments/:id', component: MomentComponent}
+];
+
+
+- no .ts do componente moment chamar quando a página iniciar 
+
+implementar a classe com OnInit:
+export class MomentComponent implements OnInit{
+
+
+importações: serivice e interface de Moment
+
+import { Moment } from 'src/app/Moment'
+
+import { MomentService } from 'src/app/services/moment.service';
+
+delcarar na classe a propriedade:
+
+Moment?: Moment;
+
+inicicalizar o construtor com os parametro:
+
+constructor(private momentService: MomentService){}
+}
+
+- no método ngOnInit() trazer o dado:
+
+importar o ActivatedRoute
+import { ActivatedRoute } from '@angular/router';
+
+
+passar como parametro do contrutor:
+
+constructor(private momentService: MomentService, private route: ActivatedRoute){}
+
+
+método ngOnInit() como ficará:
+
+ngOnInit(): void {
+    //id qe esta na url
+    const id = Number(this.route.snapshot.paramMap.get("id"))
+
+}
+
+
+- no serviço moment.service.ts, criar o método getMoment()
+
+  getMoment(id: number): Observable<Response<Moment>>{
+
+
+
+- no moment.component.ts fazer o carregamento do dado
+
+ngOnInit(): void {
+    //id qe esta na url
+    const id = Number(this.route.snapshot.paramMap.get("id"))
+
+    this.momentService.getMoment(id).subscribe((item) => this.moment = item.data)
+
+}
+
+- no moment.component.html:
+
+
+<div class="moment" *ngIf="moment">
+  <h1>{{moment.title}}</h1>
+</div>
