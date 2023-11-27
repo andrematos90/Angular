@@ -1,0 +1,85 @@
+FINALIZANDO EDIÇÃO DO REGISTRO:
+
+
+- pra preecher o formulário quando abrir a página de edição, 
+fazer condicional para saber quando vai vir os dados pelo momentData,
+e se vierem ira inicialos o FormControl, para isso no moment-form.component:
+
+ngOnInit():void{
+    this.momentForm = new FormGroup({
+      id: new FormControl(this.momentData ? this.momentData.id : ''),
+      title: new FormControl(this.momentData ? this.momentData.title : '',
+      [Validators.required]),
+      description: new FormControl(this.momentData ? this.momentData.description : '', [Validators.required]),
+      image: new FormControl(''),
+    });
+  }
+
+
+- Inserir id no template :
+
+<form (ngSubmit)="submit()" [formGroup]="momentForm" #formDir="ngForm">
+  <input type="hidden" formControlName="id">
+
+
+- Para fazer a edição, que será um evento que será enviado para o componente pai:
+
+
+em edit-moment.component.html:
+
+<app-moment-form (onSubmit)="editHandler($event)" [momentData]="moment" [btnText]="btnText"></app-moment-form>
+
+
+em .ts criar o método editHandler():
+
+importar:
+import { MomentService } from 'src/app/services/moment.service';
+import { Router } from '@angular/router';
+
+passar no construtor:
+
+constructor(private momentService:MomentService, 
+    private route:ActivatedRoute, 
+    private messageService : MessagesService,
+private router: Router){}
+
+
+-criação do método:
+
+ editHandler(evente:any){
+    console.log("teste")
+  }
+
+
+- fazer atingir o service mandandos os dados pra fazer a edição:
+
+
+
+no service de moment:
+
+ updateMoment(id:number, formData:FormData): Observable<FormData>{
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<FormData>(url, formData);
+  }
+
+
+continuar o método editHandler():
+
+async editHandler(momentData : Moment){
+    const id = this.moment.id
+    const formData = new FormData
+
+    formData.append('title', momentData.title);
+    formData.append('description', momentData.description);
+
+    if(momentData.image){
+      formData.append ('image', momentData.image);
+    }
+
+    await this.momentService.updateMoment(id!, formData).subscribe()
+
+    this.messageService.add('Momento Atualizado com sucesso!')
+
+this.router.navigate(['/']);
+  }
+
