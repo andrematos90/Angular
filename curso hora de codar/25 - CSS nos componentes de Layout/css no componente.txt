@@ -1,0 +1,113 @@
+CSS NOS COMPONENTES DE LOYOUT
+
+12 - criar componente "new-moment" que será a página de adição de moments:
+
+colocar a rota do componente no app-routing-module.ts:
+
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'moments/new', component: NewMomentComponent}
+];
+
+13 - no header.component.html:
+
+adicionar routerlink: 
+
+     <h2>Moments</h2>
+ <nav>
+  <a class="brand" routerLink="/">
+    <img src="/assets/icon.png" alt="icon-moments">
+ </a>
+  <ul class="links">
+    <li><a routerLink="/">Home</a></li>
+    <li id="add"><a routerLink="/moments/new">Compartilhar</a></li>
+    <li><a routerLink="/about">Sobre</a></li>
+  </ul>
+</nav>
+
+
+14 -  em index.html colocar favicon: 
+
+<link rel="icon" type="image/x-icon" href="asset/favico.png">
+
+15 - no footer.component.html:
+
+<footer>
+  <h3>Compartilhe seu mellhores momentos!</h3>
+  <p><span>Moments</span>&copy; 2023</p>
+</footer>
+
+16 - no header.component.css:
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  border-bottom: 1px solid #777;
+}
+.brands,
+.links{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brands img {
+  width: 40px;
+  margin-right: 0.6em;
+}
+.brands h2{
+  transition: .4s;
+}
+.brands:hover > h2{
+  color: #A52A2A
+}
+.links li {
+  margin-right: 1em;
+  list-style: none;
+
+}
+
+#add a {
+  color: #A52A2A;
+
+}
+
+
+
+
+#add a:hover{
+  background-color: #ab2020;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.links li:hover {
+  background-color: #ab2020;
+  color: #fff;
+  border-radius: 10px;
+}
+
+
+
+17 - no footer.component.css:
+
+footer {
+  border-top: 1px solid #777;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+footer h3{
+  margin-top: 1.2em;
+}
+
+footer span{
+  font-weight: bold;
+  color: #A52A2A
+}
+
