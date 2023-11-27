@@ -1,0 +1,127 @@
+VALIDAÇÃO DE FOMULÁRIO:
+
+
+ - em moment-form.html:
+
+ativar qual método será utilizado para o envio do formulário criando a diretiva (ngSubmit) que dispara o método submit()
+
+<form (ngSubmit)="submit()">
+
+
+
+- criar método no moment-form.component.ts
+
+submit(){
+    console.log("enviou formulário")
+  }
+
+
+- declarar um grupo de formulário, para o angular conseguir mapear os inputs
+e poder disparar as validações:
+
+ [formGroup]="momentForm">
+
+momentForm é o nome do formulário
+
+<form (ngSubmit)="submit()" [formGroup]="momentForm">
+
+
+- declarar na classe  no arquivo.ts:
+
+ momentForm!: FormGroup;
+
+- no arquivo .html  com "formDir="ngForm"" é declarado aonde é o formulário: 
+
+formDir="ngForm"
+
+faz ele entender que é um formulário
+
+ficará assim:
+
+<form (ngSubmit)="submit()" [formGroup]="momentForm" #formDir="ngForm">
+
+
+26 - criar validações em .html:
+
+- criar o atributo formControlName,
+que vai ser linkado com o formulário 
+que sera criado no componente:
+
+<input type="text" placeholder="Coloque um titulo" formControlName="" required/>
+
+- colocar div de validação:
+
+<div *ngIf="title.invalid && formDir.submitted" class="validation-error">
+      <p>o título é obrigatório.</p>
+    </div>
+
+faz com que a div seja exibida se não houver título e quando o formulário é enviado.
+
+- para resolver o erro em "title",
+no arquivo .ts:
+
+ inicializar o formulário e declarar os campos e declarar validators:
+:
+
+  ngOnInit():void{
+    this.momentForm = new FormGroup({
+      id: new FormControl(''),
+      title: new FormControl('',[Validators.required]),
+      description: new FormControl('',[Validators.required]),
+      image: new FormControl(''),
+    });
+  }
+
+- inicializar as propriedades: 
+
+get title(){
+    return this.momentForm.get('ttile')!;
+  }
+
+  get description(){
+    return this.momentForm.get('description')!;
+  }
+
+- para melhorar a validação:
+
+ <p *ngIf="title.errors?.['required']">o título é obrigatório.</p>
+
+
+
+- criar trava de formulário invalido 
+pq mesmo com a  validação, pode acabar enviando o formulário:
+
+- no arquivo .ts:
+
+submit(){
+    if(this.momentForm.invalid){
+      return;
+    }
+    console.log("enviou formulário")
+  }
+
+
+- criar validação para descrição:
+
+ <div class="form-group">
+      <label for="discription">Descrição:</label>
+      <textarea placeholder="O que aconteceu nesse momento?"
+      formControlName="description"
+      required></textarea>
+      <div *ngIf="description.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="description.errors?.['required']">A descrição é obrigatória.</p>
+      </div>
+  </div>
+
+
+
+- criar CSS da validação
+no arquivo CSS global 
+
+.validation-error p {
+  color: #dc3545;
+  margin-top: 0.4em;
+  border-left: 3px solid #dc3545;
+  padding-left: 0.2em;
+}
+
