@@ -1,0 +1,102 @@
+CRIAÇÂO PÁGINA DE FORMULÁRO:
+
+
+ - criar o componente "moment-form"
+
+ - em new "new-moment.component":
+
+<h2>Compartilh o seu <span>Momento</span>!</h2>
+<app-moment-form></app-moment-form>
+
+20 - em "moment-form.component.htmml":
+
+<form>
+  <div class="form-group">
+    <label for="title">Titulo:</label>
+    <input type="text" placeholder="Coloque um titulo" required />
+  </div>
+  <div class="form-group">
+    <label for="discription">Descrição:</label>
+    <textarea placeholder="O que aconteceu nesse momento?" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="image">Coloque a foto que mais marcou..</label>
+    <input type="file">
+  </div>
+  <input type="submit" value="{{ btnText }}">
+</form>
+
+- no arquivo .ts do componente:
+
+export class MomentFormComponent {
+  @Input() btnText! : string;
+}
+
+- ir no html do componente pai que é  o "new-momemnt" e colocar o texto no botao:
+
+<app-moment-form [btnText]="btnText"></app-moment-form>
+
+no arquivo .ts:
+
+export class NewMomentComponent {
+  btnText = 'Compartilhar!';
+
+}
+
+
+- Criar o CSS do formulário no css
+global pq vai ser usado para diversos formulários:
+
+/*FORM*/
+
+form {
+  width: 450px;
+  margin: 0 auto;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.form-group label {
+  font-weight: bold;
+  font-size: .9em;
+  margin-bottom: .4em;
+}
+
+.form-group input, .form-group textarea {
+  padding: 0.6em;
+  color: #777;
+  font-size: 0.8em;
+}
+
+input[type="submit"]{
+  background-color: #efefef;
+  border: 2px solid transparent;
+  padding: 0.6em 1em;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+input[type="submit"]:hover{
+  background-color: transparent;
+  color: #A52A2A;
+  border-color: #A52A2A;
+
+}
+
+- no CSS do componente new-moment:
+
+h2{
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 2.2em;
+}
+
+h2 span {
+  color: #A52A2A;
+}
