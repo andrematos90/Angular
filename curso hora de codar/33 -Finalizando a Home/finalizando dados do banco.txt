@@ -1,0 +1,80 @@
+FINALIZANDO A HOME
+
+
+tranformar titulos em cards e depois linkar para página individuais
+
+- no home.component.html colocar uma diretiva if para que quando não houver nada cadastrado ainda, ao invés de aparecer uma página em branco aparecer outra coisa 
+
+html finalizado: 
+
+<div class="home-container">
+  <h1>Veja o que estão compartilhando</h1>
+  <div *ngIf="moments.length > 0; else noMoments">
+    <div class="moments-container">
+      <div class="moment" *ngFor="let moment of moments">
+        <img src="{{baseApiUrl}}uploads/{{moment.image}}" alt="{{moment.title}}">
+        <h3>{{moment.title}}</h3>
+        <p class="date">Em: {{moment.created_at}}</p>
+        <p>Comentários: {{moment.comments!.length}}</p>
+        <p><a routerLink="moments/{{moment.id}}">Detalhes</a></p>
+      </div>
+    </div>
+  </div>
+  <ng-template #noMoments>
+    <h1>Não há momentos cadastrados!</h1>
+  </ng-template>
+</div>
+
+
+
+- CSS:
+
+.home-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.home-container h1{
+  margin-bottom: 0.5em;
+}
+
+.moments-container{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.moment{
+  width: 32%;
+  margin-bottom:  1em;
+
+  text-align: center;
+}
+
+.moment img{
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.moment h3, .moment p{
+  margin-bottom: 1em;
+}
+
+.moment .date{
+  font-size: .7em;
+  font-style: italic;
+}
+
+a{
+  color: #A52A2A;
+  padding: .3em;
+}
+
+a:hover{
+  background-color: #ab2020;
+  border-radius: 10px;
+  color: #efefef;
+}
