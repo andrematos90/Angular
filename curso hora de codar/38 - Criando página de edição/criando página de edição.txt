@@ -1,0 +1,72 @@
+CRIANDO TELA DE EDIÇÃO
+
+
+- criar componente que será a página
+de edição:
+
+ng generate component components/page/edit-moment
+
+- passar rota em "app-routing-module", deve ser passada
+em antes da rota de ver o momento,
+para o /edit/id não servir como id
+e entrar na rota de MomentComponent
+
+
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'moments/new', component: NewMomentComponent},
+  {path: 'moments/edit/:id', component: EditMomentComponent},
+  {path: 'moments/:id', component: MomentComponent}
+];
+
+
+
+em edit-moment.component trazer os dados
+
+importar:
+
+import { ActivatedRoute, Router } from '@angular/router';
+import { Moment } from 'src/app/Moment';
+import { MomentService } from 'src/app/services/moment.service';
+
+
+- passar o serviço e route no construtor  e declarar moment:
+
+
+export class EditMomentComponent {
+
+    moment!:Moment;
+    btnText:string = 'Editar';
+
+  constructor(private momentService:MomentService, private route:ActivatedRoute){}
+
+- implementar a classe com OnInit e implmentar o método ngInit()
+
+
+ngOnInit(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.momentService.getMoment(id).subscribe((item) =>{this.moment = item.data;
+    });
+  }
+
+
+
+- criar a propriedade momentData no moment-form.ts:
+
+ @Input() momentData : Moment | null = null;
+
+
+- Fazer CSS:
+
+h2{
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 2.2em;
+}
+
+h2 span{
+  color: #ab2020;;
+}
+
