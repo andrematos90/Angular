@@ -1,0 +1,63 @@
+BUSCA DE DADOS NO ANGULAR:
+
+- no home.component.ts definir o icone, criando a proporiedade faSerch e a propriedade searchTerm na classe 
+
+faSearch = faSearch
+ searchTerm: string = '';
+
+
+- no .html
+em baixo no titulo adicionar a div com o formulário para a busca:
+
+
+
+<div class="home-container">
+  <h1>Veja o que estão compartilhando</h1>
+  <div class="search-container">
+    <form>
+      <fa-icon [icon]="faSearch"></fa-icon>
+      <input type="text" placeholder="Ou busque por um momento.." (input)="search($event)">
+    </form>
+  </div>
+
+
+
+
+- criar o método search no arquivo .ts
+
+ search(event:Event):void{
+    const target = event.target as HTMLInputElement;
+    const value = target.value;
+
+    this.moments = this.allMoments.filter((moment) =>{
+       return moment.title.toLowerCase().includes(value);
+    });
+  }
+
+
+
+
+
+
+- fazer o css do formular de search
+
+.search-container{
+  margin-bottom:  2em;
+  width: 100%;
+}
+
+.search-container form{
+  width: 30%;
+  position: relative;
+}
+.search-container fa-icon{
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+.search-container input{
+  padding: .5em;
+  width: 100%;
+  text-align: center;
+}
