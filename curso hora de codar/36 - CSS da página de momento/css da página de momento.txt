@@ -1,0 +1,133 @@
+AÇÕES DE EXCLUIR E EDITAR
+
+
+- em moment.component.ts
+
+importar:
+
+import { environment } from 'src/environments/environment';
+
+import { faTimes, faEdit } from '@fortawesome/free-solid-svg-icons'
+
+
+declarara propriedade na classe:
+
+baseApiUrl = environment.baseApiUrl;
+faTimes = faTimes;
+faEdit = faEdit;
+
+
+- em .html:
+
+<div class="moment" *ngIf="moment">
+  <h1>{{moment.title}}</h1>
+  <img src="{{baseApiUrl}}uploads/{{moment.image}}" alt="{{moment.title}}">
+  <div class="about-moment">
+    <h3>Sobre este momento:</h3>
+    <p>{{moment.description}}</p>
+  </div>
+  <div class="actions">
+    <h3>Ações:</h3>
+    <a routerLink="moments/edit/{{moment.id}}" class="edit-btn"><fa-icon [icon]="faEdit"></fa-icon> Editar
+  </a>
+    <button class="remove-btn">
+      <fa-icon [icon]="faTimes"></fa-icon>Excluir
+    </button>
+  </div>
+<!--comentarios-->
+</div>
+
+
+- CSS:
+
+.moment{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+h1{
+  margin-bottom: 1em;
+}
+
+img{
+  max-width: 500px;
+  margin-bottom: 0 auto 1em;
+}
+
+.about-monment, .actions{
+  border-bottom: 1px solid #CCC;
+  padding: 1.2em;
+  width: 100%;
+}
+
+.actions{
+  background-color: #eee;
+}
+
+.comments{
+  margin-bottom: 1em;
+  padding: 1.5em 0;
+}
+
+.about-moment h3,
+.actions h3,
+.comments h3{
+  margin-bottom: 1em;
+}
+
+
+
+- Estilizar os botoes no arquivo de estilo global:
+
+/*BUTTONS*/
+
+.edit-btn,
+.remove-btn{
+  border:1px solid #EFEFEF;
+  padding: .4em 1em;
+  font-size: 1em;
+  margin: 0 0.5em;
+  cursor: pointer;
+  background-color: #FFF;
+  transition: 0.4s;
+}
+
+
+button fa-icon,
+a fa-icon{
+  margin-right: 0.2em;
+}
+
+.edit-btn,
+.edit-btn path{
+  border-color: #007BFF;
+  color: #007BFF;
+}
+
+.edit-btn:hover,
+.edit-btn:hover path{
+  border-color: #007bff;
+  color: #FFF;
+  background-color: #007BFF;
+}
+
+.remove-btn,
+.remove-btn path{
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.remove-btn:hover,
+.remove-btn:hover path{
+  border-color: #dc3545;
+  color: #FFF;
+  background-color: #dc3545;
+}
+
+
+
