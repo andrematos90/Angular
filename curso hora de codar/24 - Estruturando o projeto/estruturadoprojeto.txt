@@ -1,0 +1,52 @@
+ESTRUTURANDO O PROJETO
+
+1 - criar projeto
+2 - criar componentes header e footer
+3 - criar página "about" e "home" 
+
+4 - em app.component.html:
+
+<app-header></app-header>
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>
+
+5 - em header.component.html:
+
+<h2>Header</h2>
+
+6 - em footer.component.html:
+
+<h2>Footer</h2>
+
+7 - em about.component.html:
+
+<h2>Página de about</h2>
+
+8 - em home.component.html:
+
+<h2>Página Home</h2>
+
+
+
+9 -  em app-routing.module.ts alterar configurações de rotas:
+
+- colocar os paths:
+
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path:'about', component: AboutComponent}
+];
+
+10 - em header.component.html:
+
+<h2>Header</h2>
+<nav>
+  <ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/about">Sobre</a></li>
+  </ul>
+</nav>
+
+11 - adicionar css geral no arquivo global style.css
