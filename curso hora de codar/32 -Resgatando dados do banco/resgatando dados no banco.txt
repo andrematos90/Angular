@@ -1,0 +1,76 @@
+RESGATANDO DADOS NO BANCO
+
+no arquivo .ts do home
+
+importações:
+
+import { MomentService } from 'src/app/services/moment.service';
+import { environment } from 'src/environments/environment';
+import { Moment } from './../../../../../../../31 - Finalizando sistema de mensgens/moments/src/app/Moment';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+
+-trazer o momentos
+
+criar as propriedades 
+allMoments que traz os momentos do banco e moments que vai trazer o filtro que será exibido depois da busca.
+baseApiUrl vai buscar dados da api
+
+
+export class HomeComponent {
+
+  allMoments: Moment[] = []
+  moments: Moment[] = []
+baseApiUrl = environment.baseApiUrl
+
+}
+
+inicializar construtor:
+constructor(private momenteService: MomentService){}
+
+implentar a classe com OnInit
+export class HomeComponent implements OnInit
+
+- no método ngOnInit sera feita a inicialização dos momentos buscando o service, ngOnInit terá um método de recepção de dados
+no moment.service, criar o método getMoments() que será responsável por trazer todos os momentos 
+
+para isso em moment.service
+
+importar a interface Response
+import { Response } from '../Response';
+
+
+criar o método
+getMoments():Observable<Response<Moment[]>>{
+    return this.http.get<Response<Moment[]>>(this.apiUrl)
+  }
+
+
+novamente no componente home no arquivo .ts utilizar esse método criado
+
+ngOnInit(): void {
+    this.momenteService.getMoments().subscribe((items)=>{
+      const data = items.data
+
+      data.map((item)=> {
+        item.created_at = new Date(item.created_at!).toLocaleDateString('pt-BR');
+
+      });
+
+      this.allMoments = data;
+      this.moments = data;
+    });
+  }
+
+
+testar e ver no console se tras o dados
+
+
+no arquivo .html do home:
+
+<div class="home-container">
+  <h1>Veja o que estão compartilhando</h1>
+  <div *ngFor="let moment of moments">
+  <h2>{{moment.title}}</h2>
+</div>
+</div>
