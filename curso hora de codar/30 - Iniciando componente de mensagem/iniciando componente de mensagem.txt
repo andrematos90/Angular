@@ -1,0 +1,91 @@
+INICIANDO COMPONENTE DE MENSAGEM
+
+-ng generate component components/messages
+
+- utilizar icone da biblioteca fortawesome
+
+- ng add @fortawesome/angular-fontawesome
+
+- instalar os 3 free
+
+
+- no .html do component messages
+
+<div class="message">
+  <div class="message-header">
+    <h2>Mensagem do Sistema:</h2>
+    <button class="clear">
+      <fa-icon [icon]="faTimes"></fa-icon>
+    </button>
+  </div>
+  <p>Está mensagem virá dinamicamente!</p>
+</div>
+ 
+
+
+- no .ts importar o icone e iniciar a propriedade
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
+export class MessagesComponent {
+  faTimes = faTimes;
+
+}
+
+- no app.component.html declarar o componente de mensagem
+
+<app-messages></app-messages>
+<app-header></app-header>
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>
+
+
+- fazer o CSS do componente de msg:
+
+.message{
+  position: fixed;
+  top: 3em;
+  width: 50%;
+  margin-left: 50%;
+  left: -25%;
+  z-index: 10;
+  background-color: #FFF;
+  border: 3px solid #dc3545;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-header{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.message-header button{
+  padding:  0.5em;
+  cursor: pointer;
+}
+
+.message p {
+  font-size: 1.2em;
+}
+
+- no arquivo .ts do componente de msg importar o serviço de mensagem:
+
+import { MessagesService } from 'src/app/services/messages.service';
+
+passar como paracometro no construtor:
+
+ constructor(public messageService: MessagesService){}
+
+- no message.service.ts criar a propriedade message:
+
+export class MessagesService {
+  message:string = '';
+
+- em message.component.html colocar uma diretiva *ngIf para se houver mensagem ele exibir se nao nao
+
+<div class="message" *ngIf="messageService.message">
+  <div class="message-header">
