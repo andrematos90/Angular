@@ -1,0 +1,172 @@
+INSERINDO DADOS NO SISTEMA
+
+
+- para colocar uma imagem no moment form:
+
+- em moment-form.component.html
+
+  <input type="file" (change)="onFileSelected($event)">
+
+para que sempre que seja alterado algo, esse evento seja mapeado
+
+no arquivo .ts criar o método,
+ele jogará a imagem no formulário
+ 
+  onFileSelected(event: any){
+    const file: File = event.target.files[0];
+
+    this.momentForm.patchValue({image: file});
+  }
+
+- alterar o método submit() para ver 
+como esta o fomulário:
+
+submit(){
+    if(this.momentForm.invalid){
+      return;
+    }
+    console.log(this.momentForm.value);
+  }
+
+- rodar preencher o formulário e ver no console se esta ok
+
+
+
+- emitir evento para o componente pai:
+
+
+- no .html do new-moment receber o evento:
+
+<h2>Compartilhe o seu <span>Momento</span>!</h2>
+<app-moment-form [btnText]="btnText" (onSubmit)="createHandler($event)"></app-moment-form>
+
+(onSubmit) é o nome do evento
+createHandler($event) é método que 
+é chamado no componente new-moment.ts com o evento como parametro
+
+
+- no componente filho "moment-form" no
+arquivo .ts importar o  Output para enviar o evento com os dados do formulário e 
+importar EventEmitter 
+
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+
+tambem importar a interface Moment:
+
+import { Moment } from 'src/app/Moment';
+
+
+e na classe: 
+
+export class MomentFormComponent implements OnInit{
+  @Output() onSubmit = new EventEmitter<Moment>()
+
+
+e no método submit(), para enviar os dados para o compomente pai:
+
+
+
+ submit(){
+    if(this.momentForm.invalid){
+      return;
+    }
+    console.log(this.momentForm.value);
+    this.onSubmit.emit(this.momentForm.value);
+  }
+
+
+
+
+- em .ts criar o méetodo createHandler() para tratar os dados que chegam e poder fazer a inserção no sistema pelo service (sera feito depois)
+
+
+- importa interface Moment
+
+export class NewMomentComponent {
+  btnText = 'Compartilhar!';
+
+
+  /*será um método assincrono pq terá interação com a API e esperará "algo" */
+  async createHandler(moment: Moment){
+   /*transforma fomulário angular em form data, para ser enviado para API, poderia ser um json,
+  mas no caso será FormData*/
+
+   const formData = new FormData
+
+   formData.append('title', moment.title);
+   formData.append('description', moment.description);
+
+   if(moment.image){
+    formData.append('image', moment.image);
+   }
+
+   //todo
+
+   //enviar para o service
+
+   //exibir msg
+
+   //redirect
+  }
+
+
+
+
+para usar a URl da api em varios locais, deixar ela em um arquivo que pode ser acessado de  qualquer local
+para isso criar a pasta me"environments" em src com o arquivo enviroment.ts
+
+export const environment = {
+  production: false,
+  baseApiUrl: "http://localhost:3333/",
+}
+
+
+
+- No moment.service criar o método que vai fazer a inserção(createMoment):
+
+importar a environment
+import { environment } from 'src/environments/environment';
+
+importar HttpClient que será usado depois para fazer a requisição Http
+
+import { HttpClient } from '@angular/common/http';
+
+importar o Observable
+import { Observable } from 'rxjs
+
+importar a interface de Moment
+import { Moment } from '../Moment';
+
+- criar propriedades e iniciar construtor:
+
+export class MomentService {
+  private baseAPiUrl = environment.baseApiUrl;
+  private apiUrl = `${this.baseAPiUrl}api/moments`
+
+  constructor(private http:HttpClient){}
+
+ 
+}
+
+  createMoment(formData: FormData):Observable<FormData>{
+    return this.http.post<FormData>(this.apiUrl, formData);
+
+  }
+
+
+- no createHandler enviar para o service
+
+importar MomentSerive
+import { MomentService } from 'src/app/services/moment.service';
+
+no construtor inicializar ele:
+
+export class NewMomentComponent {
+  btnText = 'Compartilhar!';
+
+  constructor(private momentService: MomentService){}
+
+em: 
+
+  //todo
+   await this.momentService.createMoment(formData).subscribe()
