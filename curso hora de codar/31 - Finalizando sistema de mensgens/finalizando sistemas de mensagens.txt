@@ -1,0 +1,97 @@
+FINALIZANDO SISTEMA DE MENSAGENS
+
+
+em messages.service.ts:
+
+- criação método para adicionar mensagem e étodo para limpar mensagens:
+
+export class MessagesService {
+  message:string = '';
+
+  constructor() { }
+
+  add(message:string){
+    this.message = message
+
+    setTimeout(()=>{
+      this.clear();
+    }, 4000)
+  }
+
+  clear(){
+    this.message = '';
+  }
+}
+
+
+- no componente de momentos "new-moment".ts:
+
+- importar o MessageService
+import { MessagesService } from 'src/app/services/
+
+- passar como parametro do método construtor: 
+
+  constructor(private momentService: MomentService, private messageService:MessagesService){}
+
+
+na classe: 
+
+ //exibir msg
+   this.messageService.add('Momento adicionado com sucesso!');
+
+
+- no arquivo.html, fazer com que o click, tambem chame  clearMessage qeu chama o método clear:
+
+    <button class="clear" (click)="clearMessage()">
+
+
+para redireciobar a página:
+
+em new-moment.ts
+importar router 
+import { Router } from '@angular/router';
+
+- passar no construtor
+
+constructor(
+    private momentService: MomentService,
+    private messageService:MessagesService,
+    private router: Router){}
+
+na classe:
+
+     //redirect, redireciona a página para home depois de adicionar momento
+
+
+- fazer página de "sobre"
+
+- em about.component.html:
+
+<div class="about">
+  <h2>Sobre o Moments</h2>
+  <p>Compartilhe seus momentos, e receba comentários de quem você mais gosta!</p>
+  <a routerLink="/moments/new">Quero compartilhar meu momento!</a>
+</div>
+
+
+- CSS
+
+.about{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+
+h2, p{
+  margin-bottom: 1em;
+}
+
+.about a {
+  text-decoration: underline;
+}
+
+h2 span {
+  color: #A52A2A;
+}
