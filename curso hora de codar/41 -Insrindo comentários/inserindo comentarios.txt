@@ -1,0 +1,149 @@
+INSERINDO COMENTÁRIOS:
+
+
+no serviço de comment "comment-service":
+
+importar:
+
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Comments } from '../Comments';
+import { Response } from '../Response';
+
+- declarar: 
+
+ private baseApiUrl = environment.baseApiUrl;
+   private apiUrl = `${this.baseApiUrl}api/moments`
+
+
+- passar no construtor:
+
+constructor(private http:HttpClient) { }
+
+- criar o método createComment():
+
+createComment(data:Comment) : Observable<Response<Comment>>{
+    const url = `${this.apiUrl}/${data.momentId}/comments`;
+    return this.http.post<Response<Comment>>(url, data);
+  }
+
+- em moment.component.ts:
+
+importar:
+
+import { Comments } from 'src/app/Comments';
+
+import { FormGroup, FormControl, Validators, FormGroupDirective } from '@angular/forms';
+
+import { CommentsService } from 'src/app/services/comments.service';
+
+
+
+declarar:
+
+commentForm!: FormGroup
+
+
+passar como parametro do construtor:
+
+constructor(
+  
+  private commentService: CommentsService,){},
+
+
+- no método ngOnInit() fazer a inicialização do formulario, que é onde ele pega o moment:
+
+this.commentForm = new FormGroup({
+      text: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required]),
+
+
+- fazer getters:
+
+get text(){
+  return this.commentForm.get('text')!;
+}
+
+get userName(){
+  return this.commentForm.get('username')!;
+}
+
+
+
+- iniciar essa estrutura no front:
+
+
+no tamplate do componente de moment:
+
+dar nome aos campos e fazer validações:
+------------------------
+<h3>Deixe um comentário:</h3>
+  <form [formGroup]="commentForm" #formDir="ngForm" (ngSubmit)="onSubmit(formDir)">
+----------------------
+      <textarea formControlName="text" placeholder="O que você quer comentar?" required></textarea>
+
+
+----------------------
+<div class="form-group">
+      <label for="username">Nome:</label>
+     <input formControlName="username" type="text" placeholder="Digite seu nome" required>
+    </div>
+
+
+- div de validação:
+
+
+ <label for="text">Commentário:</label>
+      <textarea formControlName="text" placeholder="O que você quer comentar?" required></textarea>
+      <div *ngIf="text.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="text.errors?.['required']">É nessário comentar algo para postar.</p>
+      </div>
+
+
+------------------------------
+
+
+  <label for="username">Nome:</label>
+     <input formControlName="username" type="text" placeholder="Digite seu nome" required>
+     <div *ngIf="userName.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="userName.errors?.['required']">O nome do usuário é obrigatório.</p>
+    </div>
+
+---------------------
+
+- Enviar dados para o service:
+
+- em moment.component.ts, para nao deixar enviar o formulário se os campos estiverem vazios, pq as validações feitas foram apenas no 
+front mas o formulário ainda pode ser enviado para o backend
+
+
+
+metodo OnSubmit():
+
+
+async OnSubmit(formDirective: FormGroupDirective){
+  if(this.commentForm.invalid){
+    return
+  }
+  const data: Comment = this.commentForm.value;
+
+  data.momentId = Number(this.moment!.id)
+
+  await this.commentService
+  .createComment(data)
+  .subscribe((comment) => this.moment!.comments!.push(comment.data));
+
+  //apresenta mensagem na tela
+  this.messageService.add("Comentário adicionado!")
+
+  //limpa o formulário (front-end)
+  this.commentForm.reset();
+
+  //limpa o formulário (back-end)
+  formDirective.resetForm();
+
+
+
+}
