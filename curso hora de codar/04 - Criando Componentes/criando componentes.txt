@@ -2,12 +2,38 @@ criando componentes
 
 -para criar um componente podemos utilizar o CLI;
 
-- comando: "ng generate component componentes/first-component" criará a pasta "components" e dentro "first-component"
+- comando: "ng generate component components/first-component" criará a pasta "components" e dentro "first-component"
 
--para importar o componente basta utilizar o seu selector em um HTML de outro componente;
+-para importar o componente basta utilizar o seu selector em um HTML de outro componente, pode ser pego no arquivo .ts do componente em por exemplo:
+@Component({
+  selector: 'app-second-component', <<<<<<<<<<<<<<<<< selector
+
+  
 
 - ao criar um componente "app.module.ts" gera a importação do componente criado automaticamente e coloca em decclarations, para a aplicação saber que o componente existe.
+No Angular, o arquivo app.module.ts desempenha um papel fundamental. Ele é parte integrante do sistema de módulos do Angular e é usado para definir e configurar o módulo principal da sua aplicação. Aqui estão algumas das principais funções desse arquivo:
 
-- para rodar o que foi criado em "first-componente.html"
-é necessaria a tag "<app-first-componente></app-first-componente>" em "app.component.html"
-isso gera a importação do componente criado
+Definição do Módulo Principal:
+
+O app.module.ts é responsável por definir o módulo principal da sua aplicação Angular. Este módulo é geralmente chamado de AppModule. Ele é o ponto de entrada para a construção da árvore de componentes da aplicação.
+Importação de Módulos Necessários:
+
+Você usa o imports para importar outros módulos que sua aplicação precisa. Isso inclui módulos do Angular, como BrowserModule, FormsModule ou HttpClientModule, bem como módulos personalizados que você pode criar para organizar o código de maneira modular.
+Declaração de Componentes, Diretivas e Pipes:
+
+O declarations é usado para listar os componentes, diretivas e pipes que pertencem a este módulo. Isso permite que o Angular saiba quais componentes estão disponíveis para serem usados no template de outros componentes neste módulo.
+Configuração de Serviços:
+
+O providers é usado para configurar serviços. Os serviços são objetos compartilhados que podem ser injetados em componentes, diretivas ou outros serviços. Eles são muitas vezes usados para fornecer funcionalidades comuns ou para gerenciar estado compartilhado.
+Configuração do Componente Raiz:
+
+O bootstrap é usado para especificar o componente raiz que será inicializado quando a aplicação Angular for iniciada. Esse componente é frequentemente chamado de AppComponent e serve como o componente principal que contém os demais componentes da aplicação.
+Configuração do Roteamento (Opcional):
+
+Se a sua aplicação tiver navegação, você também pode configurar o roteamento no app.module.ts. Isso envolve importar o módulo de roteamento do Angular (RouterModule) e configurar as rotas da aplicação.
+Resumindo, o app.module.ts é o ponto central onde você configura e organiza os diferentes elementos da sua aplicação Angular. Ele ajuda a estruturar a aplicação em módulos, gerenciando a importação de dependências e a configuração dos principais elementos, como componentes, serviços e roteamento.
+
+
+
+
+
