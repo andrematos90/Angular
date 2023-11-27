@@ -1,0 +1,52 @@
+EXCLUINDO REGISTRO 
+
+
+- atrelar função ao clicar no botao de excluir
+
+  <button class="remove-btn"  (click)="removeHandler(moment.id!)">
+      <fa-icon [icon]="faTimes" ></fa-icon>Excluir
+    </button>
+
+
+em .ts criar a função na classe do componente para isso:
+
+importar:
+import { MessagesService } from 'src/app/services/messages.service';
+
+import { ActivatedRoute, Router } from '@angular/router';
+removeHandler(id:number){
+  console.log("testando")
+}
+
+
+- passar no construtor:
+
+constructor(
+  private momentService: MomentService,
+  private route: ActivatedRoute,
+  private messageService: MessagesService,
+  private router: Router){}
+
+
+- criar o método:
+
+async removeHandler(id:number){
+  //chama o método no service para exluir e espera resposta da api voltar
+  await this.momentService.removeMoment(id).subscribe()
+
+  //mostra mensagem após
+  this.messageService.add("Momento Excluido com sucesso!")
+
+  //redireciona a págin após excluir
+  this.router.navigate(['/'])
+}
+
+
+
+- criar o método no service de moment:
+
+removeMoment(id:number){
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete(url);
+  }
+
