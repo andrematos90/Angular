@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ParentDataComponent } from './parent-data.component';
+import { ParentDataComponent } from './child-data.component';
 
 describe('ParentDataComponent', () => {
   let component: ParentDataComponent;
