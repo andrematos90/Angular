@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  variavelDoComponentePrincipal:string = 'Variável do componente principal';
+  variavelDoComponentePrincipal:string = 'valor da variável';
 
   carro = {
     marca : "renault",
