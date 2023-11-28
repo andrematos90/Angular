@@ -2,3 +2,18 @@
 - Um evento clássico que utilizamos muitoo é o click.
 - A sintaxe é: (click)="algumaFuncao()"
 - Os métodos ficam na clase
+
+
+passos:
+
+*é passado o tipo de evento em algum elemento:
+
+<button (click)="showMessage()">Clique para {{ show ? 'ocultar' : 'mostrar' }} a mensagem</button>
+
+*definição do método na classe:
+
+showMessage():void {
+  this.show = !this.show; }
+
+
+*quando o botao for clicado o método showMessage sera executado.
