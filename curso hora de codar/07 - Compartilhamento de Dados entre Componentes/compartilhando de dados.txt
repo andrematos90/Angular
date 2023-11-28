@@ -17,19 +17,30 @@ export class AppComponent {
 
 <app-parent-data [variavel]="variavelDoComponentePrincipal"></app-parent-data>
 
+obs: "[variavel]" é como a propriedade vai se chamar no componente filho e esta recebendo a propriedade do componente pai, ela pode ou nao ter o mesmo nome da propriedade do componente pai
+
+
 - criar a váriavel no componente filho:
 
 importar o Input
 import { Component, Input } from '@angular/core';
 
+
+
+declarar o @Input na classe
+
+
 export class ParentDataComponent {
-  @Input() variavel:string ='';  (variável tem que ser   iniciada vazia, para receber o valor que foi definido na variável do componente pai)
-
-
+  @Input() variavel:string ='';  
+  @Input() nome!:string;
+  @Input() carro! :{ marca:String, modelo:String, ano:Number}
+ 
 }
 
-Obs: essa váriavel pode ou não ter o mesmo nome da 
-váriável do componente pai, nesse caso não tem.
+
+ as variaveis podem ser inicializadas vazias como em "@Input() variavel:string = ''"  ou pode ser usar "!" para indicar que a variável tem um valor que esta vindo do componente pai como em "@Input() nome!:string e vai ser iniciado;
+
+
 
 - utilizar o dado no tamplate do componente filho:
 

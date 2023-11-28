@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   variavelDoComponentePrincipal:string = 'valor da variável';
 
+  nome:string = 'André Rosa de Matos'
+
   carro = {
     marca : "renault",
     modelo : "twingo",

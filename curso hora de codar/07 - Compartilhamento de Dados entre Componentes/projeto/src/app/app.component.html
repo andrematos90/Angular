@@ -1,2 +1,7 @@
-<app-first-component><</app-first-component>
-<app-parent-data [variavel]="variavelDoComponentePrincipal" [carro]="carro"></app-parent-data>
+
+<!--
+  "[variavel]" é como a variavel vai se chamar no componente filho
+   e esta recebendo a variavel do componente pai
+   ou pode se ter o mesmos nome em componentes pais e filhos como em "[nome]"
+-->
+<app-child-component [variavel]="variavelDoComponentePrincipal" [nome]="nome" [carro]="carro"></app-child-component>
