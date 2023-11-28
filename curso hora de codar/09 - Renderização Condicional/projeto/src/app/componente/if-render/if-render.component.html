@@ -8,7 +8,7 @@
 <div class="exemmplo">
 <div *ngIf="animal === 'Simba'; else nameNotFound">o nome do animal é simba</div>
 <ng-template #nameNotFound>
-  <p>nome diferente de "Simba"</p>
+  <p>nome diferente de "Simba" entao #nameNotFound é executado</p>
 </ng-template>
 
 </div>
