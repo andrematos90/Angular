@@ -1,57 +1,3 @@
-Emitindo eventos
-
--Podemos comunicar eventos de um componente filho para o pai, por que as vezes a lógica se concentra nos componentes pais, pq os componentes filhos são reutilizáveis.
--Para isso vamos precisar o @Output, que vai fazer a saída do evento do componente filho.
-- na tag e invocação do componente no template, escolhemos um método para executar quando o evento for emitido.
--Exemplo: (emit)_="onEmit()"
-
-Exemplo:
-
-Para emissão de um número aleatório baseado no evento emitido do componente filho 
-
-O componente "parent" vai ter o evento que vai ser emitido do componente filho
-
-- O componente "child" é  componente filho que vai emitir o evento para o componente pai "parent"
-
-
-Resumo: o componente "child" é o componente filho que  contém o evento, "parent", contem a lógica no arquivo .ts, e a chamada  para o componente "child" no arquivo .html
-
-Para fazer a emissão do evento:
-
-- em "child".ts é preciso importar o "Output", que serve para enviar algo, como esse algo é um evento também é necessário o "EventEmitter", se fosse apenas um dado seria só Output
-
-import { Component, Output, EventEmitter } from '@angular/core';
-
-dentro da classe:
-
-@Output() com qual evento está sendo enviado
-
-changeNumber é o nome do evento
-
-EventEmitter tipo do evento
-<any> tipa o evento como "any" é o tipo que aceita, como é um evento pode ser usado any
- new = EventEmitter();  instanciação
-
-
- no componente "parent".html a chamada:
-
-<app-change-number (changeNumber)="onChangeNumber()"></app-change-number>
-
-
-
-no componente "parent".ts a lógica:
-
-
-export class EmitterComponent {
-
-  myNumber : number = 0;
-
-  onChangeNumber(){
-    this.myNumber = Math.random();
-  }
-
-}
-
 
 explicação:
 
@@ -105,6 +51,80 @@ Integrando Componentes:
 
 Finalmente, no template do componente pai, você integra o componente filho usando <app-filho></app-filho> e captura o evento desejado.
 Essa é uma maneira de permitir a comunicação entre componentes pais e filhos no Angular através da emissão de eventos. Essa abordagem é particularmente útil quando os componentes estão aninhados e precisam se comunicar de forma eficiente.
+
+
+PASSOS:
+
+Passo 1: No Componente Filho
+Importar Módulos Necessários:
+
+Importe Component, EventEmitter e Output do Angular.
+(se for apenas dados é necessários apenas o Output)
+import { Component, EventEmitter, Output } from '@angular/core';
+Criar Componente:
+
+Defina o componente filho.
+
+
+  template: '<button (click)="emitirEvento()">Clique-me</button>'
+
+export class FilhoComponent {
+  // ...
+}
+Criar Propriedade de Evento:
+
+Use o decorador @Output para criar uma propriedade que será um evento.
+
+@Output() meuEvento = new EventEmitter<string>();
+
+Emitir Evento:
+
+Crie um método para emitir o evento quando necessário.
+
+emitirEvento() {
+  this.meuEvento.emit('Dados do evento');
+}
+
+Passo 2: No Componente Pai
+Importar Módulos Necessários:
+
+Importe Component do Angular.
+
+import { Component } from '@angular/core';
+
+Criar Componente:
+
+Defina o componente pai.
+
+
+  template: '<app-filho (meuEvento)="lidarComEvento($event)"></app-filho>',
+
+export class PaiComponent {
+  // ...
+}
+
+Lidar com o Evento:
+
+Crie um método no componente pai para lidar com o evento emitido.
+
+lidarComEvento(dados: string) {
+  console.log('Evento recebido do filho:', dados);
+}
+
+Integrar Componentes:
+
+No template do componente pai, insira o componente filho e capture o evento.
+
+<app-filho (meuEvento)="lidarComEvento($event)"></app-filho>
+
+Resultado Final:
+Agora, quando o botão no componente filho é clicado, o evento é emitido, capturado pelo componente pai, e o método lidarComEvento é chamado com os dados do evento. Esse é um exemplo básico de como os eventos podem ser usados para a comunicação de componentes no Angular.
+
+
+
+
+
+
 
 
 
