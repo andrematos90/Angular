@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./child.component.css']
 })
 export class ChildComponent {
+  @Output() changeNumber: EventEmitter<any> = new EventEmitter()
+  handleClick(){
+    this.changeNumber.emit()
+  }
 
 }

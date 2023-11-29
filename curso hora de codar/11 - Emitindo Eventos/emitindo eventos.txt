@@ -9,16 +9,16 @@ Exemplo:
 
 Para emissão de um número aleatório baseado no evento emitido do componente filho 
 
-O componente "Emiter" vai ter o evento que vai ser emitido do componente filho
+O componente "parent" vai ter o evento que vai ser emitido do componente filho
 
-- O componente "change-number" é  componente filho que vai emitir o evento para o componente pai "Emiter"
+- O componente "child" é  componente filho que vai emitir o evento para o componente pai "parent"
 
 
-Resumo: o componente "change-number" é o componente filho que  contém o evento, "Emiter", contem a lógica no arquivo .ts, e a chamada  para o componente "change-number" no arquivo .html
+Resumo: o componente "child" é o componente filho que  contém o evento, "parent", contem a lógica no arquivo .ts, e a chamada  para o componente "child" no arquivo .html
 
 Para fazer a emissão do evento:
 
-- em "change-number".ts é preciso importar o "Output", que serve para enviar algo, como esse algo é um evento também é necessário o "EventEmitter", se fosse apenas um dado seria só Output
+- em "child".ts é preciso importar o "Output", que serve para enviar algo, como esse algo é um evento também é necessário o "EventEmitter", se fosse apenas um dado seria só Output
 
 import { Component, Output, EventEmitter } from '@angular/core';
 
@@ -33,8 +33,13 @@ EventEmitter tipo do evento
  new = EventEmitter();  instanciação
 
 
+ no componente "parent".html a chamada:
 
-no componente "emitter".ts a lógica:
+<app-change-number (changeNumber)="onChangeNumber()"></app-change-number>
+
+
+
+no componente "parent".ts a lógica:
 
 
 export class EmitterComponent {
@@ -47,8 +52,66 @@ export class EmitterComponent {
 
 }
 
-no componente "emitter".html a chamada:
 
-<app-change-number (changeNumber)="onChangeNumber()"></app-change-number>
+explicação:
+
+
+No Angular, a comunicação entre componentes pais e filhos pode ser realizada através da emissão de eventos pelos componentes filhos. Isso geralmente envolve a utilização do decorador @Output e a criação de um EventEmitter. Aqui estão os passos básicos para entender como funciona a emissão de eventos de componentes filhos para componentes pais:
+
+@Output Decorator:
+
+Em um componente filho, você pode criar uma propriedade com o decorador @Output.
+O @Output é usado para expor um evento que pode ser capturado pelo componente pai.
+
+import { Component, EventEmitter, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-filho',
+  template: '<button (click)="emitirEvento()">Clique-me</button>',
+})
+export class FilhoComponent {
+  @Output() meuEvento = new EventEmitter<string>();
+
+  emitirEvento() {
+    this.meuEvento.emit('Dados do evento');
+  }
+}
+
+Emissão de Evento:
+
+No exemplo acima, o método emitirEvento() é chamado quando o botão é clicado.
+Ele emite um evento usando this.meuEvento.emit('Dados do evento').
+Recebendo o Evento no Componente Pai:
+
+No componente pai, você pode usar a diretiva (eventoFilho) para capturar o evento emitido pelo componente filho.
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-pai',
+  template: '<app-filho (meuEvento)="lidarComEvento($event)"></app-filho>',
+})
+export class PaiComponent {
+  lidarComEvento(dados: string) {
+    console.log('Evento recebido do filho:', dados);
+  }
+}
+Aqui, (meuEvento) é o nome do evento que estamos capturando, e lidarComEvento($event) é o método no componente pai que será chamado quando o evento for emitido.
+$event:
+
+O objeto $event contém os dados que foram passados durante a emissão do evento no componente filho.
+No exemplo acima, é uma string, mas pode ser qualquer tipo de dado.
+Integrando Componentes:
+
+Finalmente, no template do componente pai, você integra o componente filho usando <app-filho></app-filho> e captura o evento desejado.
+Essa é uma maneira de permitir a comunicação entre componentes pais e filhos no Angular através da emissão de eventos. Essa abordagem é particularmente útil quando os componentes estão aninhados e precisam se comunicar de forma eficiente.
+
+
+
+
+
+
+
+
 
 
