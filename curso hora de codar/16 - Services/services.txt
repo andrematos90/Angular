@@ -6,3 +6,86 @@ Services
 - Importar no componente e iniciar o construtor
 - Depois é possível acessar os métodos dele
 
+
+Explicação:
+
+Em Angular, um serviço (service) é uma classe com um propósito específico que é usada para organizar e compartilhar lógica de negócios, dados ou funcionalidades entre diferentes partes de uma aplicação. Os serviços são uma parte fundamental do design de aplicativos Angular, pois permitem a criação de código reutilizável e a separação clara de responsabilidades.
+
+Os serviços no Angular são frequentemente utilizados para:
+
+Compartilhamento de Dados: Os serviços podem ser usados para armazenar e compartilhar dados entre componentes. Eles agem como um ponto centralizado de acesso a dados para diferentes partes da aplicação.
+
+Lógica de Negócios: A lógica de negócios da aplicação muitas vezes é encapsulada em serviços para manter os componentes mais simples e focados na apresentação.
+
+Compartilhamento de Funcionalidades: Funcionalidades que são usadas em vários componentes, como autenticação, manipulação de formulários, comunicação com servidores, etc., podem ser implementadas em serviços para reutilização fácil.
+
+Injeção de Dependência: Os serviços são injetados nas classes que deles necessitam. Isso facilita a manutenção e teste, pois as dependências são gerenciadas pelo Angular.
+
+Aqui está um exemplo simples de como um serviço pode ser criado em Angular:
+
+// Definição de um serviço
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root', // Indica que o serviço será injetado no nível raiz da aplicação
+})
+export class MeuServico {
+  dadosCompartilhados: string[] = [];
+
+  adicionarDado(dado: string) {
+    this.dadosCompartilhados.push(dado);
+  }
+}
+
+Este é um serviço básico que possui uma propriedade dadosCompartilhados e um método adicionarDado para manipular esses dados. Este serviço pode ser injetado em qualquer componente ou serviço que necessite compartilhar ou manipular esses dados.
+
+Para utilizar o serviço em um componente, basta injetá-lo no construtor do componente:
+
+import { Component } from '@angular/core';
+import { MeuServico } from './caminho/do/servico';
+
+@Component({
+  selector: 'app-meu-componente',
+  template: `
+    <button (click)="adicionarDado()">Adicionar Dado</button>
+  `,
+})
+export class MeuComponente {
+  constructor(private meuServico: MeuServico) {}
+
+  adicionarDado() {
+    this.meuServico.adicionarDado('Novo Dado');
+  }
+}
+
+Dessa forma, o componente MeuComponente utiliza o serviço MeuServico para adicionar dados compartilhados. Isso demonstra como os serviços facilitam a reutilização de lógica e a comunicação entre diferentes partes da aplicação em Angular.
+
+
+PASSOS DA AULA:
+
+- gerar o service, comando "ng generate service nomedoservice7
+(geralmente é o mesmo nome do componente da entidade)
+
+- no componente:
+
+para o service ficar disponível:
+importar 
+import { ListService } from './../../services/list.service';
+
+injectar no constructor
+constructor(private listService: ListService)
+-
+criar o método:
+
+ removerAnimal(animal:Animal){
+    
+    this.animais = this.listService.remove(this.animais, animal);
+
+  }
+
+- criar o método remove no service:
+
+remove(animais:Animal[], animal:Animal){
+    console.log("service ativado, pela chamada na função 'removerAnimal'")
+    return animais.filter((a) => animal.nome !== a.nome)
+  }

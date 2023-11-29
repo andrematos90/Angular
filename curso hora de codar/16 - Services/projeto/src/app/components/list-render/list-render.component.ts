@@ -24,7 +24,7 @@ export class ListRenderComponent {
   ]
 
   removerAnimal(animal:Animal){
-    console.log("função removerAnimal de 'list-render.component.ts chamada'");
+
     this.animais = this.listService.remove(this.animais, animal);
 
   }
