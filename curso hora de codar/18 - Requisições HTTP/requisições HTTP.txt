@@ -21,6 +21,14 @@ Passos:
 2 - Importações:
 
 - importar "HttpClientModule" no "app.module"
+import { HttpClientModule } from '@angular/common/http'
+declarar :
+ imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule
+  ],
+  
  HttpClient(faz requisição) e HttpHeaders(configura o cabeçalho)
 
 
