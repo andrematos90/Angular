@@ -5,3 +5,70 @@ A importância das interfaces no angular
 - Padronizando ele e facilitando a manutenção
 - Vamos implementar uma interface a nossa lista de animais
 - E fazer um evento que também uutilizará este recurso;
+
+
+Explicação:
+
+No contexto do Angular, uma interface é uma forma de definir contratos ou contratos de tipos que podem ser implementados por classes ou objetos. Interfaces são usadas para definir a estrutura que um determinado objeto deve seguir, especificando os métodos e propriedades que esse objeto deve ter.Servem para tipar um propriedade com essa interface e ter acesso a propriedades e métodos dessa interface.
+
+Aqui estão alguns pontos-chave sobre interfaces no Angular:
+
+Contrato de Tipos:
+
+Interfaces fornecem um contrato que especifica quais métodos e propriedades uma classe ou objeto deve implementar.
+
+No Angular, as interfaces são uma característica do TypeScript, a linguagem superset do JavaScript que o Angular utiliza. TypeScript permite o uso de tipos estáticos para fornecer mais robustez ao desenvolvimento.
+
+
+
+Definição de Estrutura:
+
+Uma interface é uma maneira de definir a estrutura de um objeto sem fornecer uma implementação. Isso é útil para garantir que diferentes partes do código aderem a uma estrutura comum.
+
+
+
+Contratos Claros:
+
+Interfaces tornam os contratos entre diferentes partes do código mais claros. Se uma classe implementa uma interface, ela concorda em fornecer a implementação para todos os membros dessa interface.
+
+
+
+
+Módulos e Componentes:
+
+No contexto do Angular, interfaces são frequentemente usadas em conjunto com módulos e componentes para definir contratos entre diferentes partes da aplicação.
+
+
+
+
+Melhoria da Manutenção:
+
+O uso de interfaces melhora a manutenção do código, pois fornece uma documentação clara sobre quais métodos e propriedades são esperados em uma implementação específica.
+
+Exemplo Prático:
+
+// Definição de uma interface:
+interface Pessoa {
+  nome: string;
+  idade: number;
+  saudacao(): void;
+}
+
+// Implementação da interface em uma classe:
+class PessoaReal implements Pessoa {
+  nome: string;
+  idade: number;
+
+  constructor(nome: string, idade: number) {
+    this.nome = nome;
+    this.idade = idade;
+  }
+
+  saudacao() {
+    console.log(`Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`);
+  }
+}
+
+Neste exemplo, a interface Pessoa define a estrutura que uma pessoa deve ter, incluindo um nome, uma idade e um método saudacao. A classe PessoaReal implementa essa interface, fornecendo a implementação necessária para cada membro da interface.
+
+Em resumo, interfaces no Angular, com o suporte do TypeScript, são ferramentas poderosas para definir contratos claros e estruturas consistentes em uma aplicação, contribuindo para um código mais robusto e fácil de entender.

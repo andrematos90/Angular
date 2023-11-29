@@ -3,6 +3,7 @@
     <li *ngFor="let animal of animais">
         {{animal.nome}}
         <button (click)="showDetails(animal)">Mostrar Resumo</button>
+        <!--ao click executa o método showDetails() que recebe um "animal"-->
     </li>
 </ul>
 <h2>{{animalDetails}}</h2>

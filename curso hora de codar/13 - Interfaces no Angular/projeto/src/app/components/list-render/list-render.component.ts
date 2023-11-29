@@ -10,6 +10,7 @@ export class ListRenderComponent {
 
   animalDetails: string = '';
 
+  //quando se tem um propriedade tipada com uma interface no caso "Animal" é obrigatório definir todas os elementos da interface
   animais: Animal[] =[
     {nome: 'Simba', raca: 'Rough collie', idade: 3},
     {nome: 'Milu', raca: 'Vira lata', idade: 7},
