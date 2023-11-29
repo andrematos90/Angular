@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class PipesComponent {
 
-someText:string =   "textando com UMA Variável";
+someText:string =   "textando com uMA Variável";
 today = new Date();
 }

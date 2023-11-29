@@ -4,3 +4,19 @@ Pipe Operators
 - Podemos realizar diversas funções, como deixar o texto em caixa alta
 - A sintaze é :{{dado | algumPipeOperator}}
 - Desta maneira nos poupamos de regras de CSS ou manipulação de strings com  lógica Js
+
+
+Explicação:
+
+Em Angular, o termo "pipe operators" geralmente se refere aos "pipes" (tubos) ou "operadores de tubo". Pipes são uma parte importante da estrutura de template do Angular e são usados para transformar dados antes de serem exibidos no modelo.
+
+Em termos simples, os pipes permitem que você formate dados de uma maneira específica antes de exibi-los. Angular fornece alguns pipes embutidos, como o DatePipe para formatar datas, o UpperCasePipe para converter texto em maiúsculas, e assim por diante.
+
+Aqui está um exemplo básico de como um pipe pode ser usado em um template Angular:
+
+
+<!-- Exemplo usando o pipe date para formatar uma data -->
+<p>A data atual é: {{ currentDate | date:'dd/MM/yyyy' }}</p>
+Neste exemplo, currentDate é uma variável no componente Angular, e o date é um pipe que formata essa data de acordo com o formato especificado ('dd/MM/yyyy' neste caso).
+
+Portanto, o termo "pipe operators" refere-se ao uso de pipes para operações de formatação ou transformação de dados em Angular. Eles são uma maneira poderosa e flexível de exibir dados de maneira adequada no template.
