@@ -6,3 +6,75 @@ Router
 - Após a definição estas rotas precisam ser importadas em app.module.ts
 - E por fim no template principal criamos as rotas
 - E Substituimos os componentes por: <router-outlet>
+
+
+Explicação:
+
+O termo "router" refere-se ao roteador do Angular, que é um módulo que facilita a navegação entre diferentes componentes em uma aplicação web de página única (SPA). O roteador permite carregar componentes específicos na visualização principal da aplicação com base na URL atual, proporcionando uma experiência de usuário mais dinâmica.
+
+Aqui está uma breve explicação de como o roteador funciona no Angular:
+
+Configuração do Roteador:
+
+Primeiro, é necessário importar o módulo RouterModule do Angular em sua aplicação.
+Em seguida, você configura as rotas da aplicação em uma matriz de objetos. Cada objeto define uma rota e o componente que deve ser carregado quando essa rota está ativa.
+
+const rotas: Routes = [
+  { path: 'inicio', component: InicioComponent },
+  { path: 'perfil', component: PerfilComponent },
+  { path: 'produtos', component: ProdutosComponent },
+  // ... mais rotas
+];
+
+Adição do Roteador na Aplicação:
+
+Depois, você importa o módulo RouterModule e utiliza seu método forRoot para configurar as rotas.
+
+@NgModule({
+  imports: [RouterModule.forRoot(rotas)],
+  exports: [RouterModule]
+})
+
+Uso no HTML:
+
+No arquivo HTML principal  "app.component.html", você coloca o elemento <router-outlet></router-outlet>. Este marcador de posição é usado para carregar dinamicamente o componente associado à rota atual.
+
+<router-outlet></router-outlet>
+
+Navegação:
+
+Você pode navegar entre as rotas em sua aplicação usando o serviço Router do Angular. Isso pode ser feito por meio de eventos de clique, botões, etc.
+
+import { Router } from '@angular/router';
+
+constructor(private router: Router) {}
+
+irParaInicio() {
+  this.router.navigate(['/inicio']);
+}
+
+Essa é apenas uma visão geral. O Roteador do Angular oferece recursos avançados, como rotas aninhadas, rotas com parâmetros, resolução de dados antes de carregar um componente, entre outros. Seu uso permite a construção de SPAs de forma organizada e de fácil manutenção.
+
+
+PASSOS DA AULA:    
+
+
+- em "app-routing-module" passar caminho da rota e os componentes dessas rotas
+
+const routes: Routes = [
+  {path:'Primeira/Pagina', component: FirstComponentComponent},
+  {path:'Segunda/Pagina', component: SecondComponentComponent}
+];
+
+- em "app-component.html"  delclarar "<router-outlet></router-outlet>
+"
+ao invés de <app-nomedocomponente></app-nomedocomponente>
+
+e como navegar entre as páginas:
+
+<nav>
+  <a routerLink="/Primeira/Pagina">Primeira Página</a><br>
+  <a routerLink="Segunda/Pagina">Segunda Página</a>
+</nav>
+
+
