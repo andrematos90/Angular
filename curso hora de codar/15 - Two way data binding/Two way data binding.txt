@@ -2,7 +2,42 @@ Two way data binding
 
 - O two way data binding é um recurso muito interessante para o trabalho com formulários
 - Basicamente conseguimos alterar props e o template com o preenchimento de inputs
-- Ou seja tendo uma propriedade que esta ligada a um input e eu consigo ao preencher um formulário, automaticamente colocar esse dado no tamplate automaticamente, sem a necessidade de adicionar eventos ou funções
+- Ou seja tendo uma propriedade que esta ligada a um input é possível ao preencher um formulário, automaticamente colocar esse dado no tamplate automaticamente, sem a necessidade de adicionar eventos ou funções
 - É necessário importar o FormsModule do componente principal "app.module.ts".
 - E também declarar o ngModel no input, além de preencher também p atributo name, todos com o mesmo valor;
+
+O Two-Way Data Binding (ligação bidirecional de dados) é um conceito em frameworks de desenvolvimento web, como Angular, que permite a sincronização automática entre o modelo (dados no componente) e a visão (o que é exibido no template). Em outras palavras, ele estabelece uma relação bidirecional entre o modelo e a visão, de modo que qualquer alteração em um deles é automaticamente refletida no outro.
+
+No contexto do Angular, o Two-Way Data Binding é frequentemente usado com a diretiva ngModel. Aqui está um exemplo simples de como isso funciona:
+
+<!-- No template do componente -->
+<input [(ngModel)]="nome">
+
+<!-- No componente TypeScript -->
+export class MeuComponente {
+  nome: string = "John Doe";
+}
+
+Neste exemplo, o ngModel estabelece uma ligação bidirecional entre o valor do input no template e a propriedade nome no componente TypeScript. Se o valor do input for alterado, a propriedade nome será automaticamente atualizada, e vice-versa.
+
+O Two-Way Data Binding simplifica a manipulação de dados em formulários e outras interações entre o usuário e a aplicação, eliminando a necessidade de código manual para rastrear e atualizar as alterações nos dados. No entanto, é importante usá-lo com moderação, pois em casos mais complexos, pode tornar o rastreamento de mudanças menos transparente e potencialmente causar problemas de desempenho em aplicações maiores.
+
+
+PASSOS:
+
+- em "app.module.ts" importar e declarar :
+import { FormsModule } from '@angular/forms';
+
+imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+  ],
+
+- no template do componente:
+
+ <input type="text" [(ngModel)] = "name" name="name"
+
+- no .ts declarar a propriedade "name"
+
 
