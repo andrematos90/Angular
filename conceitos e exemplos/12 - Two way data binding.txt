@@ -2,6 +2,7 @@ O Two-Way Data Binding (ligação de dados bidirecional) é um recurso poderoso 
 
 A sintaxe para implementar Two-Way Data Binding em Angular é utilizando a diretiva [(ngModel)]. Essa diretiva combina a funcionalidade do data binding de propriedade (usando [property]) e do data binding de evento (usando (event)), simplificando o código necessário para manter a sincronização bidirecional.
 
+
 Aqui está um exemplo simples usando Two-Way Data Binding com ngModel:
 
 // No seu componente TypeScript
