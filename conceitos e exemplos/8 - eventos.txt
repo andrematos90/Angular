@@ -1,0 +1,54 @@
+No contexto do Angular, eventos referem-se a interações do usuário, como cliques de botão, entradas de teclado, ou outros eventos DOM. Angular fornece um sistema de eventos robusto que permite a comunicação eficaz entre componentes, diretivas e serviços. Vamos explorar os conceitos relacionados a eventos no Angular:
+
+Evento de Template (Template Event):
+
+No Angular, você pode lidar com eventos diretamente no template HTML usando a sintaxe de eventos.
+
+Exemplo: (click)="onButtonClick()". Isso significa que quando ocorrer um clique, a função onButtonClick() será chamada.
+
+$event Object:
+
+Quando um evento é acionado, o Angular passa um objeto chamado $event que contém informações sobre o evento.
+
+Exemplo: (input)="onInputChange($event)". Aqui, $event conterá detalhes sobre a entrada do usuário.
+
+
+Event Binding (Vinculação de Eventos):
+
+É uma maneira de reagir a eventos no Angular.
+Exemplo: <button (click)="handleClick()">Clique aqui</button>. O método handleClick() será chamado quando o botão for clicado.
+
+@HostListener:
+
+Decorador que permite escutar eventos em elementos hospedeiros.
+Exemplo:
+
+@HostListener('mouseenter') onMouseEnter() {
+  // Lógica a ser executada quando o mouse entra no elemento hospedeiro.
+}
+
+Custom Events (Eventos Personalizados):
+
+Além dos eventos do DOM, você pode criar e despachar eventos personalizados para comunicação entre componentes.
+
+Exemplo:
+
+// No emissor do evento
+this.eventEmitter.emit('Dados a serem compartilhados');
+
+// No receptor do evento
+this.eventEmitter.subscribe(data => {
+  // Lógica para lidar com os dados recebidos
+});
+
+RxJS e Observables:
+
+Em muitos casos, o sistema de eventos no Angular faz uso da biblioteca RxJS para trabalhar com Observables.
+O uso de Observables permite uma comunicação mais flexível e reativa entre diferentes partes do aplicativo.
+
+EventEmitter:
+
+Uma classe do Angular que estende Subject do RxJS e é frequentemente usada para criar eventos personalizados.
+
+Exemplo: @Output() myEvent = new EventEmitter();.
+Ao entender e utilizar esses conceitos, você pode criar uma comunicação eficiente entre os diferentes elementos do seu aplicativo Angular, permitindo uma experiência de usuário dinâmica e reativa.
