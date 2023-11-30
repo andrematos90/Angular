@@ -1,0 +1,58 @@
+Em Angular, a aplicação de estilos CSS pode ser feita de várias maneiras, dependendo das necessidades específicas do seu projeto. Aqui estão algumas abordagens comuns:
+
+1. Estilos em Componentes (Component Styles):
+Cada componente no Angular pode ter seus próprios estilos encapsulados, que se aplicam apenas ao HTML desse componente. Esses estilos são definidos no arquivo CSS do componente.
+
+Exemplo:
+
+/* No arquivo style.css do seu componente: */
+
+p {
+  color: blue;
+}
+
+// No seu componente TypeScript:
+@Component({
+  selector: 'app-seu-componente',
+  templateUrl: './seu-componente.component.html',
+  styleUrls: ['./seu-componente.component.css']
+})
+
+2. Estilos Globais (Styles.css):
+Estilos globais podem ser definidos em um arquivo global, geralmente chamado styles.css, que é adicionado ao projeto no arquivo angular.json. Esses estilos se aplicam a toda a aplicação.
+
+Exemplo:
+
+/* No arquivo styles.css global: */
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+// No arquivo angular.json:
+
+"styles": [
+  "src/styles.css"
+]
+
+3. Estilos Condicionais (ngClass e ngStyle):
+Você pode aplicar estilos condicionalmente usando ngClass e ngStyle. Eles permitem que você altere dinamicamente as classes CSS ou estilos de um elemento com base em expressões no componente.
+
+Exemplo:
+
+<!-- No seu template HTML -->
+<div [ngClass]="{'destaque': isDestacado, 'ativo': isActive}">
+  Conteúdo do elemento
+</div>
+
+
+4. Estilos Inline (style):
+Você também pode aplicar estilos diretamente em linha usando a propriedade style em um elemento.
+
+Exemplo:
+
+
+<!-- No seu template HTML -->
+<p [style.color]="corTexto">Este é um parágrafo colorido dinamicamente.</p>
+
+Essas são algumas das maneiras mais comuns de aplicar estilos em Angular. A escolha entre elas depende dos requisitos específicos do seu projeto e da preferência da equipe de desenvolvimento.
