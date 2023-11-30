@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Animal } from './../../Animal';
+import { Animal } from '../../Animal';
 import { Component } from '@angular/core';
 import { ListService } from 'src/app/services/list.service';
 
@@ -20,11 +20,12 @@ export class ItemDetailsComponent {
   }
 
   getAnimal(){
-    //extrai o id
+    //extrai o id e e converte para number
     const id = Number(this.route.snapshot.paramMap.get("id"));
-    //acessa o dado no service
 
+    //acessa o dado no service
     this.listService.getItem(id).subscribe((animal) =>(this.animal = animal));
+
   }
 
 }

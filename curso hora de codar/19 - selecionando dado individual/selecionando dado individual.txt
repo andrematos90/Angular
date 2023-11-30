@@ -9,7 +9,22 @@ passos:
 
 - criar o componente item-detail que será a página individual com informação do animal
 
-- criar a roda no "app-routing-module.ts"
+- criar a roda dinamica  no "app-routing-module.ts", a cada vez que a rota for acessada o id  muda de acordo com o id do item  que foir selecionado
+
+ {path: 'list/:id', component: ItemDetailsComponent}
+
+- no componente list.componente.html:
+
+ <li *ngFor="let animal of animais">
+    Nome: {{animal.nome}}
+   <a routerLink="/list/{{ animal.id }}" class="button">Detalhes</a>
+
+   <a routerLink="/list/{{ animal.id }} //
+   faz com que ao clicado leve para essa rota dinamica
+
+
+
+
 - em "item-details-component" importar a interface Animal, ActivatedRoute e ListService
 - criar prop de aniaml >>  animais? : Animal[] = []
 - inicializar o constructor  >> constructor(private listeService: ListService, private route:ActivatedRoute) e chamar o método getAnimal()

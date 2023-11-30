@@ -1,5 +1,6 @@
 <h1>Detalhes do animal:</h1>
-
+<!--é necessário o ng if pq no .ts  animal esta com ? indicando
+que pode vir ou nao o ngIf faz com que essa validação do typescript seja passada-->
 <div *ngIf="animal"></div>
 <p>ID: {{animal?.id}}</p>
 <p>Espécie: {{animal?.especie}}</p>
