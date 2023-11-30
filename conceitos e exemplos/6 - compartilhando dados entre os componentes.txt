@@ -1,0 +1,179 @@
+Existem várias maneiras de compartilhar dados entre componentes no Angular. A escolha do método dependerá do relacionamento entre os componentes e dos requisitos específicos do seu aplicativo. Aqui estão algumas abordagens comuns:
+
+COMUNICAÇÃO PAI E FILHO:
+
+1. Input e Output (Comunicação entre Componentes Pais e Filhos):
+Você pode usar as propriedades @Input e @Output para comunicar dados entre componentes pais e filhos.
+
+Exemplo:
+
+
+// Componente pai
+
+.ts:
+export class PaiComponent {
+  mensagemDoPai: string = 'Olá, filho!';
+}
+
+template: 
+'<app-filho [mensagem]="mensagemDoPai"></app-filho>'
+
+
+// Componente filho
+
+.ts:
+export class FilhoComponent {
+  @Input() mensagem: string;
+}
+
+template:
+ '<p>{{ mensagem }}</p>'
+
+
+
+Explicação:
+
+Esse código representa dois componentes: FilhoComponent e PaiComponent. Eles são utilizados para criar uma relação de componente pai-filho, onde o componente pai (PaiComponent) passa dados para o componente filho (FilhoComponent) por meio de uma propriedade de entrada (@Input).
+
+Vamos entender cada parte do código:
+
+FilhoComponent:
+
+O template simplesmente exibe um parágrafo (<p>) que mostra a propriedade "mensagem" com o valor definido na propriedade do componente pai.
+
+PaiComponent:
+
+O template inclui a tag <app-filho>, que representa a inclusão do componente FilhoComponent.
+A propriedade mensagemDoPai é definida e inicializada com o valor 'Olá, filho!'.
+O importante aqui é que PaiComponent passa a string contida em mensagemDoPai para o componente filho FilhoComponent usando a sintaxe de binding de propriedade ([mensagem]="mensagemDoPai"). Isso significa que a propriedade "mensagem" de FilhoComponent será vinculada à propriedade mensagemDoPai de PaiComponent. Dessa forma, qualquer alteração em mensagemDoPai será refletida automaticamente no componente filho.
+
+Então, se você usar <app-pai></app-pai> em algum lugar no seu aplicativo Angular, verá um parágrafo exibindo "Olá, filho!" dentro dele, graças à comunicação entre o componente pai e o componente filho.
+
+
+
+
+
+
+COMUNICAÇÃO ENTRE COMPONENTES NAO RELACIONADOS:
+
+Serviços (Comunicação entre Componentes não Relacionados):
+Os serviços podem ser usados para compartilhar dados entre componentes que não têm uma relação pai-filho.
+
+Exemplo:
+
+// Serviço
+@Injectable({
+  providedIn: 'root',
+})
+export class DataService {
+  private mensagemFonte = new BehaviorSubject<string>('');
+
+  mensagemAtual = this.mensagemFonte.asObservable();
+
+  atualizarMensagem(mensagem: string) {
+    this.mensagemFonte.next(mensagem);
+  }
+}
+
+// Componente A
+export class ComponenteA {
+  constructor(private dataService: DataService) { }
+
+  enviarMensagem() {
+    this.dataService.atualizarMensagem('Mensagem do Componente A');
+  }
+}
+
+// Componente B
+export class ComponenteB {
+  mensagem: string;
+
+  constructor(private dataService: DataService) {
+    this.dataService.mensagemAtual.subscribe(mensagem => this.mensagem = mensagem);
+  }
+}
+
+ O serviço utiliza o padrão de design Observable e BehaviorSubject para facilitar a comunicação assíncrona entre componentes.
+
+Aqui está uma explicação detalhada do código:
+
+DataService (Serviço):
+
+Decorado com @Injectable, indicando que pode ser injetado em outros componentes ou serviços.
+O decorator providedIn: 'root' significa que esse serviço será um singleton global e será fornecido na raiz do aplicativo. Isso garante que haja uma única instância do serviço em toda a aplicação.
+BehaviorSubject é usado para armazenar a mensagem. Ele é inicializado com uma string vazia.
+mensagemAtual é uma propriedade que fornece uma versão "observável" da mensagem armazenada no BehaviorSubject.
+atualizarMensagem é um método que atualiza o valor da mensagem no BehaviorSubject chamando o método next().
+
+
+
+ComponenteA:
+
+Recebe uma instância de DataService no construtor por meio de injeção de dependência.
+enviarMensagem é um método que chama atualizarMensagem do DataService com a mensagem específica do Componente A.
+
+
+ComponenteB:
+
+Também recebe uma instância de DataService no construtor por meio de injeção de dependência.
+Declara uma propriedade mensagem.
+No construtor, se inscreve no mensagemAtual do DataService usando subscribe para receber atualizações sempre que a mensagem for alterada. Dessa forma, o ComponenteB sempre terá a versão mais recente da mensagem.
+Em resumo, o serviço DataService atua como um intermediário para compartilhar e atualizar dados entre os ComponenteA e ComponenteB. Quando o método enviarMensagem do ComponenteA é chamado, ele atualiza a mensagem no serviço, e o ComponenteB, por estar inscrito no serviço, é notificado e atualiza sua própria propriedade mensagem. Isso permite a comunicação eficiente entre componentes em diferentes partes do aplicativo.
+
+COMUNICAÇÃO ENTRE COMPONENTES NAO RELACIONADOS COM OBSERVABLES E SUBJECT:
+
+Usar Observables e Subjects é outra maneira poderosa de compartilhar dados entre componentes independentes.
+
+Exemplo:
+
+// Serviço
+export class DataService {
+  private mensagemFonte = new Subject<string>();
+
+  mensagemAtual = this.mensagemFonte.asObservable();
+
+  enviarMensagem(mensagem: string) {
+    this.mensagemFonte.next(mensagem);
+  }
+}
+
+// Componente A
+export class ComponenteA {
+  constructor(private dataService: DataService) { }
+
+  enviarMensagem() {
+    this.dataService.enviarMensagem('Mensagem do Componente A');
+  }
+}
+
+// Componente B
+export class ComponenteB {
+  mensagem: string;
+
+  constructor(private dataService: DataService) {
+    this.dataService.mensagemAtual.subscribe(mensagem => this.mensagem = mensagem);
+  }
+}
+
+A principal diferença está no tipo de objeto usado para armazenar e transmitir mensagens:
+
+Primeiro Código (BehaviorSubject):
+
+Utiliza um BehaviorSubject, que é um tipo específico de Subject.
+Um BehaviorSubject armazena o "valor atual" e fornece esse valor a qualquer novo assinante, garantindo que os assinantes sempre obtenham o valor mais recente imediatamente após a inscrição.
+Segundo Código (Subject):
+
+Utiliza um Subject padrão, que não armazena um "valor atual".
+Os novos assinantes não recebem o valor mais recente no momento da inscrição, apenas recebem valores emitidos após a inscrição.
+Ambas as abordagens são válidas e podem ser escolhidas com base nos requisitos específicos do seu aplicativo. Se você precisar que os componentes que se inscreverem recebam imediatamente o valor mais recente, mesmo que seja emitido antes da inscrição, você pode preferir usar BehaviorSubject. Se não for crucial e você só precisa dos valores emitidos após a inscrição, Subject pode ser suficiente e é um pouco mais leve.
+
+Em resumo, ambos os códigos permitem a comunicação eficiente entre componentes através de um serviço, com a escolha entre BehaviorSubject e Subject dependendo das necessidades específicas do seu aplicativo.
+
+
+
+
+
+
+Cada abordagem tem suas vantagens e desvantagens, e a escolha depende do contexto do seu aplicativo. A comunicação por meio de serviços é especialmente útil quando os componentes não têm uma relação de pai-filho ou quando você precisa compartilhar dados entre componentes distantes no DOM.
+
+
