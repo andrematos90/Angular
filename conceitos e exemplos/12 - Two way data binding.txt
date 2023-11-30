@@ -1,0 +1,39 @@
+O Two-Way Data Binding (ligação de dados bidirecional) é um recurso poderoso no Angular que permite a sincronização automática entre o modelo (estado interno do componente) e a visualização (DOM) em ambas as direções. Isso significa que as alterações no modelo afetam a visualização e vice-versa, sem a necessidade de código manual para atualizar ambos os lados.
+
+A sintaxe para implementar Two-Way Data Binding em Angular é utilizando a diretiva [(ngModel)]. Essa diretiva combina a funcionalidade do data binding de propriedade (usando [property]) e do data binding de evento (usando (event)), simplificando o código necessário para manter a sincronização bidirecional.
+
+Aqui está um exemplo simples usando Two-Way Data Binding com ngModel:
+
+// No seu componente TypeScript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-meu-componente',
+  template: `
+    <input [(ngModel)]="nome" placeholder="Digite seu nome">
+    <p>Oi, {{ nome }}!</p>
+  `
+})
+export class MeuComponente {
+  nome: string = '';
+}
+
+Neste exemplo:
+
+O [(ngModel)]="nome" está vinculando bidirecionalmente o valor do input ao atributo nome no componente.
+
+Quando você digita algo no input, o valor é automaticamente atualizado na propriedade nome do componente.
+
+Quando a propriedade nome do componente é alterada (por exemplo, através de código), o input é automaticamente atualizado.
+
+No entanto, para usar ngModel, é necessário importar o módulo FormsModule no seu módulo Angular e adicionar ao array de imports:
+
+
+// No seu módulo
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [FormsModule],
+  // ...
+})
+O Two-Way Data Binding é uma ferramenta conveniente e eficaz para lidar com formulários e interações do usuário em Angular, simplificando significativamente o código necessário para manter a sincronização entre o modelo e a visualização.
