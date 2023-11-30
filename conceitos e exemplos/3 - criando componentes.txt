@@ -1,0 +1,14 @@
+criando componentes
+
+-para criar um componente podemos utilizar o CLI;
+
+- comando: "ng generate component components/first-component" criará a pasta "components" e dentro "first-component"
+
+-para importar o componente basta utilizar o seu selector em um HTML de outro componente, pode ser pego no arquivo .ts do componente em por exemplo:
+@Component({
+  selector: 'app-second-component', <<<<<<<<<<<<<<<<< selector
+
+  
+
+- ao criar um componente "app.module.ts" gera a importação do componente criado automaticamente e coloca em decclarations, para a aplicação saber que o componente existe.
+No Angular, o arquivo app.module.ts desempenha um papel fundamental. Ele é parte integrante do sistema de módulos do Angular e é usado para definir e configurar o módulo principal da sua aplicação.

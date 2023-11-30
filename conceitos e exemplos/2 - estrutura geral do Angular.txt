@@ -1,0 +1,75 @@
+Angular é um framework de desenvolvimento front-end mantido pelo Google que facilita a criação de aplicativos web robustos e dinâmicos. A estrutura geral do Angular é baseada em alguns conceitos principais e componentes-chave. Aqui está uma visão geral da estrutura geral do Angular:
+
+Módulos (Modules):
+
+Um módulo é um mecanismo para organizar o código em Angular. Ele agrupa componentes, diretivas, pipes e serviços relacionados.
+Cada aplicativo Angular tem pelo menos um módulo, conhecido como o módulo raiz ou AppModule.
+
+Componentes (Components):
+
+Os componentes são os blocos de construção fundamentais em Angular.
+Eles encapsulam a lógica de apresentação e interação do usuário.
+Cada componente possui um arquivo TypeScript para a lógica, um arquivo HTML para a marcação e um arquivo CSS para o estilo.
+
+
+
+
+Templates e Data Binding:
+
+Os templates em Angular são escritos em HTML e podem conter bindings (vinculações) para expressões e propriedades.
+O data binding é a sincronização automática entre o modelo (estado interno) e a visualização (DOM).
+
+
+
+Diretivas (Directives):
+
+As diretivas são instruções no DOM que dizem ao Angular para fazer algo.
+Existem diretivas embutidas, como ngIf, ngFor, e diretivas personalizadas criadas pelo desenvolvedor.
+
+
+
+
+Serviços (Services):
+
+Os serviços são classes reutilizáveis que executam uma tarefa específica ou fornecem funcionalidades compartilhadas.
+Eles são injetados em componentes ou outros serviços e ajudam a manter a lógica de negócios separada dos componentes.
+
+
+
+
+Injeção de Dependência (Dependency Injection):
+
+Angular usa um sistema de injeção de dependência para fornecer instâncias de serviços para componentes onde são necessários.
+Isso promove a reusabilidade, testabilidade e modularidade do código.
+
+
+
+Roteamento (Routing):
+
+O roteamento em Angular permite a navegação entre diferentes partes do aplicativo.
+Os desenvolvedores podem definir rotas para carregar componentes específicos com base na URL.
+
+
+
+Observables e RXJS:
+
+Angular usa a biblioteca RxJS para lidar com programação reativa e observáveis.
+Os observáveis são usados para lidar com assincronia, eventos e chamadas de API.
+
+
+
+Forms (Formulários):
+
+Angular fornece suporte integrado para a criação e validação de formulários.
+Isso inclui formulários reativos e baseados em modelo.
+
+
+
+HTTP Client:
+
+Angular inclui um módulo HTTP Client para fazer solicitações HTTP para servidores remotos.
+
+
+Testes:
+Angular é projetado com testabilidade em mente. Os desenvolvedores podem usar estruturas de teste como Jasmine e Karma para testar seus aplicativos de maneira eficaz.
+Ao seguir esses conceitos e componentes, os desenvolvedores podem criar aplicativos web escaláveis e modulares com Angular.
