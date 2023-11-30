@@ -1,5 +1,21 @@
 Deletando Registro
 
-- Agora vamos refatrar nossa ação de remover registro com a execução HTTP;
+- Agora vamos refatorar nossa ação de remover registro com a execução HTTP;
 - Criaremos outro método service;
 - E ajustaremos a maneira que o método da classe do componente é executado
+
+PASSOS:
+
+no componente (remoção do front):
+
+removeAnimal(animal:Animal){
+    this.animais = this.animais.filter((a)=> animal.nome !== a.nome);
+    this.listService.remove(animal.id).subscribe();
+  }
+
+no service (requisiçao para exclusao no banco):
+
+  remove(id: number){
+    return this.http.delete<Animal[]>(`${this.apiUrl}/${id}`);
+
+  }
