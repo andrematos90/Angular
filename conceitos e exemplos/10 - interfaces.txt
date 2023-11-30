@@ -1,0 +1,61 @@
+Em Angular, interfaces são usadas para definir contratos ou "contratos de forma" que um determinado objeto deve seguir. Elas desempenham um papel importante na criação de código mais robusto, manutenível e escalável. Vamos entender o que são e para que servem as interfaces no contexto do Angular:
+
+O que são Interfaces:
+
+Uma interface em Angular é uma forma de definir uma estrutura de um objeto. Ela não possui implementação real, apenas declarações de métodos, propriedades e, opcionalmente, tipos de dados.
+As interfaces são geralmente utilizadas para definir contratos que as classes ou objetos devem cumprir.
+Declaração de uma Interface:
+
+Em Angular, você pode declarar uma interface usando a palavra-chave interface.
+
+interface MeuObjeto {
+  propriedade: string;
+  metodo(): void;
+}
+
+Para que Servem Interfaces no Angular:
+
+Contratos Claros:
+
+Interfaces fornecem um contrato claro e explícito sobre quais propriedades e métodos um objeto deve ter. Isso torna mais fácil entender como um objeto é esperado de ser usado.
+Padronização de Códigos:
+
+Ao usar interfaces, você pode padronizar a estrutura de objetos em diferentes partes do seu aplicativo. Isso é especialmente útil em grandes projetos onde várias partes da equipe podem estar trabalhando em diferentes módulos.
+Detecção de Erros em Tempo de Compilação:
+
+Se um objeto não cumpre o contrato definido pela interface, o TypeScript emitirá erros em tempo de compilação. Isso ajuda a capturar erros antes mesmo de executar o aplicativo.
+Manutenibilidade:
+
+Se você precisar fazer alterações na estrutura de objetos, as interfaces fornecem um local central para fazer essas alterações, impactando automaticamente todas as partes do código que implementam a interface.
+Facilita a Implementação de Padrões de Design:
+
+Interfaces são frequentemente usadas ao implementar padrões de design, como injeção de dependência, onde a estrutura de objetos é fundamental.
+Exemplo Prático em Angular:
+
+Suponha que você tenha um serviço que faz uma chamada HTTP e retorna um objeto com propriedades específicas. Você pode criar uma interface para representar esse objeto e garantir que outras partes do seu código esperem o mesmo tipo de estrutura.
+
+interface DadosUsuario {
+  nome: string;
+  email: string;
+  idade: number;
+}
+
+// Serviço
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UsuarioService {
+  constructor(private http: HttpClient) { }
+
+  obterDadosUsuario(): Observable<DadosUsuario> {
+    return this.http.get<DadosUsuario>('https://api.exemplo.com/usuario');
+  }
+}
+
+Neste exemplo, a interface DadosUsuario define a estrutura do objeto esperado. Isso torna mais claro como os dados do usuário devem ser manipulados em diferentes partes do código.
+
+Em resumo, interfaces no Angular são usadas para definir contratos, padronizar a estrutura de objetos, melhorar a manutenibilidade do código e facilitar a detecção de erros em tempo de compilação. Elas desempenham um papel crucial na criação de aplicativos Angular mais robustos e compreensíveis.
