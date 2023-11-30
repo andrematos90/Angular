@@ -1,0 +1,61 @@
+As diretivas são um recurso fundamental no Angular que permite estender e modificar o comportamento do DOM (Documento Objeto de Modelo) em sua aplicação. Elas são usadas para criar componentes reutilizáveis, aplicar comportamentos específicos a elementos DOM e manipular a renderização.
+
+Existem dois tipos principais de diretivas no Angular:
+
+1. Diretivas Incorporadas (Built-in Directives):
+São diretivas fornecidas pelo Angular e já estão disponíveis para uso.
+
+Algumas diretivas incorporadas incluem:
+
+ngIf: Adiciona ou remove elementos com base em uma condição.
+<div *ngIf="mostrarElemento">Conteúdo exibido condicionalmente</div>
+
+ngFor: Itera sobre uma lista e gera elementos com base em cada item.
+<ul>
+  <li *ngFor="let item of listaItens">{{ item }}</li>
+</ul>
+
+ngSwitch: Adiciona ou remove elementos com base em uma expressão de alternância.
+<div [ngSwitch]="valor">
+  <div *ngSwitchCase="'caso1'">Caso 1</div>
+  <div *ngSwitchCase="'caso2'">Caso 2</div>
+  <div *ngSwitchDefault>Caso Padrão</div>
+</div>
+
+ngClass e ngStyle: Permitem a aplicação dinâmica de classes e estilos com base em expressões.
+
+<div [ngClass]="{'classe-ativa': isActive, 'classe-inativa': !isActive}">Elemento com classes dinâmicas</div>
+
+
+
+2. Diretivas Personalizadas (Custom Directives):
+São diretivas criadas pelo desenvolvedor para atender a requisitos específicos.
+Diretivas personalizadas podem ser de dois tipos:
+
+Diretivas de Atributo (Attribute Directives): Alteram a aparência ou o comportamento de um elemento, componente ou outra diretiva.
+
+@Directive({
+  selector: '[minhaDiretiva]'
+})
+
+export class MinhaDiretivaDirective {
+  // Lógica da diretiva...
+}
+
+<div minhaDiretiva>Apliquei minha diretiva a este elemento</div>
+
+
+Diretivas Estruturais (Structural Directives): Alteram a estrutura do DOM adicionando, removendo ou substituindo elementos.
+
+@Directive({
+  selector: '[minhaEstrutural]'
+})
+export class MinhaEstruturalDirective {
+  constructor(private templateRef: TemplateRef<any>, private viewContainer: ViewContainerRef) {}
+
+  // Lógica da diretiva...
+}
+
+<div *minhaEstrutural>Este conteúdo é afetado pela diretiva estrutural</div>
+
+Diretivas personalizadas podem ser usadas para encapsular comportamentos complexos e reutilizáveis. Elas são fundamentais para a criação de componentes mais avançados e dinâmicos no Angular.
