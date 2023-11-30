@@ -17,11 +17,13 @@ Passos:
 - em "package.json" criar script >>> "server":"json-server --watch db.json" para rodar como se fosse um API
 - "npm run serve" para rodar o servidor
 
+PARA REALIZAR AS REQUISIÇÕES
 
 2 - Importações:
 
 - importar "HttpClientModule" no "app.module"
 import { HttpClientModule } from '@angular/common/http'
+
 declarar :
  imports: [
     BrowserModule,
@@ -29,10 +31,12 @@ declarar :
     HttpClientModule
   ],
   
- HttpClient(faz requisição) e HttpHeaders(configura o cabeçalho)
 
+para a requisição do componente passar pelo service: 
 
 3 - No componente:
+
+ HttpClient(faz requisição) e HttpHeaders(configura o cabeçalho)
 
 import { Component } from '@angular/core';
 import { Animal } from '../Animal';
@@ -45,10 +49,10 @@ import { ListService } from '../services/list.service';
 })
 export class ListRenderComponent {
   constructor(private listService: ListService){
-    this.getAnimais()
+    this.getAnimais() // da um getAnimais quando incia a aplicação
   }
 
-  animais : Animal[] = []  //Começa com
+  animais : Animal[] = []  //Começa com array vazio
 
 
 
@@ -76,9 +80,12 @@ export class ListService {
     DECLARAR URL DA API (NORMALMENTE É PEGO DE UM ARQUIVO DE CONFIGURAÇÃO)
   private apiUrl = 'http://localhost:3000/animais'
 
-  constructor(private http: HttpClient) { }
+// passa a variavel http do tipo HttpClient para ter acesso aos métodos como o "get" por exemplo
+  constructor(private http: HttpClient) { } 
 
   getAll():Observable<Animal[]>{
     return this.http.get<Animal[]>(this.apiUrl)
   }
 }
+
+// fica observando se a requisição de animais chega ou nao da API
