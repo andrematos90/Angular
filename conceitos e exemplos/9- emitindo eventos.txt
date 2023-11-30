@@ -1,0 +1,76 @@
+Em Angular, você pode emitir eventos usando o recurso EventEmitter. Este é um mecanismo para permitir que um componente emita eventos personalizados que outros componentes podem ouvir e reagir. Aqui estão os passos básicos para emitir eventos:
+
+1.Importar EventEmitter e Output:
+Certifique-se de importar EventEmitter e Output do pacote @angular/core em seu componente.
+
+import { Component, EventEmitter, Output } from '@angular/core';
+
+2.Criar uma instância de EventEmitter:
+Crie uma instância de EventEmitter para representar o evento que você deseja emitir. Normalmente, isso é feito como uma propriedade do componente usando o decorador @Output.
+
+@Output() meuEvento = new EventEmitter<string>();
+Aqui, meuEvento é a propriedade que representa o evento que será emitido, e ela é do tipo EventEmitter com um tipo genérico, neste caso, string.
+
+3.Emitir o evento quando necessário:
+Em algum lugar do seu componente, quando ocorrer um evento significativo, você pode chamar o método emit() do EventEmitter para disparar o evento. Passe os dados relevantes como argumento para emit().
+
+algumMetodo() {
+  // Alguma lógica...
+  this.meuEvento.emit('Dados a serem enviados');
+}
+Neste exemplo, estamos emitindo o evento meuEvento com a string 'Dados a serem enviados'. Você pode passar qualquer dado que seja relevante para os ouvintes do evento.
+
+Ouvir o evento em um componente pai:
+Em um componente pai ou em qualquer componente que deseje ouvir esse evento, você pode usar a sintaxe de vinculação de eventos no template.
+
+<app-meu-componente (meuEvento)="lidarComEvento($event)"></app-meu-componente>
+
+Aqui, lidarComEvento é o método no componente pai que será chamado quando meuEvento for emitido. O $event captura os dados passados durante a emissão do evento.
+
+4.Lidar com o evento no componente pai:
+No componente pai, implemente o método lidarComEvento para lidar com os dados emitidos pelo evento.
+
+lidarComEvento(dados: string) {
+  // Lógica para lidar com os dados recebidos do evento
+  console.log('Dados recebidos:', dados);
+}
+
+Dessa forma, você pode emitir eventos personalizados de um componente filho para um componente pai ou entre componentes que tenham uma relação específica, facilitando a comunicação em sua aplicação Angular.
+
+
+Analogia: Caixa de Correio
+
+Imagine que você tem uma casa (Componente A) e um amigo tem outra casa (Componente B). Vocês dois desejam se comunicar de uma forma mais eficiente do que apenas gritar de uma casa para outra. Então, vocês decidem usar uma caixa de correio (EventEmitter) como meio de comunicação.
+
+Instanciando a Caixa de Correio:
+
+Vocês decidem criar uma caixa de correio no quintal compartilhado (Serviço).
+Cada casa tem sua própria chave para abrir a caixa (@Output() e EventEmitter).
+typescript
+Copy code
+// Componente A
+@Output() caixaDeCorreio = new EventEmitter<string>();
+Colocando Mensagens na Caixa de Correio:
+
+Sempre que algo interessante acontece em uma casa (um evento ocorre), a casa pode colocar uma mensagem na caixa de correio.
+typescript
+Copy code
+// Componente A
+algumEvento() {
+  this.caixaDeCorreio.emit('Oi, amigo! Algo interessante aconteceu!');
+}
+Lendo Mensagens da Caixa de Correio:
+
+A outra casa (Componente B) decide ficar de olho na caixa de correio e reage sempre que há uma nova mensagem.
+typescript
+Copy code
+// Componente B
+constructor(private componenteA: ComponenteA) {
+  componenteA.caixaDeCorreio.subscribe(mensagem => this.lidarComMensagem(mensagem));
+}
+
+lidarComMensagem(mensagem: string) {
+  console.log('Mensagem recebida:', mensagem);
+}
+Agora, sempre que a Casa A coloca uma mensagem na caixa de correio, a Casa B é notificada e pode reagir adequadamente.
+Essa analogia reflete a ideia de como os componentes em Angular podem se comunicar por meio de eventos. A caixa de correio atua como um serviço que permite a comunicação eficiente entre as casas (componentes), fornecendo uma maneira de enviar e receber mensagens de forma assíncrona.
