@@ -1,0 +1,37 @@
+Para instalar o Angular, você precisará ter o Node.js e o npm (Node Package Manager) instalados em seu sistema. Aqui estão os passos básicos para instalar o Angular:
+
+
+Passo 1: Instalar o Node.js e o npm:
+(DESATIVAR FIREWALL)
+
+Certifique-se de ter o Node.js e o npm instalados em seu sistema. Você pode baixá-los no site oficial do Node.js: Node.js
+
+Passo 2: Instalar o Angular CLI (Command Line Interface):
+
+Abra o terminal ou prompt de comando e execute o seguinte comando para instalar o Angular CLI globalmente:
+
+npm install -g @angular/cli
+Isso instalará o Angular CLI globalmente em seu sistema.
+
+Passo 3: Criar um novo projeto Angular:
+
+Depois de instalar o Angular CLI, você pode criar um novo projeto Angular usando o seguinte comando:
+
+ng new nome-do-seu-projeto
+Substitua "nome-do-seu-projeto" pelo nome que desejar para o seu projeto.
+
+Passo 4: Navegar para o diretório do projeto:
+
+Após a criação do projeto, acesse o diretório do projeto usando o seguinte comando:
+
+cd nome-do-seu-projeto
+
+Passo 5: Iniciar o servidor de desenvolvimento:
+
+Execute o seguinte comando para iniciar o servidor de desenvolvimento:
+
+ng serve
+
+Isso iniciará o servidor de desenvolvimento em http://localhost:4200/. Você pode acessar essa URL em seu navegador para visualizar sua aplicação Angular em desenvolvimento.
+
+Lembre-se de que essas são instruções básicas para começar com o Angular. Dependendo do seu ambiente de desenvolvimento, pode ser necessário ajustar algumas configurações ou instalar dependências adicionais. Certifique-se de verificar a documentação oficial do Angular para obter informações mais detalhadas: Angular - Getting Started
