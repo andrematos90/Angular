@@ -1,0 +1,73 @@
+O conceito de "router" em Angular refere-se ao módulo de roteamento da estrutura do Angular. Este módulo permite a criação de navegação eficiente e organizada em uma aplicação web de página única (SPA). Em vez de recarregar toda a página ao navegar entre diferentes seções ou páginas da aplicação, o roteador permite carregar e exibir apenas os componentes relevantes, proporcionando uma experiência de usuário mais fluida.
+
+Aqui estão alguns aspectos-chave do conceito de router em Angular:
+
+Navegação Declarativa:
+
+O roteador do Angular permite definir a navegação de forma declarativa, associando componentes a URLs específicos. Isso é feito por meio de um conjunto de configurações de rotas.
+
+
+
+Configuração de Rotas:
+
+As rotas são configuradas em um array no módulo de roteamento (app-routing.module.ts). Cada rota é mapeada para um componente específico e, opcionalmente, pode ter parâmetros.
+Exemplo de configuração de rotas:
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact/:id', component: ContactComponent },
+];
+
+
+
+Outlet:
+
+Um componente específico em um template é designado como um "outlet" (ponto de saída) onde os componentes correspondentes às rotas serão inseridos.
+Exemplo de template com um outlet:
+
+no template:
+<router-outlet></router-outlet>
+
+
+
+Navegação Programática:
+
+Além da navegação declarativa usando links ou botões com diretivas de roteamento, é possível realizar navegação programática no código TypeScript usando o serviço Router. Isso é útil em situações como após uma ação de botão ou uma lógica específica.
+
+Exemplo de navegação programática:
+
+import { Router } from '@angular/router';
+
+// ...
+
+constructor(private router: Router) {}
+
+navigateToAboutPage() {
+  this.router.navigate(['/about']);
+}
+
+
+Gestão do Estado da Aplicação:
+
+O roteador gerencia automaticamente o estado da aplicação conforme o usuário navega entre as diferentes rotas. Ele permite que os componentes reajam a eventos de navegação, por exemplo, carregando dados específicos para uma rota.
+
+
+Lazy Loading:
+
+O roteador suporta o conceito de carregamento tardio (lazy loading), onde módulos e componentes são carregados sob demanda, melhorando o desempenho inicial da aplicação.
+Exemplo de lazy loading:
+
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) },
+];
+
+Em resumo, o roteador em Angular é uma parte crucial da estrutura que facilita a navegação entre diferentes partes de uma aplicação web de página única, melhorando a experiência do usuário e proporcionando uma arquitetura organizada.
+
+
+
+
+
+
