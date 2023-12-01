@@ -1,0 +1,53 @@
+Para realizar uma requisição HTTP do tipo DELETE em Angular, você pode seguir um processo semelhante ao que foi descrito para as requisições GET. Aqui está um exemplo de como você pode implementar uma solicitação DELETE em um serviço Angular:
+
+Passo 1: Atualizar o Serviço
+No seu serviço, adicione um método que realizará a solicitação DELETE. Este método pode aceitar parâmetros, como o ID do registro a ser excluído. Aqui está um exemplo:
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class NomeDoServicoService {
+  constructor(private http: HttpClient) {}
+
+  excluirRegistro(id: number): Observable<any> {
+    const url = `https://api.exemplo.com/registros/${id}`;
+    return this.http.delete(url);
+  }
+}
+
+
+Passo 2: Consumir o Serviço no Componente
+No componente onde você deseja realizar a exclusão, injete o serviço e chame o método excluirRegistro. Aqui está um exemplo no componente:
+
+import { Component, OnInit } from '@angular/core';
+import { NomeDoServicoService } from './caminho-do-servico/nome-do-servico.service';
+
+@Component({
+  selector: 'app-meu-componente',
+  templateUrl: './meu-componente.component.html',
+  styleUrls: ['./meu-componente.component.css'],
+})
+export class MeuComponenteComponent implements OnInit {
+  constructor(private nomeDoServico: NomeDoServicoService) {}
+
+  ngOnInit(): void {
+    const idDoRegistroParaExcluir = 1; // Substitua pelo ID do registro que você deseja excluir
+
+    this.nomeDoServico.excluirRegistro(idDoRegistroParaExcluir).subscribe(
+      () => {
+        console.log('Registro excluído com sucesso.');
+        // Execute ações adicionais após a exclusão, se necessário
+      },
+      (erro) => {
+        console.error('Erro ao excluir o registro:', erro);
+        // Trate o erro conforme necessário
+      }
+    );
+  }
+}
+
+Este é um exemplo básico. Lembre-se de ajustar o código conforme necessário para o seu caso de uso específico. Certifique-se de lidar com erros adequadamente e considere realizar ações adicionais após a exclusão, se necessário.
