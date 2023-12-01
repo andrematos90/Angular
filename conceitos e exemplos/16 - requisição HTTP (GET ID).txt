@@ -1,0 +1,71 @@
+Fazer uma requisição HTTP buscando pelo id em Angular envolve o uso do módulo HttpClient para enviar solicitações para um servidor. Abaixo está um guia passo a passo sobre como realizar uma requisição HTTP em um serviço Angular:
+
+Passo 1: Importar o módulo HttpClient
+Certifique-se de que o módulo HttpClientModule está importado no seu módulo Angular. Normalmente, você fará isso no módulo principal (app.module.ts). Abra o arquivo e adicione a importação:
+
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  declarations: [
+    // ... outros componentes e diretivas
+  ],
+  imports: [
+    HttpClientModule, // Adicione esta linha para importar o módulo HttpClientModule
+    // ... outros módulos
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+Passo 2: Criar um serviço
+Crie um serviço Angular que será responsável por realizar a requisição HTTP. Você pode usar o Angular CLI para criar um serviço:
+
+"ng generate service nome-do-servico"
+
+Abra o arquivo gerado (por exemplo, nome-do-servico.service.ts) e adicione a importação do HttpClient:
+
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class NomeDoServicoService {
+  constructor(private http: HttpClient) {}
+
+  obterRegistroPorId(id: number): Observable<any> {
+    const url = `https://api.exemplo.com/registros/${id}`;
+    return this.http.get(url);
+  }
+}
+
+Neste exemplo, o método obterRegistroPorId aceita um parâmetro id que é utilizado para construir a URL da requisição GET. A URL contém o ID do registro que você deseja recuperar.
+
+
+Passo 3: No seu componente, você pode então chamar este método passando o ID desejado:
+
+
+import { Component, OnInit } from '@angular/core';
+import { NomeDoServicoService } from './caminho-do-servico/nome-do-servico.service';
+
+@Component({
+  selector: 'app-meu-componente',
+  templateUrl: './meu-componente.component.html',
+  styleUrls: ['./meu-componente.component.css'],
+})
+export class MeuComponenteComponent implements OnInit {
+  constructor(private nomeDoServico: NomeDoServicoService) {}
+
+  ngOnInit(): void {
+    const idDoRegistro = 1; // Substitua pelo ID desejado
+    this.nomeDoServico.obterRegistroPorId(idDoRegistro).subscribe((registro) => {
+      console.log(registro);
+      // Faça algo com o registro recebido
+    });
+  }
+}
+
+Neste exemplo, o código assume que você está recuperando um registro com ID 1, mas você pode substituir o valor de idDoRegistro pelo ID específico que você deseja. Certifique-se de ajustar a lógica conforme necessário para o seu caso de uso específico.
