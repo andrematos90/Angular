@@ -1,0 +1,44 @@
+Angular Material é uma biblioteca de componentes UI (Interface do Usuário) para Angular, o popular framework JavaScript/TypeScript mantido pelo Google. A proposta do Angular Material é fornecer um conjunto coeso e visualmente agradável de componentes que seguem as diretrizes de Material Design, uma abordagem de design da Google.
+
+Principais Características do Angular Material:
+
+Componentes Material Design: A biblioteca inclui uma ampla variedade de componentes prontos para uso que seguem as diretrizes do Material Design. Isso inclui botões, caixas de diálogo, barras de navegação, barras de progresso, tabelas, entre outros.
+
+Layouts Responsivos: O Angular Material facilita a criação de layouts responsivos e flexíveis usando sistemas de layout, grades e componentes como mat-grid-list.
+
+Temas e Cores Personalizáveis: A biblioteca permite a personalização de temas e cores para se adequarem à identidade visual específica de uma aplicação.
+
+Acessibilidade: Componentes são projetados com acessibilidade em mente, seguindo as melhores práticas para garantir que os aplicativos sejam usáveis por pessoas com deficiências.
+
+Integração com Angular CLI: Angular Material é projetado para integrar-se perfeitamente com o Angular CLI (Command Line Interface), tornando o processo de instalação e configuração bastante simplificado.
+
+Exemplo de Uso Básico:
+
+Para usar o Angular Material em um projeto Angular, você precisa primeiro instalar a biblioteca e seus estilos. Você pode fazer isso utilizando o Angular CLI:
+
+ng add @angular/material
+
+Após a instalação, você pode começar a usar os componentes do Angular Material em seus componentes Angular. Por exemplo, para usar um botão, você precisaria importar o módulo do botão em seu componente:
+
+import { MatButtonModule } from '@angular/material/button';
+
+@NgModule({
+  declarations: [
+    // ... outros componentes
+  ],
+  imports: [
+    MatButtonModule,
+    // ... outros módulos
+  ],
+})
+export class SeuModule { }
+E então, no seu template HTML:
+
+<button mat-button>Clique em mim!</button>
+
+Essa é apenas uma demonstração básica; a biblioteca oferece uma ampla gama de componentes e recursos para criar interfaces ricas e responsivas.
+
+
+
+
+
