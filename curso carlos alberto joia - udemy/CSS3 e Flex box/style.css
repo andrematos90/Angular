@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+.container div {
+    border: 1px solid red;
+    width: 80%;
+}
+
+/*https://css-tricks.com/snippets/css/a-guide-to-flexbox/*/
