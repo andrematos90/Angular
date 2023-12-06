@@ -1,25 +1,18 @@
-<h1>Interpolação de Strings</h1>
-<div>{{texto}}</div>
+<h1>Diretiva NgClass:</h1>
 
+<p [ngClass]="elemento=='ClasseA' ? 'classeA': 'classeB'">Aplicando a classe</p>
 <br>
 
-<h1>Binding de Eventos</h1>
-<p>chama métodos ou propriedades dentro do template:</p>
-
-<button (click)="clicado('usuario clicou')">Clique aqui</button>
-
-
+<h1>Directiva NgStyle:</h1>
+<p style="color: green;">cor aplicada por estilo inline</p>
 <br>
 
-<h1>Binding de Conexão/Comunicação no Template</h1>
-<br>
-<p>EX: DOM - propriedade disabled</p>
-
-<button [disabled]="isDisabled">Botao</button>
-<button (click)="disableButton()">Habilita/Desabilita</button>
-<br>
+<h1>Directiva NgIf:</h1>
+<p *ngIf="show">Exebido</p>
 
 
-<h1>Two way data-binding</h1>
-<input [(ngModel)]="myBindingProperty">
-<p><span>{{myBindingProperty}}</span></p>
+<h1>Directiva nfFor</h1>
+<ul>
+  <li *ngFor="let carro of carros">
+  marca: {{carro.marca}} - modelo: {{carro.modelo}}
+</ul>

@@ -6,22 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent {
+  public elemento:string = "ClasseB"
+  public show:boolean= true;
 
-  public texto:string = 'Olá Mundo!'
-  public isDisabled:boolean = false;
-  public myBindingProperty:string = '';
+  public carros= [
+    {marca:'renault', modelo:'twingo'},
+    {marca:'chevrolet', modelo:'malibu'},
+    {marca:'renault', modelo:'clio'},
+    {marca:'volkswagen', modelo:'fusca'},
+  ]
 
-  public clicado(a:string):void{
-    console.log(a)
-    console.log("ciclou!")
-  }
-
-  public disableButton(){
-    if(this.isDisabled){
-      this.isDisabled = false;
-    }else{
-      this.isDisabled = true;
-    }
-  }
 
 }
