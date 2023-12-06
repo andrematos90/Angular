@@ -1,0 +1,25 @@
+<h1>Interpolação de Strings</h1>
+<div>{{texto}}</div>
+
+<br>
+
+<h1>Binding de Eventos</h1>
+<p>chama métodos ou propriedades dentro do template:</p>
+
+<button (click)="clicado('usuario clicou')">Clique aqui</button>
+
+
+<br>
+
+<h1>Binding de Conexão/Comunicação no Template</h1>
+<br>
+<p>EX: DOM - propriedade disabled</p>
+
+<button [disabled]="isDisabled">Botao</button>
+<button (click)="disableButton()">Habilita/Desabilita</button>
+<br>
+
+
+<h1>Two way data-binding</h1>
+<input [(ngModel)]="myBindingProperty">
+<p><span>{{myBindingProperty}}</span></p>

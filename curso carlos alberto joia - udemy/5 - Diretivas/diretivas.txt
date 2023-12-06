@@ -1,0 +1,23 @@
+Diretivas(directives)
+
+- Built-in directives: adicionam comportamento aos elementos da aplicação
+
+- Tipos:
+
+*Components - diretivas com template(mais comum)
+
+*Atributos - alteram o comportamento ou aparência de um elemento: NgClass, NgModel, NgStyles
+
+.NgClass: adicionam uma classe à uma tag HTML - [ngClass] ="condição? 'classeA' : 'classeB1"
+
+.NgMoel:Two-way data binding - 
+
+.NgStyle: adicionam um estilo à uma tag HTML - [ngStyle]="inlineStyle"
+
+*Estrutural - modificam o DOM
+
+.NgIf:  *ngIf"condição
+
+.NgFor: *ngFor = "let item of items; let i = index"
+
+.NgSwitch: [NgSwitch]="condição" / *NgSwitchCase="valor / *ngSwitchDefault
