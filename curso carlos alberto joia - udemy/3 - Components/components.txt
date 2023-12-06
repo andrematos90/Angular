@@ -1,0 +1,82 @@
+No Angular, os componentes são peças fundamentais da arquitetura da aplicação. Eles são blocos de construção modulares que encapsulam funcionalidades específicas e dados relacionados. Cada componente consiste em um template, que define a estrutura do componente no HTML, uma classe, que contém a lógica e dados do componente em TypeScript, e folhas de estilo para estilizar o componente.
+
+Aqui estão os principais conceitos relacionados aos componentes no Angular:
+
+Componente:
+
+Um componente é uma classe TypeScript decorada com o decorator @Component.
+Ele encapsula a lógica e os dados relacionados a uma parte específica da interface do usuário.
+Cada componente tem um template associado que define a estrutura HTML.
+
+Template:
+
+O template é uma representação em HTML que define como o componente deve ser renderizado na interface do usuário.
+Ele pode incluir lógica de apresentação usando diretivas Angular e interpolação de dados.
+
+Diretivas:
+
+As diretivas são instruções no HTML que indicam ao Angular como manipular ou transformar o DOM.
+Exemplos incluem *ngFor para repetição de elementos e *ngIf para exibição condicional.
+
+Data Binding:
+
+O Angular suporta diferentes tipos de data binding, como interpolação ({{ variavel }}), property binding ([propriedade]="valor"), e event binding ((evento)="handler()").
+Isso permite a comunicação eficiente entre o componente e o template.
+
+Ciclo de Vida do Componente:
+
+Os componentes têm um ciclo de vida que consiste em diferentes eventos, como ngOnInit, ngOnChanges, e ngOnDestroy. Esses eventos permitem que você execute lógica em momentos específicos durante a vida do componente.
+
+Injeção de Dependência:
+
+Angular possui um sistema de injeção de dependência integrado que facilita a gestão de dependências e a reutilização de código.
+O uso de componentes no Angular promove a modularidade, reusabilidade e manutenibilidade do código. Cada componente é uma unidade independente que pode ser desenvolvida, testada e mantida separadamente. Além disso, a abordagem baseada em componentes permite a construção de interfaces de usuário complexas divididas em partes menores e mais gerenciáveis.
+
+
+
+Passos: Criação de um novo componente
+
+
+
+
+Passo 1: Se o Angular CLI para criar um novo componente. No terminal, execute:
+ng generate component nome-do-componente
+
+
+Passo 2: Implementação do componente
+Abra o código-fonte do componente recém-criado. O diretório do componente estará em src/app/nome-do-componente. Você verá arquivos como nome-do-componente.component.ts (classe TypeScript), nome-do-componente.component.html (template HTML) e nome-do-componente.component.css (folha de estilo CSS).
+
+
+Passo 3: Uso do componente em um módulo
+Abra o arquivo do módulo onde você deseja usar o componente. Normalmente, é o arquivo app.module.ts no diretório src/app.
+
+Importe o componente:
+
+import { NomeDoComponenteComponent } from './nome-do-componente/nome-do-componente.component';
+Adicione o componente ao array declarations do módulo:
+
+declarations: [
+  // ...
+  NomeDoComponenteComponent,
+],
+
+
+Passo 4: Utilização do componente no template HTML
+Agora você pode usar o componente no template HTML de qualquer outro componente. Abra o arquivo do componente onde você deseja usar o novo componente.
+
+Adicione a tag do componente no template HTML:
+
+<!-- OutroComponente.component.html -->
+<app-nome-do-componente></app-nome-do-componente>
+
+Passo 5: Execução da aplicação
+No terminal, execute o seguinte comando para iniciar o servidor de desenvolvimento:
+
+ng serve
+Visite http://localhost:4200/ em seu navegador para ver a aplicação em execução.
+
+Isso é um passo a passo básico para criar e usar um componente no Angular. Lembre-se de que esses são conceitos fundamentais e podem ser expandidos à medida que você ganha mais experiência com o Angular.
+
+
+
+
