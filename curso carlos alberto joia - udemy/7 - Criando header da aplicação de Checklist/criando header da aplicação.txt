@@ -1,0 +1,71 @@
+1 - Criar novo Angular NgModule para o Angular Material
+*na pasta app copiar o arquivo "app.module" e renomear para "material.module.ts"
+
+*trocar o nome da classe
+
+
+* deixar dessa maneira:
+
+import { NgModule } from '@angular/core';
+
+@NgModule({
+ 
+  imports: [
+   
+  ],
+   exports: []
+  providers: [],
+  bootstrap: []
+})
+export class MaterialModule { }
+
+
+*importar no modulo principal "app.module":
+
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule      <<<<<<<<<<<<<<<<<<
+  ],
+
+
+  2 - Criar o componente de header
+
+  3 - Modificar componente:
+
+*no site do angular material em componentes selecionar o componente e pegar o import em "API"
+
+no arquivo /app/src/material.module.ts;
+
+Adicione as seguintes linhas no topo do arquivo (junto aos imports):
+
+import {MatIconModule} from '@angular/material/icon'; (é pego no site do angular material)
+import {MatButtonModule} from '@angular/material/button';  (é pego no site do angular material)
+import {MatToolbarModule} from '@angular/material/toolbar';  (é pego no site do angular material)
+
+Altere os arrays "imports" e "exports" adicionando as seguintes linhas:
+
+@NgModule({
+  imports: [
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+
+  ],
+
+  <<tem que colocar no exports para o modulo principal encontrar>>
+  exports: [
+    MatToolbarModule
+    MatIconModule,
+    MatButtonModule,
+  ],
+
+  3 - criar o html:
+
+
