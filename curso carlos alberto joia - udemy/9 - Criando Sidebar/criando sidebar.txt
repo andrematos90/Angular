@@ -1,0 +1,26 @@
+1 - no side no angular material em "Sidenav" >> API pegar o import e importar no modulo "material.module"
+
+2 - CSS do app.component:
+ 
+.main-container{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+}
+
+a{
+  color: black;
+  text-decoration: none;
+}
+
+a:hover{
+  font-size: 18px;
+}
+
+
+3 - em app.component.html
