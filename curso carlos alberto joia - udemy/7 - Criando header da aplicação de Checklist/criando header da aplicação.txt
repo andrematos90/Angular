@@ -1,4 +1,8 @@
-1 - Criar novo Angular NgModule para o Angular Material
+1 - Criar o componente de header
+
+2 - instalar o angular material
+
+3 - Criar novo Angular NgModule para o Angular Material
 *na pasta app copiar o arquivo "app.module" e renomear para "material.module.ts"
 
 *trocar o nome da classe
@@ -35,9 +39,7 @@ export class MaterialModule { }
   ],
 
 
-  2 - Criar o componente de header
-
-  3 - Modificar componente:
+4 - Modificar componente:
 
 *no site do angular material em componentes selecionar o componente e pegar o import em "API"
 
@@ -66,6 +68,14 @@ Altere os arrays "imports" e "exports" adicionando as seguintes linhas:
     MatButtonModule,
   ],
 
-  3 - criar o html:
+  5 - criar o html:
+ex:
+  <mat-toolbar>
+  <button mat-icon-button (click)="openSideNav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1 class="app-name">Aplicação de CheckList</h1>
+</mat-toolbar>
+
 
 
