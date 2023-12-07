@@ -1,4 +1,7 @@
-1 - Criar o componente de header
+1 - Criar o componente de header, se o componente for criado 
+depois de ter criado o modulo do angular material deve ser especificar
+no comando de criação a qual modulo o componente deve pertencer ex: 
+"ng g c components/footer --module=app"
 
 2 - instalar o angular material
 
