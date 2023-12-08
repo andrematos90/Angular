@@ -1,23 +1,28 @@
-<app-header></app-header>
 
 <div class="main-container">
+  <app-header [sidenav]="sidenav"></app-header>
 
-    <mat-sidenav-container>
-      <!--é o da esquerda-->
-      <mat-sidenav #sidenav>
+  <mat-sidenav-container>
 
-      </mat-sidenav>
-      <mat-sidenav-content>
-        <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
-        <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
-        <p>Events:</p>
-        <div class="example-events">
-         <div *ngFor="let e of events">{{e}}</div>
-        </div>
-      </mat-sidenav-content>
+    <!--é o da esquerda-->
+    <mat-sidenav #sidenav class="widget-10p">
+      <mat-list>
+        <mat-list-item (click)="sidenav.toggle()">
+          <mat-icon>home</mat-icon>
+          <span class="margin-left-15">
+            <a href="/">Home</a>
+          </span>
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
 
+    <!--é o conteudo da direita-->
+    <mat-sidenav-content>
+      <h1>Aplicação de teste</h1>
 
-    </mat-sidenav-container>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
 
-  <router-outlet></router-outlet>
+  </mat-sidenav-container>
+
 </div>

@@ -23,4 +23,113 @@ a:hover{
 }
 
 
-3 - em app.component.html
+3 - no side do angular material em "components" >> "sidenav" pegar o código do exemploo "Sidena open & close behavior"
+
+em app.component.html:
+
+
+<app-header></app-header>
+
+<div class="main-container">
+
+  <mat-sidenav-container>
+
+    <!--é o da esquerda-->
+    <mat-sidenav #sidenav>
+    </mat-sidenav>
+
+    <!--é o conteudo da direita-->
+    <mat-sidenav-content>
+      <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
+      <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
+      <p>Events:</p>
+      <div class="example-events">
+       <div *ngFor="let event of events">{{event}}</div>
+      </div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+  <router-outlet></router-outlet>
+
+</div>
+
+
+
+4 - no site do angular material em "list"
+pegar o import em "api" e  importar no modulo, colocar nos imports e exports
+
+5 - pegar o código de exemplo de "Basic List" colocar em "mat-sidenav" e modificar
+
+exemplo:
+
+<div class="main-container">
+  <app-header></app-header>
+
+  <mat-sidenav-container>
+
+    <!--é o da esquerda-->
+    <mat-sidenav #sidenav class="widget-10p">
+      <mat-list>
+        <mat-list-item (click)="sidenav.toggle()">
+          <a href="/"><mat-icon>home</mat-icon>Home</a>
+        </mat-list-item>
+
+      </mat-list>
+    </mat-sidenav>
+
+    <!--é o conteudo da direita-->
+    <mat-sidenav-content>
+      <h1>Aplicação de teste</h1>
+
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</div>
+
+o icone "home" é pego em  "https://fonts.google.com/icons" depois de importar "mat-icon" do angular material (só pega o nome)
+
+
+
+6 - para abrir o meu ao clicar em "menu":
+
+- tem que ser feito um "binding" "comunicação" entre o componentes exeterno(pai "app.component" )no caso e o componentes interno (filho "heaeder") atraves da variaveel "sidenav":
+a função é chamada no header.html e executada no header.ts mas "abre" no app.component.html
+
+<app-header [sidenav]="sidenav"></app-header>
+
+- no .ts de header:
+
+export class HeaderComponent {
+  @Input() sidenav!: MatSidenav;
+
+public openSideNav(){
+  this.sidenav.toggle()
+   }
+
+7 - para alinhar o icone com "home":
+
+<mat-list-item (click)="sidenav.toggle()">
+          <mat-icon>home</mat-icon>
+          <span class="margin-left-15">
+            <a href="/">Home</a>
+          </span>
+        </mat-list-item>
+
+css:
+
+.margin-left-15{
+  margin-left: 15px;
+}
+
+
+
+
+
+
+
+
+
+
