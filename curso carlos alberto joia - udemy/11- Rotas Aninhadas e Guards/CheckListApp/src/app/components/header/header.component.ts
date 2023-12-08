@@ -7,9 +7,9 @@ import { MatSidenav } from '@angular/material/sidenav'
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Input() sidenav!: MatSidenav;
+  @Input() sideNavBar!: MatSidenav;
 
  public openSideNav(){
-  this.sidenav.toggle()
+  this.sideNavBar.toggle()
    }
 }
