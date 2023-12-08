@@ -1,0 +1,36 @@
+
+<div class="main-container">
+  <app-header [sidenav]="sidenav"></app-header>
+
+  <mat-sidenav-container>
+
+    <!--é o da esquerda-->
+    <mat-sidenav #sidenav class="widget-10p">
+      <mat-list>
+        <mat-list-item (click)="sidenav.toggle()">
+          <mat-icon>home</mat-icon>
+          <span class="margin-left-15">
+            <a [routerLink]="['/']">Home</a>
+          </span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item (click)="sidenav.toggle()">
+          <mat-icon>category</mat-icon>
+          <span class="margin-left-15">
+            <a [routerLink]="['categoria']">Categoria</a>
+          </span>
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+
+    <!--é o conteudo da direita-->
+    <mat-sidenav-content>
+      <h1>Aplicação de teste</h1>
+
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+  <app-footer></app-footer>
+
+</div>
