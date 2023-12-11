@@ -8,6 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -22,7 +23,8 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatToolbarModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
 
   ],
   exports:[
@@ -34,7 +36,8 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatToolbarModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
 
   ],
   providers: [],
