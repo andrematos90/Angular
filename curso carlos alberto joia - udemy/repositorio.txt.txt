@@ -1,0 +1,3 @@
+- Front-end: https://github.com/calazarin/checklist-spa
+
+- Back-end: https://github.com/calazarin/checklist-api
