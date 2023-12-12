@@ -1,0 +1,60 @@
+As rotas aninhadas referem-se à prática de aninhar rotas dentro de outras rotas. Isso é útil quando você tem componentes que devem ser exibidos dentro de outros componentes, e cada um desses componentes pode ter suas próprias rotas. O aninhamento de rotas permite criar uma hierarquia na navegação.
+
+Por exemplo, considere a seguinte configuração de rotas aninhadas:
+
+
+const routes: Routes = [
+  { path: 'dashboard', component: DashboardComponent, children: [
+    { path: 'profile', component: ProfileComponent },
+    { path: 'settings', component: SettingsComponent }
+  ]}
+];
+Neste exemplo, quando você navega para /dashboard, o DashboardComponent será exibido. Dentro do DashboardComponent, você pode ter links ou botões que, ao serem clicados, levam a /dashboard/profile ou /dashboard/settings, exibindo os componentes correspondentes.
+
+Guards (Guardiões):
+Os guards em Angular são classes que implementam interfaces específicas para controlar o acesso à navegação ou determinar se uma rota pode ser ativada ou não. Existem vários tipos de guards:
+
+CanActivate: Decide se uma rota pode ser ativada. É útil para proteger rotas com base em alguma lógica de negócios.
+
+CanActivateChild: Similar ao CanActivate, mas aplicado a rotas filhas. Verifica se as rotas filhas podem ser ativadas.
+
+CanDeactivate: Decide se uma rota pode ser desativada. É útil para confirmar com o usuário antes de sair de uma página.
+
+CanLoad: Decide se um módulo pode ser carregado de forma preguiçosa. Verifica se um módulo pode ser carregado antes de tentar carregá-lo.
+
+Resolve: Pré-carrega dados antes que a rota seja ativada. Útil para carregar dados necessários antes de exibir um componente.
+
+Exemplo de uso de CanActivate:
+
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthGuard implements CanActivate {
+  constructor(private router: Router) {}
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean {
+    // Implemente a lógica de autenticação aqui
+    if (usuarioAutenticado) {
+      return true;
+    } else {
+      // Redireciona para a página de login se não estiver autenticado
+      this.router.navigate(['/login']);
+      return false;
+    }
+  }
+}
+Este guard (AuthGuard) pode ser associado a uma rota para garantir que apenas usuários autenticados tenham acesso à rota.
+
+
+const routes: Routes = [
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  // outras rotas
+];
+
+Em resumo, rotas aninhadas permitem criar hierarquias de navegação, enquanto os guards ajudam a controlar o acesso às rotas com base em lógica específica. Ambos são recursos poderosos quando se trabalha com navegação em aplicações Angular.
