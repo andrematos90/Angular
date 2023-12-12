@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/_models/category';
 
 @Component({
@@ -13,16 +13,18 @@ export class CategoryFormComponent implements OnInit{
   @Output() closeModelEventEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() public editableCategory!: Category;
   public categoryForm!: FormGroup;
+  public isFormReady:boolean = false;
 
   constructor(private formBuilder: FormBuilder){
 
   }
 
   ngOnInit(): void {
-      this.categoryForm = this.formBuilder.group({
-        name: this.editableCategory != null ? this.editableCategory.name: ''
-      })
-  }
+    this.categoryForm = this.formBuilder.group({
+      name: [this.editableCategory != null ? this.editableCategory.name : '', Validators.required]
+  });
+  this.isFormReady = true;
+}
 
   cancel(){
     console.log("cancelou")

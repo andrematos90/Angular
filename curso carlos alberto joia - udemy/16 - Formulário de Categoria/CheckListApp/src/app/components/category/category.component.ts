@@ -46,7 +46,13 @@ export class CategoryComponent {
     )
   }
 
-  createNewCategory(){}
-
-
+  createNewCategory(){
+    this.dialog.open(CategoryEditComponent, {disableClose: true,
+      data : { actionName: 'Criar'}})
+      .afterClosed()
+      .subscribe( resp => {
+       if(resp) console.log('Modal criar fechada')
+     }
+   )
+  }
 }
