@@ -8,8 +8,8 @@ import { ChecklistComponent } from './components/checklist/checklist.component';
 const routes: Routes = [
   {path:'', component: HomeComponent},
   {path: 'categoria', component: CategoryComponent},
-  {path:'**', component: PageNotFoundComponent},
   {path: 'checklist', component: ChecklistComponent},
+  {path:'**', component: PageNotFoundComponent},
 
 ];
 
