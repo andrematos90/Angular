@@ -15,7 +15,8 @@ import { CategoryEditComponent } from './components/category-edit/category-edit.
 import { CategoryFormComponent } from './components/category-form/category-form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ChecklistComponent } from './components/checklist/checklist.component';
-import { ChecklistItemComponent } from './components/checklist-item/checklist-item.component';
+import { ChecklistEditComponent } from './components/checklist-edit/checklist-edit.component';
+import { ChecklistFormComponent } from './components/checklist-form/checklist-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { ChecklistItemComponent } from './components/checklist-item/checklist-it
     CategoryEditComponent,
     CategoryFormComponent,
     ChecklistComponent,
-    ChecklistItemComponent,
+    ChecklistEditComponent,
+    ChecklistFormComponent,
+
 
 
   ],
