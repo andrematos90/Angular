@@ -1,1 +1,49 @@
-<p>checlist-form works!</p>
+<div>
+  <mat-card>
+      <mat-card-header>
+          <mat-card-title>{{actionName}} Item do Checklist</mat-card-title>
+
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <form [formGroup]="checklistForm" #formDirective="ngForm">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Descrição</mat-label>
+              <input matInput type="text" formControlName="description">
+              <mat-error *ngIf="checklistForm?.controls?.[('description')]?.errors?.[('required')]">A descrição é obrgatória</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Categoria</mat-label>
+              <mat-select formControlName="category">
+                <mat-option *ngFor="let category of categories "[value]="category">{{category.name}}</mat-option>
+
+              </mat-select>
+            </mat-form-field>
+
+            <div>
+              <section>
+                <mat-checkbox formControlName="completed">Completo?</mat-checkbox>
+              </section>
+
+              <mat-form-field>
+                <mat-label>Prazo</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="deadline">
+                <mat-datepicker-toggle matuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+
+      </mat-card-content>
+      <mat-card-actions>
+          <button mat-raised-button color="warn" class="m-5" (click)="cancel()">Cancelar</button>
+
+          <button mat-raised-button color="primary" class="m-5"  (click)="cancel()">Salvar</button>
+      </mat-card-actions>
+
+  </mat-card>
+</div>

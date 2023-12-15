@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular
 Category
 import { Category } from '../../_models/category';
 import { ChecklistItem } from 'src/app/_models/checklist_item';
-
+import { CATEGORY_DATA } from '../category/category.component';
 
 
 @Component({
@@ -15,46 +15,49 @@ import { ChecklistItem } from 'src/app/_models/checklist_item';
 export class ChecklistFormComponent implements OnInit {
 
   @Input() public actionName = 'Editar';
-  @Input() public checklisItem!: ChecklistItem;
+  @Input() public checklistItem!: ChecklistItem;
   @Output() public formCloseEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  public categories: Category[] = [];
+  public categories: Category[] = CATEGORY_DATA;
 
   public checklistForm!: FormGroup;
 
-  @ViewChild(FormGroupDirective) public checklistFormDirective!: FormGroupDirective;
+  @ViewChild(FormGroupDirective) public checklistFormGroupDirective!: FormGroupDirective;
 
   constructor(private formBuilder: FormBuilder) { }
 
   public ngOnInit(): void {
     this.checklistForm = this.formBuilder.group(
       {
-        completed: [this.checklisItem != null ?
-          this.checklisItem.completed : false, Validators.required],
+        completed: [this.checklistItem != null ?
+          this.checklistItem.completed : false, Validators.required],
 
-        description: [this.checklisItem != null ?
-          this.checklisItem.description : '', Validators.required],
+        description: [this.checklistItem != null ?
+          this.checklistItem.description : '', Validators.required],
 
-        deadline: [this.checklisItem != null ?
-          this.checklisItem.deadLine : new Date(), Validators.required],
+        deadline: [this.checklistItem != null ?
+          this.checklistItem.deadLine : new Date(), Validators.required],
 
-        category: [this.checklisItem != null ?
-            this.checklisItem.category : '', Validators.required],
+        category: [this.checklistItem != null ?
+            this.checklistItem.category : '', Validators.required],
       }
     )
 }
-
-
 
   public clearForm(){
     this.checklistForm.reset();
   }
 
+  public closeForm(){}
+
   public save(){
+    console.log(this.checklistItem.deadLine)
 
   }
 
   public cancel(){
 
   }
+
+
 }

@@ -20,6 +20,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin: 20px;
 }
 
+.m-5{
+ margin: 5px;
+}
+
+
 .mr-10{
   margin-right: 10px !important;
 }
