@@ -36,7 +36,7 @@ export class ChecklistFormComponent implements OnInit {
           this.checklistItem.description : '', Validators.required],
 
         deadline: [this.checklistItem != null ?
-          this.checklistItem.deadLine : new Date(), Validators.required],
+          new Date(this.checklistItem.deadLine ): new Date(), Validators.required],
 
         category: [this.checklistItem != null ?
             this.checklistItem.category : '', Validators.required],
