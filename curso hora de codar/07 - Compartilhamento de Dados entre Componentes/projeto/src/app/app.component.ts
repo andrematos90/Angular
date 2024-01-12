@@ -16,4 +16,6 @@ export class AppComponent {
     ano : 2001
 
   }
+
+  animal:string = "Simba";
 }

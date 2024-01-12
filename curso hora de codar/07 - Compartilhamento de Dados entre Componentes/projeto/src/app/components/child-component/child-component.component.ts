@@ -1,3 +1,4 @@
+import { Animal } from './../../../../../../20 - Excluindo dado pelo service/projeto/src/app/Animal';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -11,6 +12,7 @@ export class ChildComponentComponent {
 
   @Input() nome!:string;
   @Input() carro! :{ marca:String, modelo:String, ano:Number}
+  @Input() animal!:string;
 
 }
 
