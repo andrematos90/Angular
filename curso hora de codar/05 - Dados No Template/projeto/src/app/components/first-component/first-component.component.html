@@ -1,22 +1,7 @@
+<p>meu nome é {{ nome }}</p>
+<p>idade {{idade}} anos</p>
 
-<h3>Dados:</h3>
-<p>Nome: {{name}}</p>
-<p>Idade: {{age}}</p>
+<p>{{carro.modelo}}</p>
 
-<h3>Hobbies:</h3>
-<p *ngFor="let hobbie of hobbies">
-{{hobbie}}</p>
-<h4>Hobbie preferido:</h4>
-<p>{{hobbies[0]}}</p>
+<p>{{hobbies[1]}}</p>
 
-<h3>Primeiro Carro:</h3>
-<p>Modelo: {{firstCar.model}}</p>
-<p>Marca: {{firstCar.brand}}</p>
-<p>Ano: {{firstCar.year}}</p>
-<p>Impartado:{{firstCar.imported ? 'sim' : 'não'}}</p>
-
-
-<h3>Todos os Carros:</h3>
-<p *ngFor="let car of allCars">
-  {{car.car}} - {{car.year}}
-</p>

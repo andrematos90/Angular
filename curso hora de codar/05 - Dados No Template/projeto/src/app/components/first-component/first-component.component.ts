@@ -6,33 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./first-component.component.css']
 })
 export class FirstComponentComponent {
+   nome:string = "André Rosa de Matos"
 
-  name:string = 'André Rosa de Matos';
-  age:number = 33;
+   idade:number = 33
 
-  hobbies:string[] = ['ciclismo', 'viagens', 'comer'];
+   carro = {
+    marca: "Renault",
+    ano: 2001,
+    modelo: "Twingo"
+   }
 
-  firstCar:{
-    model:string,
-    brand:string,
-    year:number,
-    imported:boolean}
-    =
-  {
-    model : 'Gol',
-    brand : 'Volkswagen',
-    year : 2008,
-    imported: false
-  }
-
-  allCars:{car:string, year:number, imported:boolean}[]=[
-    {car: 'Gol', year: 2008, imported: false},
-    {car:'New Civic', year: 2008, imported:false},
-    {car: 'Malibu', year: 2010, imported: true},
-    {car: 'Twingo', year: 2001, imported: true},
-    {car: 'Fusca', year: 1985, imported:false},
-
-  ]
-
+   hobbies = ["pedalar", "caminhar", "viajar"]
 
 }
