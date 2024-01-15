@@ -6,7 +6,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./child.component.css']
 })
 export class ChildComponent {
+  //envia o evento
   @Output() changeNumber: EventEmitter<any> = new EventEmitter()
+
+  //emite o evento
   handleClick(){
     this.changeNumber.emit()
   }

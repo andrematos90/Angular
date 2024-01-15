@@ -11,10 +11,11 @@ O @Output é usado para expor um evento que pode ser capturado pelo componente p
 
 import { Component, EventEmitter, Output } from '@angular/core';
 
-@Component({
-  selector: 'app-filho',
-  template: '<button (click)="emitirEvento()">Clique-me</button>',
-})
+
+  template: 
+  '<button (click)="emitirEvento()">Clique-me</button>',
+
+  classe: 
 export class FilhoComponent {
   @Output() meuEvento = new EventEmitter<string>();
 
@@ -27,16 +28,19 @@ Emissão de Evento:
 
 No exemplo acima, o método emitirEvento() é chamado quando o botão é clicado.
 Ele emite um evento usando this.meuEvento.emit('Dados do evento').
+
 Recebendo o Evento no Componente Pai:
 
 No componente pai, você pode usar a diretiva (eventoFilho) para capturar o evento emitido pelo componente filho.
 
 import { Component } from '@angular/core';
 
-@Component({
-  selector: 'app-pai',
+
   template: '<app-filho (meuEvento)="lidarComEvento($event)"></app-filho>',
-})
+
+
+  classe:
+
 export class PaiComponent {
   lidarComEvento(dados: string) {
     console.log('Evento recebido do filho:', dados);
@@ -47,6 +51,8 @@ $event:
 
 O objeto $event contém os dados que foram passados durante a emissão do evento no componente filho.
 No exemplo acima, é uma string, mas pode ser qualquer tipo de dado.
+
+
 Integrando Componentes:
 
 Finalmente, no template do componente pai, você integra o componente filho usando <app-filho></app-filho> e captura o evento desejado.
@@ -60,6 +66,7 @@ Importar Módulos Necessários:
 
 Importe Component, EventEmitter e Output do Angular.
 (se for apenas dados é necessários apenas o Output)
+
 import { Component, EventEmitter, Output } from '@angular/core';
 Criar Componente:
 
@@ -71,6 +78,7 @@ Defina o componente filho.
 export class FilhoComponent {
   // ...
 }
+
 Criar Propriedade de Evento:
 
 Use o decorador @Output para criar uma propriedade que será um evento.
