@@ -48,7 +48,7 @@ O uso de interfaces melhora a manutenção do código, pois fornece uma document
 Exemplo Prático:
 
 // Definição de uma interface:
-interface Pessoa {
+export interface Pessoa {
   nome: string;
   idade: number;
   saudacao(): void;
