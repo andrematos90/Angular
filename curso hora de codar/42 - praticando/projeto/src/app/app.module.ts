@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { FirstComponentComponent } from './components/first-component/first-component.component';
 import { FilhoComponent } from './components/filho/filho.component';
 import { PaiComponent } from './components/pai/pai.component';
+import { DiretivasComponent } from './components/diretivas/diretivas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FirstComponentComponent,
     FilhoComponent,
-    PaiComponent
+    PaiComponent,
+    DiretivasComponent
   ],
   imports: [
     BrowserModule,
