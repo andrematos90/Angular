@@ -1,8 +1,13 @@
-<h1>Usando diretivas</h1>
+<div class="class">
+  <h1>Usando diretivas</h1>
 
-<h2 [ngStyle]="{'font-size': size + 'px', 'font-family': font, color: color }">testando diretiva de estilo</h2>
+  <h2
+    [ngStyle]="{ 'font-size': size + 'px', 'font-family': font, color: color }"
+  >
+    testando diretiva de estilo
+  </h2>
 
+  <h1 [ngClass]="classe">Usando diretiva de classe</h1>
 
-<h1 [ngClass]="classe">Usando diretiva de classe</h1>
-
-<p ngClass="underline">usando uma única classe</p>
+  <p ngClass="underline">usando uma única classe</p>
+</div>
