@@ -8,6 +8,7 @@ import { FilhoComponent } from './components/filho/filho.component';
 import { PaiComponent } from './components/pai/pai.component';
 import { DiretivasComponent } from './components/diretivas/diretivas.component';
 import { RenderizacaoCondicionalComponent } from './components/renderizacao-condicional/renderizacao-condicional.component';
+import { EventosComponent } from './components/eventos/eventos.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RenderizacaoCondicionalComponent } from './components/renderizacao-cond
     FilhoComponent,
     PaiComponent,
     DiretivasComponent,
-    RenderizacaoCondicionalComponent
+    RenderizacaoCondicionalComponent,
+    EventosComponent
   ],
   imports: [
     BrowserModule,
