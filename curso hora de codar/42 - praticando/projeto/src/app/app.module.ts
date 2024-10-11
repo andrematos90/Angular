@@ -9,6 +9,8 @@ import { PaiComponent } from './components/pai/pai.component';
 import { DiretivasComponent } from './components/diretivas/diretivas.component';
 import { RenderizacaoCondicionalComponent } from './components/renderizacao-condicional/renderizacao-condicional.component';
 import { EventosComponent } from './components/eventos/eventos.component';
+import { EmiteComponent } from './components/emite/emite.component';
+import { ExecutaEventoComponent } from './components/executa-evento/executa-evento.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { EventosComponent } from './components/eventos/eventos.component';
     PaiComponent,
     DiretivasComponent,
     RenderizacaoCondicionalComponent,
-    EventosComponent
+    EventosComponent,
+    EmiteComponent,
+    ExecutaEventoComponent
   ],
   imports: [
     BrowserModule,
