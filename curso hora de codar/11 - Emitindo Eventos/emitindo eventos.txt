@@ -2,7 +2,9 @@
 explicação:
 
 
-No Angular, a comunicação entre componentes pais e filhos pode ser realizada através da emissão de eventos pelos componentes filhos. Isso geralmente envolve a utilização do decorador @Output e a criação de um EventEmitter. Aqui estão os passos básicos para entender como funciona a emissão de eventos de componentes filhos para componentes pais:
+No Angular, a comunicação entre componentes pais e filhos pode ser realizada através da emissão de eventos pelos componentes filhos. Isso geralmente envolve
+ a utilização do decorador @Output e a criação de um EventEmitter. Aqui estão os passos básicos para entender como funciona a emissão de eventos de componentes
+  filhos para componentes pais:
 
 @Output Decorator:
 

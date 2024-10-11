@@ -1,4 +1,4 @@
-comando de instalação: npm install -g @angular/cli
+comando de instalação: npm install -g @angular/cli ou instalação de uma versão especifica ex: npm install -g @angular/cli@16.2.9
 
 comando para criar projeto: ng new nomedoprojeto
 
