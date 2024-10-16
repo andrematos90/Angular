@@ -11,6 +11,7 @@ import { RenderizacaoCondicionalComponent } from './components/renderizacao-cond
 import { EventosComponent } from './components/eventos/eventos.component';
 import { EmiteComponent } from './components/emite/emite.component';
 import { ExecutaEventoComponent } from './components/executa-evento/executa-evento.component';
+import { ListRenderComponent } from './components/list-render/list-render.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ExecutaEventoComponent } from './components/executa-evento/executa-even
     RenderizacaoCondicionalComponent,
     EventosComponent,
     EmiteComponent,
-    ExecutaEventoComponent
+    ExecutaEventoComponent,
+    ListRenderComponent
   ],
   imports: [
     BrowserModule,
