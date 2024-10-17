@@ -12,6 +12,7 @@ import { EventosComponent } from './components/eventos/eventos.component';
 import { EmiteComponent } from './components/emite/emite.component';
 import { ExecutaEventoComponent } from './components/executa-evento/executa-evento.component';
 import { ListRenderComponent } from './components/list-render/list-render.component';
+import { PipesComponent } from './components/pipes/pipes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ListRenderComponent } from './components/list-render/list-render.compon
     EventosComponent,
     EmiteComponent,
     ExecutaEventoComponent,
-    ListRenderComponent
+    ListRenderComponent,
+    PipesComponent
   ],
   imports: [
     BrowserModule,
