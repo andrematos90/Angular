@@ -13,6 +13,7 @@ import { EmiteComponent } from './components/emite/emite.component';
 import { ExecutaEventoComponent } from './components/executa-evento/executa-evento.component';
 import { ListRenderComponent } from './components/list-render/list-render.component';
 import { PipesComponent } from './components/pipes/pipes.component';
+import { TwoWayBindingComponent } from './components/two-way-binding/two-way-binding.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PipesComponent } from './components/pipes/pipes.component';
     EmiteComponent,
     ExecutaEventoComponent,
     ListRenderComponent,
-    PipesComponent
+    PipesComponent,
+    TwoWayBindingComponent
   ],
   imports: [
     BrowserModule,
