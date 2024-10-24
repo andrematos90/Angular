@@ -7,9 +7,10 @@ import { Animal } from '../Animal';
 export class ListService {
 
   constructor() { }
-
   remove(animals: Animal[], animal: Animal){
 
     return animals.filter((a) => animal.name !== a.name);
   }
 }
+
+
